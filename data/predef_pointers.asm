@@ -81,5 +81,6 @@ PredefPointers:: ; 856b
 	add_predef AnimateFrontpic
 	add_predef Unused_HOF_AnimateAlignedFrontpic ; $48
 	add_predef HOF_AnimateFrontpic
+	add_predef GetMonTypeIndex
 	dbw -1, InexplicablyEmptyFunction ; ???
 ; 864c

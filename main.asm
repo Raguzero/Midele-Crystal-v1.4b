@@ -623,6 +623,10 @@ INCLUDE "engine/events/odd_egg.asm"
 INCLUDE "engine/events/move_relearner.asm"
 
 
+SECTION "Custom GFX", ROMX
+INCLUDE "gfx/rangi_gfx.asm"
+
+
 SECTION "Moves Moves", ROMX
 
 INCLUDE "data/moves/moves.asm"

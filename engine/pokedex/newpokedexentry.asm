@@ -24,7 +24,7 @@ NewPokedexEntry: ; fb877
 	pop af
 	ld [wPokedexStatus], a
 	call MaxVolume
-	call RotateThreePalettesRight
+	farcall Pokedex_BlackOutBG ; RotateThreePalettesRight causes ugly visual artifacts
 	ld a, [hSCX]
 	add -POKEDEX_SCX
 	ld [hSCX], a

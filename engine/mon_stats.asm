@@ -483,3 +483,22 @@ ListMoves: ; 50d6f
 
 .done
 	ret
+	
+GetMonTypeIndex:
+ ; automatically detects and accounts for Physical/Special Split (PSS)
+ ; type in c, because farcall clobbers a
+ ; if PSS, c needs to be adjusted
+ 	ld a, c
+IF DEF(TYPE_MASK)
+	and TYPE_MASK ; Phys/Spec Split specific
+ENDC
+ 	; Skip Bird
+ 	cp BIRD
+ 	jr c, .done
+ 	cp UNUSED_TYPES
+ 	dec a
+ 	jr c, .done
+ 	sub UNUSED_TYPES
+.done
+ 	ld c, a
+ 	ret

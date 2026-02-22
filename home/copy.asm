@@ -150,7 +150,8 @@ DecompressRequest2bpp:: ; e73
 ; e8d
 
 
-
+FarCopyColorWRAM::
+ 	ld a, BANK("GBC Video")
 FarCopyBytes:: ; e8d
 ; copy bc bytes from a:hl to de
 

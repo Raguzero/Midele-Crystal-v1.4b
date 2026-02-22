@@ -331,6 +331,12 @@ Pokedex_InitDexEntryScreen: ; 40217 (10:4217)
 	xor a
 	ld [hBGMapMode], a
 	call ClearSprites
+
+	call Pokedex_GetSelectedMon
+ 	ld [wCurPartySpecies], a
+ 	ld a, SCGB_POKEDEX
+ 	call Pokedex_GetSGBLayout
+	
 	call Pokedex_LoadCurrentFootprint
 	call Pokedex_DrawDexEntryScreenBG
 	call Pokedex_InitArrowCursor
@@ -341,10 +347,6 @@ Pokedex_InitDexEntryScreen: ; 40217 (10:4217)
 	call WaitBGMap
 	ld a, $a7
 	ld [hWX], a
-	call Pokedex_GetSelectedMon
-	ld [wCurPartySpecies], a
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
 	ld a, [wCurPartySpecies]
 	call PlayMonCry
 	call Pokedex_IncrementDexPointer
