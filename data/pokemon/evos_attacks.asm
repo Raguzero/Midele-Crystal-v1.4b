@@ -408,6 +408,7 @@ PikachuEvosAttacks:
 	db 50, REVERSAL
 	db 53, PETAL_DANCE
 	db 55, LIGHT_SCREEN
+	db 58, DAZZLING_GLEAM
 	db 0 ; no more level-up moves
 
 RaichuEvosAttacks:
@@ -839,6 +840,7 @@ MeowthEvosAttacks:
 	db 11, BITE
 	db 14, METAL_CLAW
 	db 17, PAY_DAY
+	db 19, SPIKES
 	db 20, FURY_SWIPES
 	db 23, FAINT_ATTACK
 	db 25, SCREECH
@@ -856,6 +858,7 @@ PersianEvosAttacks:
 	db 1, BITE
 	db 1, PAY_DAY
 	db 14, METAL_CLAW
+	db 19, SPIKES
 	db 20, FURY_SWIPES
 	db 23, FAINT_ATTACK
 	db 25, SCREECH
@@ -1533,7 +1536,7 @@ GastlyEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, HYPNOSIS
 	db 1, LICK
-	db 6, SPITE
+	db 6, CONFUSION
 	db 9, MEAN_LOOK
 	db 11, NIGHT_SHADE
 	db 14, CURSE
@@ -1543,6 +1546,7 @@ GastlyEvosAttacks:
 	db 33, DREAM_EATER
 	db 36, DESTINY_BOND
 	db 40, EXPLOSION
+	db 43, SPITE
 	db 0 ; no more level-up moves
 
 HaunterEvosAttacks:
@@ -1550,7 +1554,7 @@ HaunterEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, HYPNOSIS
 	db 1, LICK
-	db 1, SPITE
+	db 1, CONFUSION
 	db 6, MEAN_LOOK
 	db 11, NIGHT_SHADE
 	db 14, CURSE
@@ -1560,13 +1564,14 @@ HaunterEvosAttacks:
 	db 39, DREAM_EATER
 	db 48, DESTINY_BOND
 	db 53, EXPLOSION
+	db 56, SPITE
 	db 0 ; no more level-up moves
 
 GengarEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, HYPNOSIS
 	db 1, LICK
-	db 1, SPITE
+	db 1, CONFUSION
 	db 1, MEAN_LOOK
 	db 11, NIGHT_SHADE
 	db 14, CURSE
@@ -1576,6 +1581,7 @@ GengarEvosAttacks:
 	db 42, DREAM_EATER
 	db 50, DESTINY_BOND
 	db 56, EXPLOSION
+	db 59, SPITE
 	db 0 ; no more level-up moves
 
 OnixEvosAttacks:
@@ -2287,9 +2293,10 @@ FlareonEvosAttacks:
 	db 1, LEER
 	db 8, SAND_ATTACK
 	db 16, EMBER
+	db 21, FLAME_WHEEL
 	db 23, QUICK_ATTACK
-	db 28, CURSE
 	db 26, ZAP_CANNON
+	db 28, CURSE
 	db 30, BITE
 	db 33, FIRE_SPIN
 	db 36, SCARY_FACE
@@ -2573,6 +2580,7 @@ ChikoritaEvosAttacks:
 	db 22, SYNTHESIS
 	db 29, BODY_SLAM
 	db 32, LIGHT_SCREEN
+	db 35, DAZZLING_GLEAM
 	db 39, SAFEGUARD
 	db 43, SOLARBEAM
 	db 0 ; no more level-up moves
@@ -2588,6 +2596,7 @@ BayleefEvosAttacks:
 	db 23, SYNTHESIS
 	db 31, BODY_SLAM
 	db 35, LIGHT_SCREEN
+	db 37, DAZZLING_GLEAM
 	db 42, SAFEGUARD
 	db 48, SOLARBEAM
 	db 0 ; no more level-up moves
@@ -2603,6 +2612,7 @@ MeganiumEvosAttacks:
 	db 31, BODY_SLAM
 	db 35, SWORDS_DANCE
 	db 39, LIGHT_SCREEN
+	db 41, DAZZLING_GLEAM
 	db 43, GIGA_DRAIN
 	db 48, LEECH_SEED
 	db 51, SAFEGUARD
