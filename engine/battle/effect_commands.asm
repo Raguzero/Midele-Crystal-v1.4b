@@ -3910,17 +3910,11 @@ BattleCommand_SleepTarget: ; 35e5c
 	jr nz, .fail
 
 	call AnimateCurrentMove
-	ld b, $7
-	ld a, [wInBattleTowerBattle]
-	and a
-	jr z, .random_loop
 	ld b, $3
 
 .random_loop
 	call BattleRandom
 	and b
-	jr z, .random_loop
-	cp 7
 	jr z, .random_loop
 	inc a
 	ld [de], a
