@@ -173,6 +173,7 @@ NUM_ROAMMON_MAPS EQU 16 ; RoamMaps table size (see data/wild/roammon_maps.asm)
 	const TREEMON_SET_LAKE
 	const TREEMON_SET_FOREST
 	const TREEMON_SET_ROCK
+	const TREEMON_SET_KANTO_2
 NUM_TREEMON_SETS EQU const_value
 
 ; treemon scores

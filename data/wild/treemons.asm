@@ -8,7 +8,7 @@ TreeMons: ; b82e8
 	dw TreeMonSet_Lake
 	dw TreeMonSet_Forest
 	dw TreeMonSet_Rock
-	dw TreeMonSet_City
+	dw TreeMonSet_Kanto_2
 
 ; Two tables each (common, rare).
 ; Structure:
@@ -128,3 +128,20 @@ TreeMonSet_Rock: ; b83de
 	db 10, SHUCKLE,    15
 	db -1
 ; b83e5
+TreeMonSet_Kanto_2: ; b836c
+; common
+	db 50, NATU,   60
+	db 15, BEEDRILL,      60
+	db 15, BUTTERFREE,   60
+	db 10, EKANS,  60
+	db  5, HERACROSS,  60
+	db  5, EXEGGCUTE,  60
+	db -1
+; rare
+	db 50, NOCTOWL,   60
+	db 15, PINECO,     60
+	db 15, PINECO,     60
+	db 10, TANGELA,  60
+	db  5, EXEGGCUTE,  60
+	db  5, EXEGGCUTE,  60
+	db -1

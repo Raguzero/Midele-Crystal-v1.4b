@@ -38,6 +38,29 @@ TreeMonMaps: ; b825e
 	treemon_map BLACKTHORN_CITY,           TREEMON_SET_CITY
 	treemon_map SILVER_CAVE_OUTSIDE,       TREEMON_SET_KANTO
 	treemon_map ILEX_FOREST,               TREEMON_SET_FOREST
+	treemon_map ROUTE_1,                   TREEMON_SET_KANTO_2
+	treemon_map VIRIDIAN_CITY,             TREEMON_SET_KANTO_2
+	treemon_map ROUTE_2,                   TREEMON_SET_KANTO_2
+	treemon_map PEWTER_CITY,               TREEMON_SET_KANTO_2
+	treemon_map ROUTE_3,                   TREEMON_SET_KANTO_2
+	treemon_map ROUTE_4,                   TREEMON_SET_KANTO_2
+	treemon_map CERULEAN_CITY,             TREEMON_SET_KANTO_2
+	treemon_map ROUTE_25,                  TREEMON_SET_KANTO_2
+	treemon_map ROUTE_9,                   TREEMON_SET_KANTO_2
+	treemon_map ROUTE_5,                   TREEMON_SET_KANTO_2
+	treemon_map ROUTE_7,                   TREEMON_SET_KANTO_2
+	treemon_map CELADON_CITY,              TREEMON_SET_KANTO_2
+	treemon_map ROUTE_16,                  TREEMON_SET_KANTO_2
+	treemon_map ROUTE_8,                   TREEMON_SET_KANTO_2
+	treemon_map VERMILION_CITY,            TREEMON_SET_KANTO_2
+	treemon_map ROUTE_11,                  TREEMON_SET_KANTO_2
+	treemon_map ROUTE_12,                  TREEMON_SET_KANTO_2
+	treemon_map ROUTE_13,                  TREEMON_SET_KANTO_2
+	treemon_map ROUTE_14,                  TREEMON_SET_KANTO_2
+	treemon_map ROUTE_15,                  TREEMON_SET_KANTO_2
+	treemon_map FUCHSIA_CITY,              TREEMON_SET_KANTO_2
+	treemon_map ROUTE_18,                  TREEMON_SET_KANTO_2
+	treemon_map ROUTE_23,                  TREEMON_SET_KANTO_2
 	db -1
 ; b82c5
 
