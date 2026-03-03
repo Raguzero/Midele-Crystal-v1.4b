@@ -334,7 +334,7 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_RIVALBATTLE_XY
 	; If the trainer id matches, done
 	cp SAPPH
-	jr z, .done_custom_music
+	jp z, .done_custom_music
 .not_sapph
 	;;;;;;;
 
@@ -506,6 +506,23 @@ PlayBattleMusic: ; 2ee6c
 	cp PACOBEER2
 	jr z, .done_custom_music
 .not_pacobeer2
+	;;;;;;;;
+	; Load trainer class at a
+	ld a, c
+
+	; If the trainer is not from SCIENTIST trainer class,
+	; continue to next trainer
+	cp RANDOM
+	jr nz, .not_bot
+
+	; Load trainer id at a
+	; Load music at de
+	ld a, b
+	ld de, MUSIC_CIPHERPEONBATTLE
+	; If the trainer id matches, done
+	cp BOT
+	jr z, .done_custom_music
+.not_bot
 	;;;;;;;
 	jr .done_custom_trainer
 

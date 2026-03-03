@@ -3,6 +3,10 @@ trainerclass: MACRO
 const_value = 1
 ENDM
 
+ const_def
+ const RANDOMLIST_0
+ ; and so on
+
 ; trainer class ids
 ; `trainerclass` indexes are for:
 ; - TrainerClassNames (see data/trainers/class_names.asm)
@@ -710,5 +714,8 @@ KRIS EQU __enum__
 
 	trainerclass MASTERMIND
 	const MICOLO
+	
+	trainerclass RANDOM
+	const BOT
 
 NUM_TRAINER_CLASSES EQU __enum__

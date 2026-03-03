@@ -258,8 +258,8 @@
 	const WHIRLPOOL    ; fa
 	const BEAT_UP      ; fb
 	const MIDELE_POWER ; fc
-	const FAIRY_WIND ; fd
-	const DAZZLING_GLEAM ; fe
+	const DAZZLING_GLEAM ; fd
+	const FAIRY_WIND ; fe
 NUM_ATTACKS EQU const_value + -1
 
 ; Battle animations use the same constants as the moves up to this point

@@ -174,6 +174,34 @@ AbraScript:
 	waitbutton
 	closetext
 	end
+	
+RandomBattleNPCScript:
+	faceplayer
+	opentext
+	writetext RandomBattleNPCText1
+	yesorno
+	iffalse .No
+	writetext RandomBattleNPCYesText
+	winlosstext RandomBattleNPCWinText, 0
+	loadtrainer RANDOM, BOT
+	startbattle
+	reloadmapafterbattle
+	scall RandomBattleNPC_AfterBattle
+	end
+
+.No:
+	writetext RandomBattleNPCNoText
+	waitbutton
+	closetext
+	end
+	
+RandomBattleNPC_AfterBattle:
+    opentext
+	writetext RandomBattleNPCScript_DefeatText
+	special HealParty
+	waitbutton
+	closetext
+	end	
 
 PlateauRivalMovement1:
 	step UP
@@ -299,6 +327,40 @@ TeleportGuyNoText:
 AbraText:
 	text "ABRA: Aabra…"
 	done
+	
+RandomBattleNPCText1:
+	text "Welcome to my" 
+	line "Shoddy Battle"
+	cont "Tower."
+	
+	para "My PC will"
+	line "create a trainer" 
+	cont "randomly with" 
+	cont "six Pokemon."
+
+    para "All strategies" 
+	line "are allowed."
+	
+	para "Do you want to"
+	line "join?"
+	done
+
+RandomBattleNPCYesText:
+	text "STARTING BATTLE!"
+	done
+
+RandomBattleNPCNoText:
+	text "You're a" 
+	line "coward, huh?"
+	done
+	
+RandomBattleNPCScript_DefeatText:
+	text "Come back again."
+	done
+	
+RandomBattleNPCWinText:
+	text "GG"
+	done
 
 IndigoPlateauPokecenter1F_MapEvents:
 	db 0, 0 ; filler
@@ -315,10 +377,11 @@ IndigoPlateauPokecenter1F_MapEvents:
 
 	db 0 ; bg events
 
-	db 6 ; object events
+	db 7 ; object events
 	object_event  3,  7, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IndigoPlateauPokecenter1FNurseScript, -1
 	object_event 11,  7, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IndigoPlateauPokecenter1FClerkScript, -1
 	object_event 11, 11, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IndigoPlateauPokecenter1FCooltrainerMScript, -1
 	object_event 16,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	object_event  1,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, TeleportGuyScript, EVENT_TELEPORT_GUY
 	object_event  0,  9, SPRITE_ABRA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, AbraScript, EVENT_TELEPORT_GUY
+	object_event  8,  7, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RandomBattleNPCScript, -1

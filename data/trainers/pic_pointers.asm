@@ -71,3 +71,4 @@ TrainerPicPointers::
 	dba_pic MysticalmanPic
 	dba_pic MewtwoFrontpic
 	dba_pic YoungsterPic
+	dba_pic RandomPic

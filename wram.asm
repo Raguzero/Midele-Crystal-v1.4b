@@ -2788,7 +2788,13 @@ wPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH ; ddff
 wPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH ; de41
 wPartyMonNicknamesEnd::
 
-	ds 22
+wOtherTrainerType:: db
+wTrainerGroupBank:: db
+wRandomTrainerNumPokemon:: db
+wRandomTrainerTotalPokemon:: db
+wRandomTrainerRandomNumbers:: ds 6
+
+	ds 12
 
 wPokedexCaught:: flag_array NUM_POKEMON ; de99
 wEndPokedexCaught::

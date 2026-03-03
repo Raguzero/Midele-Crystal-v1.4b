@@ -731,6 +731,7 @@ MicomonFrontpic:     INCBIN "gfx/pokemon/micomon/front.animated.2bpp.lz"
 MicomonBackpic:      INCBIN "gfx/pokemon/micomon/back.2bpp.lz"
 BombseekerFrontpic:     INCBIN "gfx/pokemon/bombseeker/front.animated.2bpp.lz"
 BombseekerBackpic:      INCBIN "gfx/pokemon/bombseeker/back.2bpp.lz"
+RandomPic:           INCBIN "gfx/trainers/trainerbot.2bpp.lz"
 ; 1669d3
 
 

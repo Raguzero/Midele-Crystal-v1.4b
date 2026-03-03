@@ -73,4 +73,5 @@ INCLUDE "gfx/trainers/grunt_f.pal"
 INCLUDE "gfx/trainers/mysticalman.pal"
 INCLUDE "gfx/trainers/mysticalman.pal"
 INCLUDE "gfx/trainers/teacher.pal"
+INCLUDE "gfx/trainers/trainerbot.pal"
 ; b1de

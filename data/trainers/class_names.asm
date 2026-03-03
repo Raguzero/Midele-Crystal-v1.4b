@@ -69,3 +69,4 @@ TrainerClassNames:: ; 2c1ef
 	db "MYSTICALMAN@"
 	db "CLONE@"
 	db "MASTERMIND@"
+	db "BOT@"

@@ -264,5 +264,5 @@ Moves: ; 41afb
 	move WHIRLPOOL,    EFFECT_TRAP_TARGET,        35, WATER,     85, 15,   0
 	move BEAT_UP,      EFFECT_BEAT_UP,            10, DARK,     100, 10,   0
 	move MIDELE_POWER, EFFECT_MIDELE_POWER, 	  70, CURSE_T,  100, 10, 100
-	move FAIRY_WIND,   EFFECT_NORMAL_HIT,         40, FAIRY,   100, 30,   0
 	move DAZZLING_GLEAM,   EFFECT_NORMAL_HIT,     80, FAIRY,   100, 10,   0
+	move FAIRY_WIND,   EFFECT_NORMAL_HIT,         40, FAIRY,   100, 30,   0

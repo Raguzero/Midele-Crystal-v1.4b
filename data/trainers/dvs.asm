@@ -71,4 +71,5 @@ TrainerClassDVs: ; 270d6
 	db $FF, $FF ; mysticalman
 	db $FF, $FF ; Clone
 	db $FF, $FF ; Mastermind
+	db $FF, $FF ; Random
 ; 2715c
