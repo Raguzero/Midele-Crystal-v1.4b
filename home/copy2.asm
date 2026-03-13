@@ -92,6 +92,8 @@ GetFarHalfword:: ; 0x305d
 	ret
 ; 0x306b
 
+FarCopyColorWRAM::
+ 	ld a, BANK("GBC Video")
 FarCopyWRAM:: ; 306b
 	ld [hBuffer], a
 	ld a, [rSVBK]

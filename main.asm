@@ -666,3 +666,7 @@ __level__ = __level__ + 1
 ENDR
 db 63
 ; NUEVO LEVEL CAP BADGE
+
+SECTION "Custom GFX", ROMX
+
+INCLUDE "gfx/rangi_gfx.asm"
