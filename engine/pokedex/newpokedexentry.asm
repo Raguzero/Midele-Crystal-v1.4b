@@ -1,8 +1,10 @@
 NewPokedexEntry: ; fb877
-	ld a, [hMapAnims]
+	ldh a, [hMapAnims]
 	push af
 	xor a
-	ld [hMapAnims], a
+	ld [wPokedexShinyToggle], a
+	ld [wPokedexEntryPageNum], a
+	ldh [hMapAnims], a
 	call LowVolume
 	call ClearBGPalettes
 	call ClearTileMap
@@ -10,10 +12,11 @@ NewPokedexEntry: ; fb877
 	call ClearSprites
 	ld a, [wPokedexStatus]
 	push af
-	ld a, [hSCX]
-	add POKEDEX_SCX
-	ld [hSCX], a
+	ldh a, [hSCX]
+	add 5  ; POKEDEX_SCX DA ERROR NOT DEFINED AL COMPILAR ASI QUE 5
+	ldh [hSCX], a
 	xor a
+	ldh [hSCY], a
 	ld [wPokedexStatus], a
 	farcall _NewPokedexEntry
 	call WaitPressAorB_BlinkCursor
@@ -25,12 +28,12 @@ NewPokedexEntry: ; fb877
 	ld [wPokedexStatus], a
 	call MaxVolume
 	farcall Pokedex_BlackOutBG ; RotateThreePalettesRight causes ugly visual artifacts
-	ld a, [hSCX]
-	add -POKEDEX_SCX
-	ld [hSCX], a
+	ldh a, [hSCX]
+	add -5  ; POKEDEX_SCX DA ERROR NOT DEFINED AL COMPILAR ASI QUE 5
+	ldh [hSCX], a
 	call .ReturnFromDexRegistration
 	pop af
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	ret
 ; fb8c8
 

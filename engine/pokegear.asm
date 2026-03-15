@@ -250,6 +250,12 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $4f
 	call ByteFill
+	
+	ld de, PokeGear_TimeofDayIcons
+	ld hl, vTiles2 tile $6d
+	lb bc, BANK(PokeGear_TimeofDayIcons), 3
+	call Request2bpp
+
 	ld a, [wPokegearCard]
 	maskbits NUM_POKEGEAR_CARDS
 	add a
@@ -319,9 +325,6 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 .Clock: ; 90e1a
 	ld de, ClockTilemapRLE
 	call Pokegear_LoadTilemapRLE
-	hlcoord 12, 1
-	ld de, .switch
-	call PlaceString
 	hlcoord 0, 12
 	lb bc, 4, 18
 	call TextBox
@@ -330,8 +333,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 
 ; 90e36 (24:4e36)
 
-.switch
-	db " SWITCH▶@"
+
 ; 90e3f
 
 .Map: ; 90e3f
@@ -493,6 +495,9 @@ PokegearClock_Joypad: ; 90f3e (24:4f3e)
 	and A_BUTTON | B_BUTTON | START | SELECT
 	jr nz, .quit
 	ld a, [hl]
+	and D_LEFT
+	jr nz, .left
+	ld a, [hl]
 	and D_RIGHT
 	ret z
 	ld a, [wPokegearFlags]
@@ -508,6 +513,16 @@ PokegearClock_Joypad: ; 90f3e (24:4f3e)
 	jr z, .no_phone_card
 	ld c, POKEGEARSTATE_PHONEINIT
 	ld b, POKEGEARCARD_PHONE
+	jr .done
+.left
+	; if have radio card, load that, else, load phone
+	ld a, [wPokegearFlags]
+	bit POKEGEAR_RADIO_CARD_F, a
+	jr nz, .radio_card
+	jr .no_map_card
+.radio_card
+	ld c, POKEGEARSTATE_RADIOINIT
+	ld b, POKEGEARCARD_RADIO
 	jr .done
 
 .no_phone_card
@@ -532,25 +547,166 @@ PokegearClock_Joypad: ; 90f3e (24:4f3e)
 	ld a, $1
 	ld [hBGMapMode], a
 	ret
+	
+GetMapName_hlcoord: ; FarStringLength: ; thanks Rangi!
+; input: a:de = "@"-terminated string
+; output: adjusted hlcoord ;;;; c = length of string
+	push de
+    ld c, 0 ; str len
+    ld h, d
+    ld l, e
+    ld d, a ; bank
+.loop:
+	ld a, d ; bank
+    call GetFarByte
+    cp "@"
+    jr z, .get_hlcoord
+    inc c
+    inc hl
+    jr .loop
+.get_hlcoord
+	pop de
+	hlcoord 1, 8
+	ld a, c
+	cp 18
+	ret z
+	hlcoord 2, 8
+	ret
 
 Pokegear_UpdateClock: ; 90f86 (24:4f86)
-	hlcoord 3, 5
-	lb bc, 5, 14
+	; makes the grey colored box
+	hlcoord 1, 5
+	lb bc, 6, 18
 	call ClearBox
 	ld a, [hHours]
 	ld b, a
 	ld a, [hMinutes]
 	ld c, a
-	decoord 6, 8
+	decoord 11, 1
 	farcall PrintHoursMins
 	ld hl, .DayText
 	bccoord 6, 6
-	call PlaceHLTextAtBC
+	call PlaceHLTextAtBC ; PlaceHLTextAtBC bccoord 6, 6     ;  PrintTextboxTextAt DA ERROR AL COMPILAR, ASI QUE PONGO PlaceHLTextAtBC
+
+	; draw border
+	; ; Fix center Box since i cant find the func that originally drew this one
+	hlcoord 0, 4
+	ld [hl], $06 ; left upper corner
+	hlcoord 19, 4
+	ld [hl], $17 ; right upper corner
+	hlcoord 0, 11
+	ld [hl], $26 ; left lower corner
+	hlcoord 19, 11
+	ld [hl], $27 ; right lower corner
+	; draw horizontal bars
+	hlcoord 1, 4
+	ld a, $07
+	ld bc, 18
+	call ByteFill
+	hlcoord 1, 11
+	ld a, $07
+	ld bc, 18
+	call ByteFill
+	
+	hlcoord 0, 5
+	lb bc, 6, 1
+	ld a, $16
+	call FillBoxWithByte
+	
+	hlcoord 19, 5
+	lb bc, 6, 1
+	ld a, $16
+	call FillBoxWithByte
+	
+	; Map Location Name
+	; d ; map num
+	; e ; map group
+	ld a, [wMapGroup]
+	ld e, a
+	ld a, [wMapNumber]
+	ld d, a
+	farcall GetMapGroupNum_Name
+	; return string ptr in de
+	ld a, BANK(MapGroupNum_Names)
+	call GetMapName_hlcoord ; input a:de, output hlcoord 1 or 2 depending on length 
+	ld a, BANK(MapGroupNum_Names)
+	call FarString
+	; Fishing group
+	; d ; map num
+	; e ; map group
+	ld a, [wMapGroup]
+	ld e, a
+	ld a, [wMapNumber]
+	ld d, a
+	; given map info in 'de'
+	; return: string ptr in 'de'
+	; if 'de' is zero, no fishing group on map
+	farcall GetMapsFishGroup
+	ld a, d
+	and a
+	jr nz, .print_fish_group
+	ld a, e
+	and a
+	jr z, .print_tod
+.print_fish_group
+	ld a, BANK(FishGroups_Names)
+	hlcoord 8, 10
+	call FarString
+	hlcoord 3, 10
+	ld de, .FishGrpStr
+	call PlaceString
+.print_tod
+	hlcoord 10, 1 ; hlcoord 13, 6
+	ld a, [wTimeOfDay]
+	and a
+	jr z, .Morn
+	cp 1
+	jr z, .Day
+	ld [hl], $6f ; nite icon
+	ld de, .NiteStr
+.got_tod		
+	hlcoord 14, 6
+	; inc hl
+	call PlaceString
+	hlcoord 9, 0 ; hlcoord 11, 0
+	ld [hl], $30 ; round edge
+	inc hl
+	ld a, $7f
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	hlcoord 9, 2 ; hlcoord 11, 2
+	ld [hl], $32
+	inc hl
+	ld a, $7f
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	hlcoord 9, 1
+	; ld [hli], a
+	ld [hl], a
 	ret
+.Morn
+	ld [hl], $6d ; morn icon
+	ld de, .MornStr
+	jr .got_tod
+.Day
+	ld [hl], $6e ; day icon
+	ld de, .DayStr
+	jr .got_tod
+
+.MornStr:
+	db "MORN@"
+.DayStr:
+	db "DAY@"
+.NiteStr:
+	db "NITE@"
+	; db "NIGHT@"
+.FishGrpStr:
+	db "FISH:@"	
 
 ; 90fa8 (24:4fa8)
-	db "ごぜん@"
-	db "ごご@"
+
 
 .DayText: ; 0x90faf
 	text_jump UnknownText_0x1c5821
@@ -798,6 +954,10 @@ PokegearRadio_Joypad: ; 91112 (24:5112)
 	ld a, [hl]
 	and D_LEFT
 	jr nz, .left
+	ld a, [hl]
+	and D_RIGHT ; act like you have no phone and no map going left, takes to clock
+	; jr nz, .right	
+	jr nz, .no_map
 	ld a, [wPokegearRadioChannelAddr]
 	ld l, a
 	ld a, [wPokegearRadioChannelAddr + 1]
@@ -815,6 +975,7 @@ PokegearRadio_Joypad: ; 91112 (24:5112)
 	ld c, POKEGEARSTATE_PHONEINIT
 	ld b, POKEGEARCARD_PHONE
 	jr .switch_page
+.right
 
 .no_phone
 	ld a, [wPokegearFlags]
@@ -883,9 +1044,14 @@ PokegearPhone_Joypad: ; 91171 (24:5171)
 .right
 	ld a, [wPokegearFlags]
 	bit POKEGEAR_RADIO_CARD_F, a
-	ret z
+	;ret z
+	jr z, .no_map ; goes to clock	
+; .radio
 	ld c, POKEGEARSTATE_RADIOINIT
 	ld b, POKEGEARCARD_RADIO
+	jr .switch_page
+; .no_radio ; go to clock
+
 .switch_page
 	call Pokegear_SwitchPage
 	ret
@@ -1873,7 +2039,7 @@ _TownMap: ; 9191c
 	xor a
 	ld [wVramState], a
 
-	call ClearBGPalettes
+	;call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
 	call DisableLCD
@@ -1928,7 +2094,7 @@ _TownMap: ; 9191c
 	ld [hInMenu], a
 	pop af
 	ld [wOptions], a
-	call ClearBGPalettes
+	;call ClearBGPalettes
 	ret
 
 .loop
@@ -2493,12 +2659,12 @@ Pokedex_GetArea: ; 91d11
 	ld c, 4
 	call Request2bpp
 	call LoadTownMapGFX
-	call FillKantoMap
+	call Dex_FillKantoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
 	hlbgcoord 0, 0, vBGMap1
 	call TownMapBGUpdate
-	call FillJohtoMap
+	call Dex_FillJohtoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
 	hlbgcoord 0, 0
@@ -2514,8 +2680,10 @@ Pokedex_GetArea: ; 91d11
 	call JoyTextDelay
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and A_BUTTON | B_BUTTON
-	jr nz, .a_b
+	and B_BUTTON
+	jr nz, .b
+	and A_BUTTON
+	jr nz, .a
 	ld a, [hJoypadDown]
 	and SELECT
 	jr nz, .select
@@ -2529,7 +2697,9 @@ Pokedex_GetArea: ; 91d11
 	call DelayFrame
 	jr .loop
 
-.a_b
+.a
+	
+.b
 	call ClearSprites
 	pop af
 	ld [wTownMapCursorLandmark], a
@@ -2560,9 +2730,10 @@ Pokedex_GetArea: ; 91d11
 	ret
 
 .right
-	ld a, [wStatusFlags]
-	bit STATUSFLAGS_HALL_OF_FAME_F, a
-	ret z
+; only reveal Kanto map if beaten league: disabled
+	; ld a, [wStatusFlags]
+	; bit STATUSFLAGS_HALL_OF_FAME_F, a
+	; ret z
 	ld a, [hWY]
 	and a
 	ret z
@@ -2614,6 +2785,21 @@ Pokedex_GetArea: ; 91d11
 	ld l, c
 	ld de, .String_SNest
 	call PlaceString
+; add blurb to let people know they can press select to see current location
+	hlcoord 1, 2
+	ld a, $48 ; part of SELECT >
+	ld [hli], a
+	ld a, $49 ; part of SELECT >
+	ld [hli], a
+	ld a, $4a ; part of SELECT >
+	ld [hli], a
+	ld a, $1d ; custom arrow cap + YOU
+	ld [hli], a ; $78
+	ld [hl], $1e
+
+; show player coords
+; ; show player
+; 	lb de, $28, $34
 	ret
 
 ; 91e16
@@ -2797,6 +2983,14 @@ TownMapBGUpdate: ; 91ee4
 FillJohtoMap: ; 91eff
 	ld de, JohtoMap
 	jr FillTownMap
+	
+Dex_FillJohtoMap:
+	ld de, DEX_JohtoMap
+	jr FillTownMap
+
+Dex_FillKantoMap:
+	ld de, DEX_KantoMap
+	jr FillTownMap
 
 FillKantoMap: ; 91f04
 	ld de, KantoMap
@@ -2822,8 +3016,14 @@ TownMapPals: ; 91f13
 ; Current tile
 	ld a, [hli]
 	push hl
-; The palette map covers tiles $00 to $5f; $60 and above use palette 0
-	cp $60
+; The palette map covers tiles $00 to $67; $68 and above use palette 0
+	cp $6d
+	jr z, .pal6
+	cp $6e
+	jr z, .pal6
+	cp $6f
+	jr z, .pal6
+	cp $68
 	jr nc, .pal0
 
 ; The palette data is condensed to nybbles, least-significant first.
@@ -2852,6 +3052,9 @@ TownMapPals: ; 91f13
 	and PALETTE_MASK
 	jr .update
 
+.pal6
+	ld a, $6
+	jr .update
 .pal0
 	xor a
 .update
@@ -2950,12 +3153,19 @@ LoadTownMapGFX: ; 91ff2
 
 ; 91fff
 
+PokeGear_TimeofDayIcons:
+INCBIN "gfx/pokegear/pokegear_timeofday_icons.2bpp"
+
 JohtoMap: ; 91fff
 INCBIN "gfx/pokegear/johto.bin"
+DEX_JohtoMap:
+INCBIN "gfx/pokegear/dex_johto.bin"
 ; 92168
 
 KantoMap: ; 92168
 INCBIN "gfx/pokegear/kanto.bin"
+DEX_KantoMap:
+INCBIN "gfx/pokegear/dex_kanto.bin"
 ; 922d1
 
 PokedexNestIconGFX: ; 922d1

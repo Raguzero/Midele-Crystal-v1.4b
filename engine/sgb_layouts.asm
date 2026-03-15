@@ -28,6 +28,8 @@ LoadSGBLayout: ; 864c
 	dw .SGB_PokegearPals
 	dw .SGB_StatsScreenHPPals
 	dw .SGB_Pokedex
+	dw .SGB_Pokedex_EvoPage
+	dw .SGB_Pokedex_PicsPage	
 	dw .SGB_SlotMachine
 	dw .SGB06
 	dw .SGB_GSIntro
@@ -232,6 +234,10 @@ LoadSGBLayout: ; 864c
 	ld de, BlkPacket_Pokedex_PC
 	ret
 ; 87e9
+
+.SGB_Pokedex_EvoPage:
+.SGB_Pokedex_PicsPage:
+	ret
 
 .SGB_BillsPC: ; 87e9
 	ld hl, PalPacket_9ce6

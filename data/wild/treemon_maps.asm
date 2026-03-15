@@ -3,7 +3,7 @@ treemon_map: MACRO
 	db  \2 ; treemon set
 ENDM
 
-TreeMonMaps: ; b825e
+TreeMonMaps:: ; b825e
 	treemon_map ROUTE_26,                  TREEMON_SET_KANTO
 	treemon_map ROUTE_27,                  TREEMON_SET_KANTO
 	treemon_map ROUTE_28,                  TREEMON_SET_CITY
@@ -64,7 +64,7 @@ TreeMonMaps: ; b825e
 	db -1
 ; b82c5
 
-RockMonMaps: ; b82c5
+RockMonMaps:: ; b82c5
 	treemon_map CIANWOOD_CITY,             TREEMON_SET_ROCK
 	treemon_map ROUTE_40,                  TREEMON_SET_ROCK
 	treemon_map DARK_CAVE_VIOLET_ENTRANCE, TREEMON_SET_ROCK

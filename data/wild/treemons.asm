@@ -1,4 +1,4 @@
-TreeMons: ; b82e8
+TreeMons:: ; b82e8
 ; entries correspond to TREEMON_SET_* constants
 	dw TreeMonSet_City
 	dw TreeMonSet_Canyon
@@ -7,8 +7,15 @@ TreeMons: ; b82e8
 	dw TreeMonSet_Kanto
 	dw TreeMonSet_Lake
 	dw TreeMonSet_Forest
-	dw TreeMonSet_Rock
+	;dw TreeMonSet_Rock
 	dw TreeMonSet_Kanto_2
+
+RockSmashMons::
+	; broke off from the above table, for nayru's pokedex
+	; delineation was needed because there is no 'rare' table for rocksmash
+	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, RockSmashMons
+	dw TreeMonSet_Rock
+	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_ROCKSMASH_SETS
 
 ; Two tables each (common, rare).
 ; Structure:
@@ -123,11 +130,6 @@ TreeMonSet_Forest: ; b83b8
 	db  5, KAKUNA,     10
 	db -1
 
-TreeMonSet_Rock: ; b83de
-	db 90, KRABBY,     15
-	db 10, SHUCKLE,    15
-	db -1
-; b83e5
 TreeMonSet_Kanto_2: ; b836c
 ; common
 	db 50, NATU,   60
@@ -144,4 +146,13 @@ TreeMonSet_Kanto_2: ; b836c
 	db 10, TANGELA,  60
 	db  5, EXEGGCUTE,  60
 	db  5, EXEGGCUTE,  60
+	db -1	
+	
+; Rock smash sets dont have common/rare tables
+; can have as many entries as you want as long as the % adds up to 100
+; feel free to add new rock smash sets
+TreeMonSet_Rock: ; b83de
+	db 90, KRABBY,     15
+	db 10, SHUCKLE,    15
 	db -1
+; b83e5

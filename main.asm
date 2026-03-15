@@ -182,8 +182,6 @@ INCLUDE "data/battle/effect_command_pointers.asm"
 
 
 SECTION "bank10", ROMX
-
-INCLUDE "engine/pokedex/pokedex.asm"
 INCLUDE "engine/evolve.asm"
 
 
@@ -192,7 +190,7 @@ SECTION "bank11", ROMX
 INCLUDE "engine/events/fruit_trees.asm"
 INCLUDE "engine/battle/ai/move.asm"
 INCLUDE "engine/pokedex/pokedex_2.asm"
-INCLUDE "data/pokemon/dex_entry_pointers.asm"
+;INCLUDE "data/pokemon/dex_entry_pointers.asm"  DA ERROR 'PokedexDataPointerTable' already defined AL COMPILAR SI NO BORRO ESTO 
 INCLUDE "engine/mail.asm"
 
 
@@ -455,13 +453,10 @@ INCLUDE "engine/crystal_intro.asm"
 SECTION "bank3E", ROMX
 
 INCLUDE "engine/load_font.asm"
-INCLUDE "engine/time_capsule.asm"
 INCLUDE "engine/events/name_rater.asm"
 INCLUDE "engine/routines/playslowcry.asm"
 INCLUDE "engine/pokedex/newpokedexentry.asm"
-INCLUDE "engine/time_capsule_2.asm"
 INCLUDE "engine/pokedex/unown_dex.asm"
-INCLUDE "engine/events/magikarp.asm"
 INCLUDE "engine/battle/hidden_power.asm"
 INCLUDE "engine/battle/misc.asm"
 
@@ -628,6 +623,48 @@ SECTION "Moves Moves", ROMX
 INCLUDE "data/moves/moves.asm"
 
 
+
+SECTION "Nayru Pokedex", ROMX
+INCLUDE "engine/pokedex/pokedex.asm"
+
+SECTION "Custom GFX", ROMX
+INCLUDE "gfx/rangi_gfx.asm"
+
+SECTION "Map GroupNums Names", ROMX
+INCLUDE "data/maps/map_names.asm"
+
+SECTION "DEX GFX 2", ROMX
+IF USE_COMPRESSED_POKEDEX_GFX == TRUE
+PokedexLZ:
+INCBIN "gfx/pokedex/pokedex.2bpp.lz"
+PokedexSlowpokeLZ:
+INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
+ELSE
+; IF USE_COMPRESSED_POKEDEX_GFX == FALSE
+PokedexGFX:
+INCBIN "gfx/pokedex/pokedex.2bpp"
+PokedexSlowpokeGFX:
+INCBIN "gfx/pokedex/slowpoke.2bpp"
+ENDC
+
+Pokedex_ExtraTiles:
+INCBIN "gfx/pokedex/rangi_dex_tiles.2bpp"
+Pokedex_PageNumTiles:
+INCBIN "gfx/pokedex/dex_pagenums.2bpp"
+Pokedex_MathTiles:
+INCBIN "gfx/pokedex/math_symbols_inverted.1bpp"
+Pokedex_Imperial_Tiles:
+INCBIN "gfx/pokedex/inversed_feet_inches.1bpp"
+Pokedex_RightArrow_Tile:
+INCBIN "gfx/pokedex/inversed_rightarrow.1bpp"
+
+
+SECTION "Bank3E Overflow", ROMX
+INCLUDE "engine/time_capsule.asm"
+INCLUDE "engine/time_capsule_2.asm"
+INCLUDE "engine/events/magikarp.asm"
+
+
 SECTION "Mobile Stadium 2", ROMX
 
 if DEF(_CRYSTAL11)
@@ -667,6 +704,3 @@ ENDR
 db 63
 ; NUEVO LEVEL CAP BADGE
 
-SECTION "Custom GFX", ROMX
-
-INCLUDE "gfx/rangi_gfx.asm"
