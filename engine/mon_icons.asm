@@ -23,7 +23,7 @@ SetMenuMonIconColor:
 	ld [wCurPartySpecies], a
 	call GetMenuMonIconPalette
 	ld hl, wVirtualOAMSprite00Attributes
-	jr _ApplyMenuMonIconColor
+	jp _ApplyMenuMonIconColor
 
 SetMenuMonIconColor_NoShiny:
 	push hl
@@ -36,7 +36,52 @@ SetMenuMonIconColor_NoShiny:
 	and a
 	call GetMenuMonIconPalette_PredeterminedShininess
 	ld hl, wVirtualOAMSprite00Attributes
-	jr _ApplyMenuMonIconColor
+	jp _ApplyMenuMonIconColor
+	
+SetDexMonIconColor_NoShiny:
+	push hl
+	push de
+	push bc
+	push af
+
+	ld a, [wd265]
+	ld [wCurPartySpecies], a
+	and a
+	call GetMenuMonIconPalette_PredeterminedShininess
+	ld hl, wVirtualOAMSprite00Attributes
+	push af
+	ldh a, [hObjectStructIndexBuffer]
+	swap a
+	ld d, 0
+	ld e, a
+	add hl, de
+	pop af
+	jp _ApplyMenuMonIconColor
+
+SetDexMonIconColor_SpritePage:
+	push hl
+	push de
+	push bc
+	push af
+
+	ld a, [wd265]
+	ld [wCurPartySpecies], a
+	and a
+	ld hl, wPokedexShinyToggle
+	bit 0, [hl]
+	jr z, .not_shiny
+	scf
+.not_shiny
+	call GetMenuMonIconPalette_PredeterminedShininess
+	ld hl, wVirtualOAMSprite00Attributes
+	push af
+	ldh a, [hObjectStructIndexBuffer]
+	swap a
+	ld d, 0
+	ld e, a
+	add hl, de
+	pop af
+	jp _ApplyMenuMonIconColor
 
 LoadPartyMenuMonIconColors:
 	push hl
@@ -127,15 +172,15 @@ LoadMenuMonIcon: ; 8e83f
 
 
 .Jumptable: ; 8e854 (23:6854)
-	dw PartyMenu_InitAnimatedMonIcon ; party menu
-	dw NamingScreen_InitAnimatedMonIcon ; naming screen
-	dw MoveList_InitAnimatedMonIcon ; moves (?)
-	dw Trade_LoadMonIconGFX ; trade
-	dw Mobile_InitAnimatedMonIcon ; mobile
-	dw Mobile_InitPartyMenuBGPal71 ; mobile
-	dw .GetPartyMenuMonIcon ; unused
+	dw PartyMenu_InitAnimatedMonIcon    ; MONICON_PARTYMENU
+	dw NamingScreen_InitAnimatedMonIcon ; MONICON_NAMINGSCREEN
+	dw MoveList_InitAnimatedMonIcon     ; MONICON_MOVES
+	dw Trade_LoadMonIconGFX             ; MONICON_TRADE
+	dw Mobile_InitAnimatedMonIcon       ; MONICON_MOBILE1
+	dw Mobile_InitPartyMenuBGPal71      ; MONICON_MOBILE2
+	dw Pokedex_InitAnimatedMonIcon       ; MONICON_UNUSED
 
-.GetPartyMenuMonIcon: ; 8e862 (23:6862)
+Unused_GetPartyMenuMonIcon: ; 8e862 (23:6862)
 	call InitPartyMenuIcon
 	call .GetPartyMonItemGFX
 	call SetPartyMonIconAnimSpeed
@@ -309,7 +354,9 @@ SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	db $80 ; HP_RED
 ; 8e961
 
-NamingScreen_InitAnimatedMonIcon: ; 8e961 (23:6961)
+NamingScreen_InitAnimatedMonIcon:
+	ld hl, wTempMonDVs
+	call SetMenuMonIconColor
 	ld a, [wd265]
 	call ReadMonMenuIcon
 	ld [wCurIcon], a
@@ -339,6 +386,55 @@ MoveList_InitAnimatedMonIcon: ; 8e97d (23:697d)
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_NULL
+	ret
+	
+Pokedex_InitAnimatedMonIcon:
+	ld a, [wCurPartySpecies]
+	push af
+	ld a, [wd265]
+	ld [wCurPartySpecies], a
+	call SetMenuMonIconColor_NoShiny
+	
+	ld a, [wd265]
+	call ReadMonMenuIcon
+	ld [wCurIcon], a
+	call GetMemIconGFX
+
+	ld a, [wcf64]
+	cp 11
+	jr nz, .evo_page
+	ld a, -1
+	ld [wcf64], a
+	ld d, $88
+	ld e, $20
+	jr .setxdone
+.evo_page
+	ld a, [wcf64]
+	inc a
+; y coord
+	ld c, 32
+	call SimpleMultiply
+	add $28 ;$20
+	ld d, a
+; x coord
+	ld e, $19 ; $20
+.setxdone
+; type is partymon icon
+	ld a, SPRITE_ANIM_INDEX_PARTY_MON
+	call InitSpriteAnimStruct
+
+	ld a, [wCurIconTile]
+	sub 10
+	ld hl, SPRITEANIMSTRUCT_TILE_ID
+	add hl, bc
+	ld [hl], a
+
+	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
+	add hl, bc
+	ld [hl], SPRITE_ANIM_SEQ_NULL
+	
+	pop af
+	ld [wCurPartySpecies], a
 	ret
 
 Trade_LoadMonIconGFX: ; 8e99a (23:699a)

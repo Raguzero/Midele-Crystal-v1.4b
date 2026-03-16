@@ -1,5 +1,4 @@
 MapGroupNum_Names::
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, MapGroupNum_Names
 	dw Olivine_Map_Names
 	dw Mahogany_Map_Names
 	dw Dungeons_Map_Names
@@ -26,7 +25,6 @@ MapGroupNum_Names::
 	dw New_Bark_Map_Names
 	dw Saffron_Map_Names
 	dw Cherrygrove_Map_Names
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_MAP_GROUPS
 
 GetMapGroupNum_Name::
 	dec d ; map num
@@ -57,7 +55,6 @@ GetMapGroupNum_Name::
 
 
 Olivine_Map_Names: ;newgroup OLIVINE ;  1
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Olivine_Map_Names
 	dw Olivine_Map_Name1 ; map_const OLIVINE_POKECENTER_1F ;  1
 	dw Olivine_Map_Name2 ; map_const OLIVINE_GYM ;  2
 	dw Olivine_Map_Name3 ; map_const OLIVINE_TIMS_HOUSE ;  3
@@ -72,10 +69,8 @@ Olivine_Map_Names: ;newgroup OLIVINE ;  1
 	dw Olivine_Map_Name12 ; map_const ROUTE_38, ; 12
 	dw Olivine_Map_Name13 ; map_const ROUTE_39, ; 13
 	dw Olivine_Map_Name14 ; map_const OLIVINE_CITY ; 14
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_OLIVINE_MAPS
 
-Mahogany_Map_Names: ;newgroup MAHOGANY
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Mahogany_Map_Names                                            ;  2
+Mahogany_Map_Names: ;newgroup MAHOGANY                                         ;  2
 	dw Mahogany_Map_Name1 ; map_const MAHOGANY_RED_GYARADOS_SPEECH_HOUSE ;  1
 	dw Mahogany_Map_Name2 ; map_const MAHOGANY_GYM ;  2
 	dw Mahogany_Map_Name3 ; map_const MAHOGANY_POKECENTER_1F ;  3
@@ -83,11 +78,9 @@ Mahogany_Map_Names: ;newgroup MAHOGANY
 	dw Mahogany_Map_Name5 ; map_const ROUTE_42,  ;  5
 	dw Mahogany_Map_Name6 ; map_const ROUTE_44, ;  6
 	dw Mahogany_Map_Name7 ; map_const MAHOGANY_TOWN,  ;  7
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_MAHOGANY_MAPS
 	
 
-Dungeons_Map_Names: ;newgroup DUNGEONS
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Dungeons_Map_Names                                             ;  3
+Dungeons_Map_Names: ;newgroup DUNGEONS                                           ;  3
 	dw Dungeons_Map_Name1 ; map_const SPROUT_TOWER_1F, ;  1
 	dw Dungeons_Map_Name2 ; map_const SPROUT_TOWER_2F, ;  2
 	dw Dungeons_Map_Name3 ; map_const SPROUT_TOWER_3F, ;  3
@@ -179,11 +172,11 @@ Dungeons_Map_Names: ;newgroup DUNGEONS
 	dw Dungeons_Map_Name89 ; map_const SAFARI_ZONE_FUCHSIA_GATE_BETA ; 89
 	dw Dungeons_Map_Name90 ; map_const SAFARI_ZONE_BETA,                            10, 18 ; 90
 	dw Dungeons_Map_Name91 ; map_const VICTORY_ROAD,; 91
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_DUNGEONS_MAPS
+	dw Dungeons_Map_Name92 ; map_const MICOLO_HIDEOUT  							    20, 20 ; 92														 20,  20 ; 92
+	dw Dungeons_Map_Name93 ; map_const MICOLO_HIDEOUT_BASEMENT						8,  8  ; 93
 	
 
-Ecruteak_Map_Names: ;newgroup ECRUTEAK
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Ecruteak_Map_Names                                             ;  4
+Ecruteak_Map_Names: ;newgroup ECRUTEAK                                        ;  4
 	dw Ecruteak_Map_Name1 ; map_const ECRUTEAK_TIN_TOWER_ENTRANCE,                 10,  9 ;  1
 	dw Ecruteak_Map_Name2 ; map_const WISE_TRIOS_ROOM ;  2
 	dw Ecruteak_Map_Name3 ; map_const ECRUTEAK_POKECENTER_1F ;  3
@@ -193,10 +186,8 @@ Ecruteak_Map_Names: ;newgroup ECRUTEAK
 	dw Ecruteak_Map_Name7 ; map_const ECRUTEAK_GYM ;  7
 	dw Ecruteak_Map_Name8 ; map_const ECRUTEAK_ITEMFINDER_HOUSE ;  8
 	dw Ecruteak_Map_Name9 ; map_const ECRUTEAK_CITY,                               20, 18 ;  9
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_ECRUTEAK_MAPS
 
-Blackthorn_Map_Names: ;newgroup BLACKTHORN
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Blackthorn_Map_Names                                          ;  5
+Blackthorn_Map_Names: ;newgroup BLACKTHORN                                        ;  5
 	dw Blackthorn_Map_Name1 ; map_const BLACKTHORN_GYM_1F ;  1
 	dw Blackthorn_Map_Name2 ; map_const BLACKTHORN_GYM_2F ;  2
 	dw Blackthorn_Map_Name3 ; map_const BLACKTHORN_DRAGON_SPEECH_HOUSE ;  3
@@ -207,10 +198,8 @@ Blackthorn_Map_Names: ;newgroup BLACKTHORN
 	dw Blackthorn_Map_Name8 ; map_const ROUTE_45,                                    10, 45 ;  8
 	dw Blackthorn_Map_Name9 ; map_const ROUTE_46,                                    10, 18 ;  9
 	dw Blackthorn_Map_Name10 ; map_const BLACKTHORN_CITY,                             20, 18 ; 10
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_BLACKTHORN_MAPS
 
-Cinnabar_Map_Names: ;newgroup CINNABAR
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Cinnabar_Map_Names                                        ;  6
+Cinnabar_Map_Names: ;newgroup CINNABAR                                       ;  6
 	dw Cinnabar_Map_Name1 ; map_const CINNABAR_POKECENTER_1F ;  1
 	dw Cinnabar_Map_Name2 ; map_const CINNABAR_POKECENTER_2F_BETA ;  2
 	dw Cinnabar_Map_Name3 ; map_const ROUTE_19_FUCHSIA_GATE ;  3
@@ -219,10 +208,8 @@ Cinnabar_Map_Names: ;newgroup CINNABAR
 	dw Cinnabar_Map_Name6 ; map_const ROUTE_20,                                    30,  9 ;  6
 	dw Cinnabar_Map_Name7 ; map_const ROUTE_21,                                    10, 18 ;  7
 	dw Cinnabar_Map_Name8 ; map_const CINNABAR_ISLAND,                             10,  9 ;  8
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_CINNABAR_MAPS
 
-Cerulean_Map_Names: ;newgroup CERULEAN
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Cerulean_Map_Names                                             ;  7
+Cerulean_Map_Names: ;newgroup CERULEAN                                           ;  7
 	dw Cerulean_Map_Name1 ; map_const CERULEAN_GYM_BADGE_SPEECH_HOUSE ;  1
 	dw Cerulean_Map_Name2 ; map_const CERULEAN_POLICE_STATION ;  2
 	dw Cerulean_Map_Name3 ; map_const CERULEAN_TRADE_SPEECH_HOUSE ;  3
@@ -240,10 +227,8 @@ Cerulean_Map_Names: ;newgroup CERULEAN
 	dw Cerulean_Map_Name15 ; map_const ROUTE_24,                                    10,  9 ; 15
 	dw Cerulean_Map_Name16 ; map_const ROUTE_25,                                    30,  9 ; 16
 	dw Cerulean_Map_Name17 ; map_const CERULEAN_CITY,                               20, 18 ; 17
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_CERULEAN_MAPS
 
-Azalea_Map_Names: ;newgroup AZALEA
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Azalea_Map_Names                                               ;  8
+Azalea_Map_Names: ;newgroup AZALEA                                              ;  8
 	dw Azalea_Map_Name1 ; map_const AZALEA_POKECENTER_1F ;  1
 	dw Azalea_Map_Name2 ; map_const CHARCOAL_KILN ;  2
 	dw Azalea_Map_Name3 ; map_const AZALEA_MART ;  3
@@ -251,20 +236,16 @@ Azalea_Map_Names: ;newgroup AZALEA
 	dw Azalea_Map_Name5 ; map_const AZALEA_GYM ;  5
 	dw Azalea_Map_Name6 ; map_const ROUTE_33,;  6
 	dw Azalea_Map_Name7 ; map_const AZALEA_TOWN,;  7
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_AZALEA_MAPS
 
-Lake_of_Rage_Map_Names: ;newgroup LAKE_OF_RAGE
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Lake_of_Rage_Map_Names                                         ;  9
+Lake_of_Rage_Map_Names: ;newgroup LAKE_OF_RAGE                                     ;  9
 	dw Lake_of_Rage_Map_Name1 ; map_const LAKE_OF_RAGE_HIDDEN_POWER_HOUSE ;  1
 	dw Lake_of_Rage_Map_Name2 ; map_const LAKE_OF_RAGE_MAGIKARP_HOUSE ;  2
 	dw Lake_of_Rage_Map_Name3 ; map_const ROUTE_43_MAHOGANY_GATE ;  3
 	dw Lake_of_Rage_Map_Name4 ; map_const ROUTE_43_GATE ;  4
 	dw Lake_of_Rage_Map_Name5 ; map_const ROUTE_43,                                    10, 27 ;  5
 	dw Lake_of_Rage_Map_Name6 ; map_const LAKE_OF_RAGE,                                20, 18 ;  6
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_LAKE_OF_RAGE_MAPS
 
-Violet_Map_Names: ;newgroup VIOLET
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Violet_Map_Names                                               ; 10
+Violet_Map_Names: ;newgroup VIOLET                                              ; 10
 	dw Violet_Map_Name1 ; map_const ROUTE_32,;  1
 	dw Violet_Map_Name2 ; map_const ROUTE_35,;  2
 	dw Violet_Map_Name3 ; map_const ROUTE_36,;  3
@@ -282,10 +263,8 @@ Violet_Map_Names: ;newgroup VIOLET
 	dw Violet_Map_Name15 ; map_const ROUTE_35_NATIONAL_PARK_GATE ; 15
 	dw Violet_Map_Name16 ; map_const ROUTE_36_RUINS_OF_ALPH_GATE ; 16
 	dw Violet_Map_Name17 ; map_const ROUTE_36_NATIONAL_PARK_GATE ; 17
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_VIOLET_MAPS
 
-Goldenrod_Map_Names: ;newgroup GOLDENROD
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Goldenrod_Map_Names                                            ; 11
+Goldenrod_Map_Names: ;newgroup GOLDENROD                                       ; 11
 	dw Goldenrod_Map_Name1 ; map_const ROUTE_34,                                    10, 27 ;  1
 	dw Goldenrod_Map_Name2 ; map_const GOLDENROD_CITY,;  2
 	dw Goldenrod_Map_Name3 ; map_const GOLDENROD_GYM,                               10,  9 ;  3
@@ -310,10 +289,8 @@ Goldenrod_Map_Names: ;newgroup GOLDENROD
 	dw Goldenrod_Map_Name22 ; map_const ILEX_FOREST_AZALEA_GATE ; 22
 	dw Goldenrod_Map_Name23 ; map_const ROUTE_34_ILEX_FOREST_GATE ; 23
 	dw Goldenrod_Map_Name24 ; map_const DAY_CARE ; 24
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_GOLDENROD_MAPS
 
-Vermilion_Map_Names: ;newgroup VERMILION
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Vermilion_Map_Names                                            ; 12
+Vermilion_Map_Names: ;newgroup VERMILION                                          ; 12
 	dw Vermilion_Map_Name1 ; map_const ROUTE_6,                                     10,  9 ;  1
 	dw Vermilion_Map_Name2 ; map_const ROUTE_11,                                    20,  9 ;  2
 	dw Vermilion_Map_Name3 ; map_const VERMILION_CITY,                              20, 18 ;  3
@@ -327,20 +304,16 @@ Vermilion_Map_Names: ;newgroup VERMILION
 	dw Vermilion_Map_Name11 ; map_const VERMILION_GYM ; 11
 	dw Vermilion_Map_Name12 ; map_const ROUTE_6_SAFFRON_GATE ; 12
 	dw Vermilion_Map_Name13 ; map_const ROUTE_6_UNDERGROUND_PATH_ENTRANCE ; 13
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_VERMILION_MAPS
 
-Pallet_Map_Names: ;newgroup PALLET
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Pallet_Map_Names                                               ; 13
+Pallet_Map_Names: ;newgroup PALLET                                           ; 13
 	dw Pallet_Map_Name1 ; map_const ROUTE_1,                                     10, 18 ;  1
 	dw Pallet_Map_Name2 ; map_const PALLET_TOWN,                                 10,  9 ;  2
 	dw Pallet_Map_Name3 ; map_const REDS_HOUSE_1F ;  3
 	dw Pallet_Map_Name4 ; map_const REDS_HOUSE_2F ;  4
 	dw Pallet_Map_Name5 ; map_const BLUES_HOUSE ;  5
 	dw Pallet_Map_Name6 ; map_const OAKS_LAB ;  6
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_PALLET_MAPS
 
-Pewter_Map_Names: ;newgroup PEWTER
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Pewter_Map_Names                                               ; 14
+Pewter_Map_Names: ;newgroup PEWTER                                      ; 14
 	dw Pewter_Map_Name1 ; map_const ROUTE_3,                                     30,  9 ;  1
 	dw Pewter_Map_Name2 ; map_const PEWTER_CITY,                                 20, 18 ;  2
 	dw Pewter_Map_Name3 ; map_const PEWTER_NIDORAN_SPEECH_HOUSE ;  3
@@ -349,10 +322,8 @@ Pewter_Map_Names: ;newgroup PEWTER
 	dw Pewter_Map_Name6 ; map_const PEWTER_POKECENTER_1F ;  6
 	dw Pewter_Map_Name7 ; map_const PEWTER_POKECENTER_2F_BETA ;  7
 	dw Pewter_Map_Name8 ; map_const PEWTER_SNOOZE_SPEECH_HOUSE ;  8
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_PEWTER_MAPS
 
-Fast_Ship_Map_Names: ;newgroup FAST_SHIP
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Fast_Ship_Map_Names                                            ; 15
+Fast_Ship_Map_Names: ;newgroup FAST_SHIP                                           ; 15
 	dw Fast_Ship_Map_Name1 ; map_const OLIVINE_PORT,                                10, 18 ;  1
 	dw Fast_Ship_Map_Name2 ; map_const VERMILION_PORT,                              10, 18 ;  2
 	dw Fast_Ship_Map_Name3 ; map_const FAST_SHIP_1F,                                16,  9 ;  3
@@ -365,10 +336,8 @@ Fast_Ship_Map_Names: ;newgroup FAST_SHIP
 	dw Fast_Ship_Map_Name10 ; map_const MOUNT_MOON_SQUARE,                           15,  9 ; 10
 	dw Fast_Ship_Map_Name11 ; map_const MOUNT_MOON_GIFT_SHOP ; 11
 	dw Fast_Ship_Map_Name12 ; map_const TIN_TOWER_ROOF,                              10,  9 ; 12
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_FAST_SHIP_MAPS
 
-Indigo_Map_Names: ;newgroup INDIGO
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Indigo_Map_Names                                               ; 16
+Indigo_Map_Names: ;newgroup INDIGO                                         ; 16
 	dw Indigo_Map_Name1 ; map_const ROUTE_23,                                    10,  9 ;  1
 	dw Indigo_Map_Name2 ; map_const INDIGO_PLATEAU_POKECENTER_1F ;  2
 	dw Indigo_Map_Name3 ; map_const WILLS_ROOM ;  3
@@ -377,10 +346,8 @@ Indigo_Map_Names: ;newgroup INDIGO
 	dw Indigo_Map_Name6 ; map_const KARENS_ROOM ;  6
 	dw Indigo_Map_Name7 ; map_const LANCES_ROOM,                                  5, 12 ;  7
 	dw Indigo_Map_Name8 ; map_const HALL_OF_FAME ;  8
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_INDIGO_MAPS
 
-Fuchsia_Map_Names: ;newgroup FUCHSIA
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Fuchsia_Map_Names                                              ; 17
+Fuchsia_Map_Names: ;newgroup FUCHSIA                                            ; 17
 	dw Fuchsia_Map_Name1 ; map_const ROUTE_13,                                    30,  9 ;  1
 	dw Fuchsia_Map_Name2 ; map_const ROUTE_14,                                    10, 18 ;  2
 	dw Fuchsia_Map_Name3 ; map_const ROUTE_15,                                    20,  9 ;  3
@@ -394,10 +361,8 @@ Fuchsia_Map_Names: ;newgroup FUCHSIA
 	dw Fuchsia_Map_Name11 ; map_const FUCHSIA_POKECENTER_2F_BETA ; 11
 	dw Fuchsia_Map_Name12 ; map_const SAFARI_ZONE_WARDENS_HOME ; 12
 	dw Fuchsia_Map_Name13 ; map_const ROUTE_15_FUCHSIA_GATE ; 13
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_FUCHSIA_MAPS
 
-Lavender_Map_Names: ;newgroup LAVENDER
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Lavender_Map_Names                                            ; 18
+Lavender_Map_Names: ;newgroup LAVENDER                                            ; 18
 	dw Lavender_Map_Name1 ; map_const ROUTE_8,                                     20,  9 ;  1
 	dw Lavender_Map_Name2 ; map_const ROUTE_12,                                    10, 27 ;  2
 	dw Lavender_Map_Name3 ; map_const ROUTE_10_SOUTH,                              10,  9 ;  3
@@ -412,28 +377,22 @@ Lavender_Map_Names: ;newgroup LAVENDER
 	dw Lavender_Map_Name12 ; map_const LAV_RADIO_TOWER_1F,                          10,  4 ; 12
 	dw Lavender_Map_Name13 ; map_const ROUTE_8_SAFFRON_GATE ; 13
 	dw Lavender_Map_Name14 ; map_const ROUTE_12_SUPER_ROD_HOUSE ; 14
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_LAVENDER_MAPS
 
-Silver_Map_Names: ;newgroup SILVER
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Silver_Map_Names                                              ; 19
+Silver_Map_Names: ;newgroup SILVER                                              ; 19
 	dw Silver_Map_Name1 ; map_const ROUTE_28,                                    20,  9 ;  1
 	dw Silver_Map_Name2 ; map_const SILVER_CAVE_OUTSIDE,                         20, 18 ;  2
 	dw Silver_Map_Name3 ; map_const SILVER_CAVE_POKECENTER_1F ;  3
 	dw Silver_Map_Name4 ; map_const ROUTE_28_STEEL_WING_HOUSE ;  4
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_SILVER_MAPS
 
-Cable_Club_Map_Names: ;newgroup CABLE_CLUB
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Cable_Club_Map_Names                                         ; 20
+Cable_Club_Map_Names: ;newgroup CABLE_CLUB                                   ; 20
 	dw Cable_Club_Map_Name1 ; map_const POKECENTER_2F ;  1
 	dw Cable_Club_Map_Name2 ; map_const TRADE_CENTER ;  2
 	dw Cable_Club_Map_Name3 ; map_const COLOSSEUM ;  3
 	dw Cable_Club_Map_Name4 ; map_const TIME_CAPSULE ;  4
 	dw Cable_Club_Map_Name5 ; map_const MOBILE_TRADE_ROOM ;  5
 	dw Cable_Club_Map_Name6 ; map_const MOBILE_BATTLE_ROOM ;  6
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_CABLE_CLUB_MAPS
 
-Celadon_Map_Names: ;newgroup CELADON
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Celadon_Map_Names                                              ; 21
+Celadon_Map_Names: ;newgroup CELADON                                             ; 21
 	dw Celadon_Map_Name1 ; map_const ROUTE_7,                                     10,  9 ;  1
 	dw Celadon_Map_Name2 ; map_const ROUTE_16,                                    10,  9 ;  2
 	dw Celadon_Map_Name3 ; map_const ROUTE_17,                                    10, 45 ;  3
@@ -460,10 +419,8 @@ Celadon_Map_Names: ;newgroup CELADON
 	dw Celadon_Map_Name24 ; map_const ROUTE_16_GATE ; 24
 	dw Celadon_Map_Name25 ; map_const ROUTE_7_SAFFRON_GATE ; 25
 	dw Celadon_Map_Name26 ; map_const ROUTE_17_ROUTE_18_GATE ; 26
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_CELADON_MAPS
 
-Cianwood_Map_Names: ;newgroup CIANWOOD
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Cianwood_Map_Names                                             ; 22
+Cianwood_Map_Names: ;newgroup CIANWOOD                                            ; 22
 	dw Cianwood_Map_Name1 ; map_const ROUTE_40,                                    10, 18 ;  1
 	dw Cianwood_Map_Name2 ; map_const ROUTE_41,                                    25, 27 ;  2
 	dw Cianwood_Map_Name3 ; map_const CIANWOOD_CITY,                               15, 27 ;  3
@@ -480,10 +437,8 @@ Cianwood_Map_Names: ;newgroup CIANWOOD
 	dw Cianwood_Map_Name14 ; map_const BATTLE_TOWER_HALLWAY,                        11,  2 ; 14
 	dw Cianwood_Map_Name15 ; map_const ROUTE_40_BATTLE_TOWER_GATE ; 15
 	dw Cianwood_Map_Name16 ; map_const BATTLE_TOWER_OUTSIDE,                        10, 14 ; 16
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_CIANWOOD_MAPS
 
 Viridian_Map_Names: ;newgroup VIRIDIAN ; 23
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Viridian_Map_Names
 	dw Viridian_Map_Name1 ; map_const ROUTE_2,                                     10, 27 ;  1
 	dw Viridian_Map_Name2 ; map_const ROUTE_22,                                    20,  9 ;  2
 	dw Viridian_Map_Name3 ; map_const VIRIDIAN_CITY,                               20, 18 ;  3
@@ -497,11 +452,9 @@ Viridian_Map_Names: ;newgroup VIRIDIAN ; 23
 	dw Viridian_Map_Name11 ; map_const ROUTE_2_NUGGET_HOUSE ; 11
 	dw Viridian_Map_Name12 ; map_const ROUTE_2_GATE ; 12
 	dw Viridian_Map_Name13 ; map_const VICTORY_ROAD_GATE,                           10,  9 ; 13
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_VIRIDIAN_MAPS
 
 	
 New_Bark_Map_Names: ; newgroup NEW_BARK ; 24
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, New_Bark_Map_Names
 	dw New_Bark_Map_Name1 ; map_const ROUTE_26,                                    10, 54 ;  1
 	dw New_Bark_Map_Name2 ; map_const ROUTE_27,                                    40,  9 ;  2
 	dw New_Bark_Map_Name3 ; map_const ROUTE_29,                                    30,  9 ;  3
@@ -515,12 +468,9 @@ New_Bark_Map_Names: ; newgroup NEW_BARK ; 24
 	dw New_Bark_Map_Name11 ; map_const DAY_OF_WEEK_SIBLINGS_HOUSE ; 11
 	dw New_Bark_Map_Name12 ; map_const ROUTE_27_SANDSTORM_HOUSE ; 12
 	dw New_Bark_Map_Name13 ; map_const ROUTE_29_ROUTE_46_GATE ; 13
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_NEW_BARK_MAPS
 
 
-	; newgroup SAFFRON
-Saffron_Map_Names: ; 25
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Saffron_Map_Names
+Saffron_Map_Names: 	; newgroup SAFFRON ; 25
 	dw Saffron_Map_Name1 ; map_const ROUTE_5,                                     10,  9 ;  1
 	dw Saffron_Map_Name2 ; map_const SAFFRON_CITY,                                20, 18 ;  2
 	dw Saffron_Map_Name3 ; map_const FIGHTING_DOJO ;  3
@@ -536,11 +486,9 @@ Saffron_Map_Names: ; 25
 	dw Saffron_Map_Name13 ; map_const ROUTE_5_UNDERGROUND_PATH_ENTRANCE ; 13
 	dw Saffron_Map_Name14 ; map_const ROUTE_5_SAFFRON_GATE ; 14
 	dw Saffron_Map_Name15 ; map_const ROUTE_5_CLEANSE_TAG_HOUSE ; 15
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_SAFFRON_MAPS
 
-	; CHERRYGROVE, 26
-Cherrygrove_Map_Names:
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, Cherrygrove_Map_Names
+
+Cherrygrove_Map_Names:	; CHERRYGROVE, 26
 	dw Cherrygrove_Map_Name1 ; map_const ROUTE_30         ;  1
 	dw Cherrygrove_Map_Name2 ; map_const ROUTE_31         ;  2
 	dw Cherrygrove_Map_Name3 ; map_const CHERRYGROVE_CITY ;  3
@@ -552,7 +500,6 @@ Cherrygrove_Map_Names:
 	dw Cherrygrove_Map_Name9 ; map_const ROUTE_30_BERRY_HOUSE ;  9
 	dw Cherrygrove_Map_Name10 ; map_const MR_POKEMONS_HOUSE ; 10
 	dw Cherrygrove_Map_Name11 ; map_const ROUTE_31_VIOLET_GATE ; 11
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_CHERRYGROVE_MAPS
 
 ; MAX LENGTH: 17
 Olivine_Map_Name1: ; map_const OLIVINE_POKECENTER_1F ;  1
@@ -781,6 +728,10 @@ Dungeons_Map_Name90: ; map_const SAFARI_ZONE_BETA,; 90
 	db "SAFARI ZONE@"
 Dungeons_Map_Name91: ; map_const VICTORY_ROAD,;  4
 	db "VICTORY ROAD@"
+Dungeons_Map_Name92: ; map_const MICOLO_HIDEOUT,;  92
+	db "MICOLO¯HIDEOUT@"
+Dungeons_Map_Name93: ; map_const MICOLO_HIDEOUT_BASEMENT,;  93
+	db "MICOLO¯HIDEOUT@"
 
 Ecruteak_Map_Name1: ; map_const ECRUTEAK_TIN_TOWER_ENTRANCE,;  1
 	db "TIN TOWER PATH@"

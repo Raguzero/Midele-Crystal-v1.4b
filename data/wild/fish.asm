@@ -233,7 +233,6 @@ TimeFishGroups: ; 9266f
 ; 926c7
 
 FishGroups_Names::
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, FishGroups_Names
 	dw Group1_Name
 	dw Group2_Name
 	dw Group3_Name
@@ -247,7 +246,6 @@ FishGroups_Names::
 	dw Group11_Name
 	dw Group12_Name
 	dw Group13_Name
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_FISHGROUPS ; (13, NONE is not included in the count)
 
 Group1_Name:
 	db " SHORE@"

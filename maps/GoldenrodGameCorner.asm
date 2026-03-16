@@ -1,3 +1,11 @@
+GOLDENRODGAMECORNERPRIZEROOM_CHIKORITA_COINS  EQU 5000
+GOLDENRODGAMECORNERPRIZEROOM_CYNDAQUIL_COINS  EQU 5000
+GOLDENRODGAMECORNERPRIZEROOM_TOTODILE_COINS EQU 5000
+
+GLOBAL GOLDENRODGAMECORNERPRIZEROOM_CHIKORITA_COINS 
+GLOBAL GOLDENRODGAMECORNERPRIZEROOM_CYNDAQUIL_COINS 
+GLOBAL GOLDENRODGAMECORNERPRIZEROOM_TOTODILE_COINS 
+	
 	const_def 2 ; object constants
 	const GOLDENRODGAMECORNER_CLERK
 	const GOLDENRODGAMECORNER_RECEPTIONIST1
@@ -180,7 +188,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
 .chikorita
-	checkcoins 5000
+	checkcoins GOLDENRODGAMECORNERPRIZEROOM_CHIKORITA_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
@@ -194,11 +202,11 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	writebyte CHIKORITA
 	special GameCornerPrizeMonCheckDex
 	givepoke CHIKORITA, 5
-	takecoins 5000
+	takecoins GOLDENRODGAMECORNERPRIZEROOM_CHIKORITA_COINS
 	jump .loop
 
 .cyndaquil
-	checkcoins 5000
+	checkcoins GOLDENRODGAMECORNERPRIZEROOM_CYNDAQUIL_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
@@ -212,11 +220,11 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	writebyte CYNDAQUIL
 	special GameCornerPrizeMonCheckDex
 	givepoke CYNDAQUIL, 5
-	takecoins 5000
+	takecoins GOLDENRODGAMECORNERPRIZEROOM_CYNDAQUIL_COINS
 	jump .loop
 
 .totodile
-	checkcoins 5000
+	checkcoins GOLDENRODGAMECORNERPRIZEROOM_TOTODILE_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
@@ -230,7 +238,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	writebyte TOTODILE
 	special GameCornerPrizeMonCheckDex
 	givepoke TOTODILE, 5
-	takecoins 5000
+	takecoins GOLDENRODGAMECORNERPRIZEROOM_TOTODILE_COINS
 	jump .loop
 
 .MenuHeader:

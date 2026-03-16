@@ -13,9 +13,7 @@ TreeMons:: ; b82e8
 RockSmashMons::
 	; broke off from the above table, for nayru's pokedex
 	; delineation was needed because there is no 'rare' table for rocksmash
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2, RockSmashMons
 	dw TreeMonSet_Rock
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_ROCKSMASH_SETS
 
 ; Two tables each (common, rare).
 ; Structure:

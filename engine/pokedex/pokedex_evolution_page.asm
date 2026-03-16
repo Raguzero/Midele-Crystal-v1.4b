@@ -871,7 +871,7 @@ EVO_place_Mon_Icon:
 	ldh [hObjectStructIndexBuffer], a
 	ld hl, LoadMenuMonIcon
 	ld a, BANK(LoadMenuMonIcon)
-	;ld e, MONICON_UNUSED   ; DA ERROR AL COMPILAR, NO EXISTE, BORRADO DE MOMENTO
+	ld e, MONICON_UNUSED
 	rst FarCall
 	
 	pop hl

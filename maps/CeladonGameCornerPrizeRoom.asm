@@ -1,3 +1,11 @@
+CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS  EQU 5000
+CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS  EQU 5000
+CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS EQU 5000
+
+GLOBAL CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS 
+GLOBAL CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS 
+GLOBAL CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS 
+	
 	const_def 2 ; object constants
 	const CELADONGAMECORNERPRIZEROOM_GENTLEMAN
 	const CELADONGAMECORNERPRIZEROOM_PHARMACIST
@@ -145,7 +153,7 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	jump CeladonPrizeRoom_cancel
 
 .bulbasaur
-	checkcoins 5000
+	checkcoins CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
@@ -159,11 +167,11 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	writebyte BULBASAUR
 	special GameCornerPrizeMonCheckDex
 	givepoke BULBASAUR, 5
-	takecoins 5000
+	takecoins CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS
 	jump .loop
 
 .charmander
-	checkcoins 5000
+	checkcoins CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
@@ -177,11 +185,11 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	writebyte CHARMANDER
 	special GameCornerPrizeMonCheckDex
 	givepoke CHARMANDER, 5
-	takecoins 5000
+	takecoins CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS
 	jump .loop
 
 .squirtle
-	checkcoins 5000
+	checkcoins CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
@@ -195,7 +203,7 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	writebyte SQUIRTLE
 	special GameCornerPrizeMonCheckDex
 	givepoke SQUIRTLE, 5
-	takecoins 5000
+	takecoins CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS
 	jump .loop
 
 .MenuHeader:

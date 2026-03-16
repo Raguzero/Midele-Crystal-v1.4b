@@ -657,7 +657,7 @@ Pokedex_PrintMTs:
 	ld c, 0 ; current line
 .mt_loop
 	push bc
-	;ld a, MT01     NO TENGO NI IDEA DE QUE PONER AQUI PARA QUE NO DE ERROR AL COMPILAR
+	ld a, HM01 + 7
 	add b
 	ld [wCurItem], a
 	farcall GetTMHMItemMove
@@ -686,7 +686,7 @@ Pokedex_PrintMTs:
 	call DexEntry_IncPageNum
 	ret
 .notcompatible
-	ld a, 7 - 1  ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
+	ld a, 7 + -2  ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
 	cp b
 	jr z, .done
 	inc b
@@ -705,14 +705,14 @@ Pokedex_PrintMTs:
 	ret
 
 Pokedex_anymoreMTs:
-	ld a, 7 - 1  ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
+	ld a, 7 + -2 ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
 	cp b
 	jr z, .none
 	; b has the current HM index
 	inc b
 .mtloop
 	push bc
-	;ld a, MT01    NO TENGO NI IDEA DE QUE PONER AQUI PARA QUE NO DE ERROR AL COMPILAR
+	ld a, HM01 + 7
 	add b
 	ld [wCurItem], a
 	farcall GetTMHMItemMove
@@ -723,7 +723,7 @@ Pokedex_anymoreMTs:
 	pop bc
 	and a
 	jr nz, .yes
-	ld a, 7 - 1  ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
+	ld a, 7 + -2  ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
 	cp b
 	jr z, .none
 	inc b

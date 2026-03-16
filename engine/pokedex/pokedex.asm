@@ -689,8 +689,6 @@ Area_Page_map:
 	ld e, a
 	predef Pokedex_GetArea
 	call Pokedex_BlackOutBG
-	call Pokedex_LoadGFX
-	call Pokedex_LoadAnyFootprint	
 	call DelayFrame
 	xor a
 	ldh [hBGMapMode], a
@@ -808,11 +806,10 @@ Evos_Page:
 	call DelayFrame
 	jr .evopage_loop
 .up_or_down_pressed
+	call Pokedex_NextOrPreviousDexEntry
+	jr nc, .evopage_loop
 	ld a, -1
 	ld [wLastDexMode], a
-	call Pokedex_NextOrPreviousDexEntry
-	call Pokedex_GetSelectedMon
-	ld [wCurPartySpecies], a
 .evo_exit
 	call Pokedex_BlackOutBG
 	call DelayFrame
@@ -844,7 +841,7 @@ Evos_Page:
 	ld [wPokedexEntryPageNum], a
 	ld a, [wLastDexMode]
 	cp -1
-	call z, Evos_Page
+	jp z, Evos_Page
 	cp -2
 	jp z, Pokedex_ReinitDexEntryScreen
 
@@ -970,7 +967,9 @@ ENDC
 	jp nz, .toggle_shininess
 	ld a, [hl]
 	and START
+	push hl
 	call nz, .toCry
+	pop hl
 	ld a, [hl]
 	bit B_BUTTON_F, a
 	jr nz, .sprite_b
@@ -984,9 +983,10 @@ ENDC
 	call DelayFrame
 	jr .spritepage_loop
 .up_or_down_pressed
+ 	call Pokedex_NextOrPreviousDexEntry
+	jr nc, .spritepage_loop
 	ld a, -1
 	ld [wLastDexMode], a
-	call Pokedex_NextOrPreviousDexEntry
 	call Pokedex_GetSelectedMon
 	ld [wCurPartySpecies], a
 	pop de
@@ -3251,31 +3251,18 @@ Pokedex_LoadAnyFootprint: ; 4147b
 	dec a
 	and %111
 	swap a ; * $10
+	add a, a
 	ld l, a
 	ld h, 0
 	add hl, de
 	ld de, Footprints
 	add hl, de
 
-	push hl
 	ld e, l
 	ld d, h
 	ld hl, vTiles2 tile $6d ; $62 is vanilla location for footprints
-	lb bc, BANK(Footprints), 2
+	lb bc, BANK(Footprints), 4
 	call Request1bpp
-	pop hl
-
-	; Whoever was editing footprints forgot to fix their
-	; tile editor. Now each bottom half is 8 tiles off.
-	ld de, 8 tiles
-	add hl, de
-
-	ld e, l
-	ld d, h
-	ld hl, vTiles2 tile $64
-	lb bc, BANK(Footprints), 2
-	call Request1bpp
-
 	ret
 
 

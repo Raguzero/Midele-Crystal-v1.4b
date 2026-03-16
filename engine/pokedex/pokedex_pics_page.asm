@@ -77,7 +77,6 @@ Pokedex_PlayMonCry_AnimateFrontpic:
 	jr nz, .try_anim
 	bit 5, [hl]
 	jr nz, .finish
-	call DelayFrame
 	ret
 .try_anim
 	farcall SetUpPokeAnim
@@ -153,7 +152,7 @@ ENDC
 	ldh [hObjectStructIndexBuffer], a   ; hObjectStructIndex DA ERROR AL COMPILAR, NO ESTOY DEL TODO SEGUR QUE SEA hObjectStructIndexBuffer PERO ES MUY PROBABLE QUE SI
 	ld hl, LoadMenuMonIcon
 	ld a, BANK(LoadMenuMonIcon)
-	;ld e, MONICON_UNUSED     ; DA ERROR AL COMPILAR, NO EXISTE, BORRADO DE MOMENTO
+	ld e, MONICON_UNUSED
 	rst FarCall
 	farcall LoadPartyMenuMonIconColors ;  SetDexMonIconColor_SpritePage DA ERROR AL COMPILAR, PERO SEGURO QUE ES LoadPartyMenuMonIconColors ???
 	pop hl

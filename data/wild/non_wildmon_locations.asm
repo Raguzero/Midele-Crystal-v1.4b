@@ -19,20 +19,19 @@ CasinoMons::
 
 	; johto, from maps\goldenrodgamecorner.asm
 	map_id GOLDENROD_GAME_CORNER
-	;casinomon ABRA, GOLDENRODGAMECORNER_ABRA_COINS
-	;casinomon CUBONE, GOLDENRODGAMECORNER_CUBONE_COINS
-	;casinomon WOBBUFFET, GOLDENRODGAMECORNER_WOBBUFFET_COINS 
+	casinomon CHIKORITA, GOLDENRODGAMECORNERPRIZEROOM_CHIKORITA_COINS 
+	casinomon CYNDAQUIL, GOLDENRODGAMECORNERPRIZEROOM_CYNDAQUIL_COINS 
+	casinomon TOTODILE, GOLDENRODGAMECORNERPRIZEROOM_TOTODILE_COINS 
 	db -1
 	; kanto, from maps\celadongamecornerprizeroom.asm
 	map_id CELADON_GAME_CORNER_PRIZE_ROOM
-	;casinomon PIKACHU, CELADONGAMECORNERPRIZEROOM_PIKACHU_COINS 
-	;casinomon PORYGON, CELADONGAMECORNERPRIZEROOM_PORYGON_COINS 
-	;casinomon LARVITAR, CELADONGAMECORNERPRIZEROOM_LARVITAR_COINS 
+	casinomon BULBASAUR, CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS 
+	casinomon CHARMANDER, CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS 
+	casinomon SQUIRTLE, CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS 
 	db -1
 
 NPCTradeMons_Locations::
 ; corresponds to NPCTrades:: in data\events\npc_trades.asm
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR table_width 2 ; map is 2 bytes
 	map_id GOLDENROD_DEPT_STORE_5F 	; MAPGROUP_GOLDENROD, 	MAP_GOLDENROD_DEPT_STORE_5F
 	map_id VIOLET_KYLES_HOUSE		; MAPGROUP_VIOLET, 		MAP_VIOLET_KYLES_HOUSE
 	map_id OLIVINE_TIMS_HOUSE 		; MAPGROUP_OLIVINE, 	MAP_OLIVINE_TIMS_HOUSE 
@@ -40,7 +39,6 @@ NPCTradeMons_Locations::
 	map_id PEWTER_POKECENTER_1F 	; MAPGROUP_PEWTER, 		MAP_PEWTER_POKECENTER_1F
 	map_id ROUTE_14 				; MAPGROUP_FUCHSIA, 	MAP_ROUTE_14
 	map_id POWER_PLANT 				; MAPGROUP_CERULEAN, 	MAP_POWER_PLANT
-	; QUE HAGO CON ESTO? DA ERROR AL COMPILAR assert_table_length NUM_NPC_TRADES
 
 EventWildMons::
 ; BROKEN: replace map_id with -1 to hide location but keep hint
@@ -51,14 +49,14 @@ EventWildMons::
 	specialencounter GYARADOS, 	EVENT_LAKE_OF_RAGE_RED_GYARADOS, 	LAKE_OF_RAGE, ShinyGyarados_Str
 	specialencounter SNORLAX, 	EVENT_FOUGHT_SNORLAX, 				VERMILION_CITY, SnorlaxEvent_Str
 	specialencounter SUICUNE,	EVENT_FOUGHT_SUICUNE, 				TIN_TOWER_1F, SuicuneEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
-	;specialencounter CELEBI, 	EVENT_CELEBI_FATEFUL_ENCOUNTER, 	ILEX_FOREST, CelebiEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
+	;specialencounter CELEBI, 	EVENT_FOREST_IS_RESTLESS???, 	ILEX_FOREST, CelebiEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
 	specialencounter LUGIA, 	EVENT_FOUGHT_LUGIA, 				WHIRL_ISLAND_LUGIA_CHAMBER, LugiaEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
 	specialencounter HO_OH, 	EVENT_FOUGHT_HO_OH,  				TIN_TOWER_ROOF, HoOhEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
-	; specialencounter ARTICUNO, 	EVENT_CAUGHT_ARTICUNO, 				ROUTE_20, ArticunoEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
-	; specialencounter ZAPDOS, 	EVENT_CAUGHT_ZAPDOS, 				ROUTE_10_NORTH, ZapdosEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
-	; specialencounter MOLTRES, 	EVENT_CAUGHT_MOLTRES, 				VICTORY_ROAD, MoltresEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
-	; specialencounter MEWTWO, 	EVENT_CERULEAN_CAVE_B1F_MEWTWO, 	SILVER_CAVE_ROOM_3, MewtwoEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
-	; specialencounter MEW, 		EVENT_ROUTE_24_MEW_CAUGHT, 			ROUTE_24, MewEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
+	specialencounter ARTICUNO, 	EVENT_FOUGHT_ARTICUNO, 				ROUTE_20, ArticunoEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
+	specialencounter ZAPDOS, 	EVENT_FOUGHT_ZAPDOS, 				POWER_PLANT, ZapdosEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
+	specialencounter MOLTRES, 	EVENT_FOUGHT_MOLTRES, 				SILVER_CAVE_ITEM_ROOMS, MoltresEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
+	specialencounter MEWTWO, 	EVENT_FOUGHT_MEWTWO, 	ROCK_TUNNEL_B1F, MewtwoEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
+	specialencounter MEW, 		EVENT_FOUGHT_MEW, 			MOUNT_MOON, MewEvent_Str ; will not normally be seen by player w/o Dex Splash Page, may need new EVENT constant
 	db -1
 
 ; LoadWildMon Dex Hints, max 18 chars per line
@@ -98,26 +96,25 @@ HoOhEvent_Str:
 	db 	 "RAINBOW WING best-"
 	next "owed to Trainers"
 	next "after FOUR trials.@"
-; ArticunoEvent_Str:
-; 	db 	 "Waiting surrounded"
-; 	next "by waves."
-; 	next "LVL 60.@"
-; ZapdosEvent_Str:
-; 	db 	 "Waiting above"
-; 	next "electric renewal."
-; 	next "LVL 60.@"
-; MoltresEvent_Str:
-; 	db 	 "Waiting in the"
-; 	next "long dark of"
-; 	next "VICTORY. LVL 60.@"
-; MewtwoEvent_Str:
-; 	db 	 "Not CERULEAN, but"
-; 	next "RED and SILVER"
-; 	next "ice. LVL 75.@"
-; MewEvent_Str:
-; 	db 	 "Meet at nugget"
-; 	next "bridge, with 251."
-; 	next "LVL 60.@"
+ArticunoEvent_Str:
+ 	db 	 "Waiting surrounded"
+ 	next "by waves."
+ 	next "LVL 60.@"
+ZapdosEvent_Str:
+ 	db 	 "Waiting above"
+ 	next "electric renewal."
+ 	next "LVL 60.@"
+MoltresEvent_Str:
+ 	db 	 "Waiting in the"
+ 	next "long dark of"
+ 	next "SILVER. LVL 60.@"
+MewtwoEvent_Str:
+ 	db 	 "Meet at ROCK"
+ 	next "TUNNEL."
+ 	next "LVL 70.@"
+MewEvent_Str:
+ 	db 	 "Meet at MT.MOON."
+ 	next "LVL 30.@"
 
 GiftMons::
 ; replace map_id with -1 to hide location but keep hint

@@ -230,9 +230,9 @@ Pokedex_Get_Items:
 .BS_ITEM_text:
 	db "Wild Held Items:@"
 .BS_ITEM1:
-	db "[23<%>]@"
+	db "[50<%>]@"
 .BS_ITEM2:
-	db "[ 2<%>]@"
+	db "[ 5<%>]@"
 
 Pokedex_CatchRate:
 IF DEF(MON_STAT_EXP) ; vanilla
