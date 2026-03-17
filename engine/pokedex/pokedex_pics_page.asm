@@ -154,7 +154,7 @@ ENDC
 	ld a, BANK(LoadMenuMonIcon)
 	ld e, MONICON_UNUSED
 	rst FarCall
-	farcall LoadPartyMenuMonIconColors ;  SetDexMonIconColor_SpritePage DA ERROR AL COMPILAR, PERO SEGURO QUE ES LoadPartyMenuMonIconColors ???
+	farcall SetDexMonIconColor_SpritePage
 	pop hl
 	pop de
 	pop bc

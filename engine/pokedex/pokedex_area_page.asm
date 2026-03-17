@@ -1566,31 +1566,31 @@ Print_casinomon:
 Dex_Check_npctrades:
 ; return zero in 'a' if found, else 1 in 'a'
 	ld hl, NPCTrades ; see data\events\npc_trades.asm
-	ld bc, 0 ; count in b, corresponding to NUM_NPC_TRADES
-	ld de, NPCTRADE_GETMON ; see constants\npc_trade_constants.asm
-	add hl, de	
-.loop
-	ld a, 7 ; see constants\npc_trade_constants.asm   ;  NUM_NPC_TRADES DA ERROR AL COMPILAR, EL NUMERO 7 ES CORRECTO (NUMERO DE TRADES)?
-	cp b ; count, trade entry index
-	jr z, .notfound
-
-	ld a, BANK(NPCTrades)
-	call GetFarByte
+	;ld bc, 0 ; count in b, corresponding to NUM_NPC_TRADES
+	;ld de, NPCTRADE_GETMON ; see constants\npc_trade_constants.asm
+	;add hl, de	
+;.loop
+	;ld a, 7 ; see constants\npc_trade_constants.asm   ;  NUM_NPC_TRADES DA ERROR AL COMPILAR, EL NUMERO 7 ES CORRECTO (NUMERO DE TRADES)?
+	;cp b ; count, trade entry index
+	;jr z, .notfound
 	
-	ld c, a ; pokemon species of entry in EventWildMons/GiftMons
-	ld a, [wCurSpecies] ; current pokedex entry species
-	cp c
-	jr z, .found
+	;ld a, BANK(NPCTrades)
+	;call GetFarByte
 	
-	; species didnt match, inc hl by NPCTRADE_STRUCT_LENGTH
-	ld de, NPCTRADE_PADDING ; size of npctrade entry, NPCTRADE_STRUCT_LENGTH ; see constants\npc_trade_constants.asm    ;  NPCTRADE_STRUCT_LENGTH es NPCTRADE_PADDING????
-	add hl, de
-	inc b ; count, trade entry index
-	jr .loop
-.found
-	xor a
-	ret
-.notfound
+	;ld c, a ; pokemon species of entry in EventWildMons/GiftMons
+	;ld a, [wCurSpecies] ; current pokedex entry species
+	;cp c
+	;jr z, .found
+	
+	;; species didnt match, inc hl by NPCTRADE_STRUCT_LENGTH
+	;ld de, NPCTRADE_STRUCT_LENGTH ; size of npctrade entry, NPCTRADE_STRUCT_LENGTH ; see constants\npc_trade_constants.asm
+	;add hl, de
+	;inc b ; count, trade entry index
+	;jr .loop
+;.found
+;	xor a
+;	ret
+;.notfound
 	ld a, 1
 	ret
 
@@ -1611,7 +1611,7 @@ Pokedex_DetailedArea_npctrades:
 
 ; cannot assume there will be no species repeats
 	ld hl, NPCTrades ; see data\events\npc_trades.asm
-	ld c, NPCTRADE_PADDING ;  NPCTRADE_STRUCT_LENGTH es NPCTRADE_PADDING????
+	ld c, NPCTRADE_STRUCT_LENGTH
 	ld a, [wPokedexStatus] ; wildmon index
 	call AddNTimes
 	ld a, [wPokedexStatus] ; wildmon index
@@ -1633,7 +1633,7 @@ Pokedex_DetailedArea_npctrades:
 	jr z, .found
 .return
 	; species didnt match, inc hl by NPCTRADE_STRUCT_LENGTH
-	ld de, NPCTRADE_PADDING ; size of npctrade entry, NPCTRADE_STRUCT_LENGTH    ;   NPCTRADE_STRUCT_LENGTH es NPCTRADE_PADDING????
+	ld de, NPCTRADE_STRUCT_LENGTH ; size of npctrade entry, NPCTRADE_STRUCT_LENGTH
 	add hl, de
 	inc b ; count, trade entry index
 	call DexArea_IncWildMonIndex

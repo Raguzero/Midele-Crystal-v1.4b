@@ -393,7 +393,7 @@ Pokedex_InitAnimatedMonIcon:
 	push af
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
-	call SetMenuMonIconColor_NoShiny
+	call SetDexMonIconColor_NoShiny
 	
 	ld a, [wd265]
 	call ReadMonMenuIcon

@@ -9,6 +9,7 @@ NPCTRADE_OT_ID   EQU 17 ; dw
 NPCTRADE_OT_NAME EQU 19 ; ds NAME_LENGTH
 NPCTRADE_GENDER  EQU 30 ; db
 NPCTRADE_PADDING EQU 31 ; db
+NPCTRADE_STRUCT_LENGTH EQU 32
 
 ; NPCTrades indexes (see data/events/npc_trades.asm)
 	const_def

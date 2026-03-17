@@ -1047,7 +1047,7 @@ ENDC
 	call Pokedex_toggle_shininess_Pics
 	xor a
 	ldh [hObjectStructIndexBuffer], a
-	farcall LoadPartyMenuMonIconColors ;  SetDexMonIconColor_SpritePage DA ERROR AL COMPILAR, PERO SEGURO QUE ES LoadPartyMenuMonIconColors ???
+	farcall SetDexMonIconColor_SpritePage
 	call WaitBGMap
 	jp .spritepage_loop
 
