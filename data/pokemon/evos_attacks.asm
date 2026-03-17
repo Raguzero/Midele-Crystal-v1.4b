@@ -3,7 +3,7 @@ INCLUDE "constants.asm"
 
 SECTION "Evolutions and Attacks", ROMX
 
-INCLUDE "data/evolution_moves.asm"
+INCLUDE "data/pokemon/evolution_moves.asm"
 
 INCLUDE "data/pokemon/evos_attacks_pointers.asm"
 
@@ -2433,10 +2433,10 @@ ArticunoEvosAttacks:
 	db 49, ICE_BEAM
 	db 61, REFLECT
 	db 73, SKY_ATTACK
-	db 99, BLIZZARD
-	db 99, REST
-	db 99, SLEEP_TALK
-	db 99, TOXIC
+	db 100, BLIZZARD
+	db 100, REST
+	db 100, SLEEP_TALK
+	db 100, TOXIC
 	db 0 ; no more level-up moves
 
 ZapdosEvosAttacks:
@@ -2451,10 +2451,10 @@ ZapdosEvosAttacks:
 	db 49, DRILL_PECK
 	db 61, LIGHT_SCREEN
 	db 73, SKY_ATTACK
-	db 99, THUNDER
-	db 99, REST
-	db 99, SLEEP_TALK
-	db 99, TOXIC
+	db 100, THUNDER
+	db 100, REST
+	db 100, SLEEP_TALK
+	db 100, TOXIC
 	db 0 ; no more level-up moves
 
 MoltresEvosAttacks:
@@ -2469,10 +2469,10 @@ MoltresEvosAttacks:
 	db 49, FLAMETHROWER
 	db 61, SAFEGUARD
 	db 73, SKY_ATTACK
-	db 99, FIRE_BLAST
-	db 99, REST
-	db 99, SLEEP_TALK
-	db 99, TOXIC
+	db 100, FIRE_BLAST
+	db 100, REST
+	db 100, SLEEP_TALK
+	db 100, TOXIC
 	db 0 ; no more level-up moves
 
 DratiniEvosAttacks:
@@ -2528,7 +2528,7 @@ DragoniteEvosAttacks:
 	db 55, WING_ATTACK
 	db 61, OUTRAGE
 	db 75, HYPER_BEAM
-	db 99, EXTREMESPEED
+	db 100, EXTREMESPEED
 	db 0 ; no more level-up moves
 
 MewtwoEvosAttacks:
@@ -2545,10 +2545,10 @@ MewtwoEvosAttacks:
     db 77, AMNESIA
     db 88, PSYCH_UP
     db 94, SAFEGUARD
-    db 99, RECOVER
-    db 99, PSYCHIC_M
-    db 99, SUBMISSION
-    db 99, ICE_BEAM
+    db 100, RECOVER
+    db 100, PSYCHIC_M
+    db 100, SUBMISSION
+    db 100, ICE_BEAM
     db 0 ; no more level-up moves
 
 MewEvosAttacks:
@@ -2563,10 +2563,10 @@ MewEvosAttacks:
 	db 70, BATON_PASS
 	db 80, SWORDS_DANCE
 	db 90, TRANSFORM
-	db 99, EXPLOSION
-	db 99, HYPNOSIS
-	db 99, THUNDER_WAVE
-	db 99, LEECH_LIFE
+	db 100, EXPLOSION
+	db 100, HYPNOSIS
+	db 100, THUNDER_WAVE
+	db 100, LEECH_LIFE
 	db 0 ; no more level-up moves
 
 ChikoritaEvosAttacks:
@@ -4302,10 +4302,10 @@ LugiaEvosAttacks:
     db 77, WHIRLWIND
     db 88, ANCIENTPOWER
     db 99, FUTURE_SIGHT
-    db 99, ICE_BEAM
-    db 99, SKY_ATTACK
-    db 99, HYPER_BEAM
-    db 99, PSYCHIC_M
+    db 100, ICE_BEAM
+    db 100, SKY_ATTACK
+    db 100, HYPER_BEAM
+    db 100, PSYCHIC_M
 	db 0 ; no more level-up moves
 
 HoOhEvosAttacks:
@@ -4320,10 +4320,10 @@ HoOhEvosAttacks:
 	db 77, WHIRLWIND
 	db 88, ANCIENTPOWER
 	db 99, FUTURE_SIGHT
-	db 99, EARTHQUAKE
-	db 99, SKY_ATTACK
-	db 99, HYPER_BEAM
-	db 99, GIGA_DRAIN
+	db 100, EARTHQUAKE
+	db 100, SKY_ATTACK
+	db 100, HYPER_BEAM
+	db 100, GIGA_DRAIN
 	db 0 ; no more level-up moves
 
 CelebiEvosAttacks:
