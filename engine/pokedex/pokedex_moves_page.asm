@@ -117,6 +117,11 @@ Pokedex_Calc_LvlMovesPtr:
 	dec a
 	ld b, 0
 	ld c, a
+	ld hl, EvolutionMoves
+	add hl, bc
+	ld a, BANK("Evolutions and Attacks")
+	call GetFarByte
+	push af
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
@@ -136,14 +141,39 @@ Pokedex_Calc_LvlMovesPtr:
 	; for p16, triple the num
 	ld b, 0
 	ld c, a
+	and a ; cp 0
+	jr nz, .notFirstPage
+	pop af
+	jr .evoMoveConsidered
+.notFirstPage
+	pop af
+	and a ; cp 0
+	jr z, .evoMoveConsidered
+	dec c
+	xor a
+.evoMoveConsidered
 	add hl, bc
 	add hl, bc
+	ld c, 0 ;  our move counter, max of MAX_NUM_MOVES ; traído de Pokedex_Print_NextLvlMoves para manejar los evo moves (b ya es 0, no hace falta ponerlo)
+	and a
+	ret z ; si no es 0 es que hay evo move: se imprime
+	push hl
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+	hlcoord 7, 9
+	call DexEntry_adjusthlcoord
+	call PlaceString
+	hlcoord 2, 9
+	ld de, DexEntry_EVO_MOVE_text
+	call PlaceString
+	pop hl
+	ld b, 0
+	ld c, 1 ; para que Pokedex_Print_NextLvlMoves empiece en la siguiente línea
 	ret
 
 Pokedex_Print_NextLvlMoves:
 ; Print No more than MAX_NUM_MOVES moves
-	ld b, 0
-	ld c, 0 ; our move counter, max of MAX_NUM_MOVES
+ ; ahora se pone el contador (bc) en Pokedex_Calc_LvlMovesPtr
 .learnset_loop
 	ld a, BANK("Evolutions and Attacks")
 	call GetFarByte
@@ -158,7 +188,7 @@ Pokedex_Print_NextLvlMoves:
 	call DexEntry_adjusthlcoord
 	ld de, wd265;   wTextDecimalByte es wd265 ??  wTempSpecies parece usar el mismo valor
 	push bc
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
 	call PrintNum
 	pop bc 
 	pop hl
@@ -254,7 +284,7 @@ Pokedex_PrintFieldMoves:
 	call DexEntry_adjusthlcoord
 	ld [hl], "<DEX_LV>"
 	inc hl
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
 	ld a, e
 	ld [wd265], a;   wTextDecimalByte es wd265 ??  wTempSpecies parece usar el mismo valor
 	ld de, wd265;   wTextDecimalByte es wd265 ??  wTempSpecies parece usar el mismo valor
@@ -317,7 +347,7 @@ Pokedex_PrintFieldMoves:
 	call DexEntry_adjusthlcoord
 	ld [hl], "<DEX_LV>"
 	inc hl
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
 	ld a, e
 	ld [wd265], a;   wTextDecimalByte es wd265 ??  wTempSpecies parece usar el mismo valor
 	ld de, wd265;   wTextDecimalByte es wd265 ??  wTempSpecies parece usar el mismo valor
@@ -835,3 +865,6 @@ Pokedex_anymoreMTs:
 
 DexEntry_NONE_text:
 	db "NONE@"
+	
+DexEntry_EVO_MOVE_text:
+	db "EVOL@"
