@@ -484,7 +484,7 @@ Adjust_percent_fish:
 	pop de
 	pop bc
 	pop hl
-	ldh a, [hQuotient + 3]
+	ldh a, [hQuotient + 2] ; Fix Bug weird % FISH
 	cp 100
 	ret z
 	cp 0

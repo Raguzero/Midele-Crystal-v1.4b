@@ -1363,7 +1363,7 @@ Dex_Print_Roamer_Info:
 	ld c, l
 	farcall CheckShininess ; ptr needs to be in bc
 	; scf if shiny
-	; jr nc, .not_shiny
+	jr nc, .not_shiny  ;  Fix show shiny stars Area Dex Raikou/Entei
 	; shiny tile is $64
 	pop bc ; current print line in c
 	push bc ; current print line in c

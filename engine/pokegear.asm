@@ -585,7 +585,7 @@ Pokegear_UpdateClock: ; 90f86 (24:4f86)
 	decoord 11, 1
 	farcall PrintHoursMins
 	ld hl, .DayText
-	bccoord 6, 6
+	bccoord 3, 6
 	call PlaceHLTextAtBC ; PlaceHLTextAtBC bccoord 6, 6     ;  PrintTextboxTextAt DA ERROR AL COMPILAR, ASI QUE PONGO PlaceHLTextAtBC
 
 	; draw border
@@ -665,7 +665,7 @@ Pokegear_UpdateClock: ; 90f86 (24:4f86)
 	ld [hl], $6f ; nite icon
 	ld de, .NiteStr
 .got_tod		
-	hlcoord 14, 6
+	hlcoord 13, 6
 	; inc hl
 	call PlaceString
 	hlcoord 9, 0 ; hlcoord 11, 0
@@ -700,8 +700,8 @@ Pokegear_UpdateClock: ; 90f86 (24:4f86)
 .DayStr:
 	db "DAY@"
 .NiteStr:
-	db "NITE@"
-	; db "NIGHT@"
+	; db "NITE@"
+	db "NIGHT@"
 .FishGrpStr:
 	db "FISH:@"	
 

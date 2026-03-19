@@ -291,7 +291,7 @@ GetTreeScore: ; b8443
 	ld b, 2
 	call Divide
 
-	ld a, [hQuotient + 3]
+	ld a, [hRemainder]  ; To better understand what's going on
 	ret
 ; b849d
 
@@ -304,6 +304,6 @@ GetTreeScore: ; b8443
 	ld [hDivisor], a
 	ld b, 2
 	call Divide
-	ld a, [hQuotient + 3]
+	ld a, [hRemainder]  ; To better understand what's going on
 	ret
 ; b84b3
