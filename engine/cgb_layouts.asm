@@ -204,11 +204,12 @@ _CGB_PokegearPals: ; 8eb9
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 
-	hlcoord 18, 16, wAttrMap
-	ld bc, 1 ; 1 tile
-	ld a, 0 ; palette 0
-	set 5, a ; flip on y axis
-	call ByteFill
+	; Fix bug Map tile in JOHTO
+	;hlcoord 18, 16, wAttrMap
+	;ld bc, 1 ; 1 tile
+	;ld a, 0 ; palette 0
+	;set 5, a ; flip on y axis
+	;call ByteFill
 
 	call ApplyAttrMap
 	call ApplyPals
