@@ -85,7 +85,7 @@ Pokedex_GBS_Stats:
 	ld de, wBaseHP
 	lb bc, 1, 3 ; 1 byte, 3 digits
 	call PrintNum
-	hlcoord 15, 9
+	hlcoord 15, 11
 	ld de, wBaseSpeed
 	lb bc, 1, 3 ; 1 byte, 3 digits
 	call PrintNum
@@ -94,27 +94,27 @@ Pokedex_GBS_Stats:
 	ld de, wBaseAttack
 	lb bc, 1, 3 ; 1 byte, 3 digits
 	call PrintNum
-	hlcoord 15, 10
+	hlcoord 6, 11
 	ld de, wBaseDefense
 	lb bc, 1, 3 ; 1 byte, 3 digits
 	call PrintNum
 
-	hlcoord 6, 11
+	hlcoord 15, 9
 	ld de, wBaseSpecialAttack
 	lb bc, 1, 3 ; 1 byte, 3 digits
 	call PrintNum
-	hlcoord 15, 11
+	hlcoord 15, 10
 	ld de, wBaseSpecialDefense
 	lb bc, 1, 3 ; 1 byte, 3 digits
 	call PrintNum
 	ret
 
 .String_abbrv_BS_text1:
-	db "  HP      SPE     @"
+	db "  HP      SPA     @"
 .String_abbrv_BS_text2:
-	db " ATK      DEF     @"
+	db " ATK      SPD     @"
 .String_abbrv_BS_text3:
-	db " SPA      SPD     @"
+	db " DEF      SPE     @"
 
 Pokedex_BST:
 	hlcoord 2, 9
