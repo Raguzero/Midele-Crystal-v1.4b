@@ -510,28 +510,30 @@ INCLUDE "gfx/pokemon/ho_oh/normal.pal"
 INCLUDE "gfx/pokemon/ho_oh/shiny.pal"
 INCLUDE "gfx/pokemon/celebi/normal.pal"
 INCLUDE "gfx/pokemon/celebi/shiny.pal"
-INCLUDE "gfx/pokemon/micomon/normal.pal"
-INCLUDE "gfx/pokemon/micomon/shiny.pal"
 
-; 252
-	;RGB 30, 26, 11
-	;RGB 23, 16, 00
+; 252  NOROWARA
+	RGB 28, 20, 15
+	RGB 21, 14, 09
 ; 252 shiny
-	;RGB 30, 26, 11
-	;RGB 23, 16, 00
+	RGB 10, 11, 31
+	RGB 06, 07, 05
 
+; 253  BOMBSEEKER
+	RGB 28, 20, 15
+	RGB 21, 14, 09
+; 253 shiny
+	RGB 20, 20, 17
+	RGB 09, 02, 28
+	
 INCLUDE "gfx/pokemon/egg/normal.pal"
 INCLUDE "gfx/pokemon/egg/shiny.pal"
 
 ; 254
-	;RGB 30, 26, 11
-	;RGB 23, 16, 00
+	RGB 30, 26, 11
+	RGB 23, 16, 00
 ; 254 shiny
-	;RGB 30, 26, 11
-	;RGB 23, 16, 00
-
-INCLUDE "gfx/pokemon/bombseeker/normal.pal"
-INCLUDE "gfx/pokemon/bombseeker/shiny.pal"
+	RGB 30, 26, 11
+	RGB 23, 16, 00
 
 ; 255
 	RGB 23, 23, 23
