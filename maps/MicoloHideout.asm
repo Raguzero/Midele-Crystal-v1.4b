@@ -52,10 +52,11 @@ MicoloHideoutPC1Script:
 MicoloHideoutPCGiftScript:
   opentext
   playsound SFX_BOOT_PC
+  writetext MicoloHideoutPCGiftText
+  waitbutton
   checkcode VAR_PARTYCOUNT
   ifequal PARTY_LENGTH, .PartyFull
   special GiveOddEgg
-  opentext
   writetext MicoloHideoutPCText_GotOddEgg
   playsound SFX_KEY_ITEM
   waitsfx
@@ -66,6 +67,7 @@ MicoloHideoutPCGiftScript:
 	opentext
 	writetext MicoloHideoutPCText_PartyFull
 	waitbutton
+	playsound SFX_SHUT_DOWN_PC
 	closetext
 	end
 	
@@ -76,15 +78,30 @@ MicoloHideoutPCText_GotOddEgg:
 	
 MicoloHideoutPCText_PartyFull:
 	text "You've no room for"
-	line "this."
+	line "this in your team."
 	done
 	
 MicoloHideoutPCGift2Script:
   opentext
-  giveitem RARE_CANDY, 99
+  playsound SFX_BOOT_PC
+  writetext MicoloHideoutPCGiftText
   waitbutton
+  verbosegiveitem RARE_CANDY, 99
+  iffalse .BagFull
   closetext
   end
+
+.BagFull:
+	playsound SFX_SHUT_DOWN_PC
+	closetext
+	end
+	
+MicoloHideoutPCGiftText:
+	text "DOWNLOADING......."
+	line ".................."
+	cont ".................."
+	cont ".................."
+	done
 
 MicoloHideoutPC2Script:
   opentext
