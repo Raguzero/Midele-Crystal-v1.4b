@@ -52,7 +52,7 @@ Pokedex_DetailedArea:
 	call Pokedex_PrintPageNum
 	ld a, [wPokedexEntryType]
 
-	ld hl, JohtoGrassWildMons
+	ld hl, JohtoGrassWildMonsForDex
 	cp DEXENTRY_AREA_GRASS_JOHTO
 	jp z, .grass ; _johto
 	ld hl, KantoGrassWildMons
@@ -138,11 +138,11 @@ Pokedex_DetailedArea:
 	xor a
 	ld [wPokedexStatus], a ; wildmon entry index
 	ld [wPokedexEntryPageNum], a ; page num
-	call Pokedex_DetailedArea
+	jp Pokedex_DetailedArea
 	ret
 
 .grass
-	; hl contains the table we are looking at, JohtoGrassWildMons, KantoGrassWildMons, or SwarmGrassWildMons  	
+	; hl contains the table we are looking at, JohtoGrassWildMonsForDex, KantoGrassWildMons, or SwarmGrassWildMons  	
 	call Pokedex_DetailedArea_grass
 	jr .skip_empty_area_check
 .surf
@@ -187,8 +187,8 @@ Pokedex_DetailedArea:
 Dex_FindFirstList:
 ; contest, trees(+rocks), grass swarm, grass, rods, water surf, surf
 ; grass, grass swarm, contest, trees(+rocks), surf, surf swarm, rods
-	ld hl, JohtoGrassWildMons
-	ld a, BANK(JohtoGrassWildMons)
+	ld hl, JohtoGrassWildMonsForDex
+	ld a, BANK(JohtoGrassWildMonsForDex)
 	call Dex_Check_Grass
 	and a
 	jp z, .grass_johto
@@ -376,7 +376,7 @@ Print_area_entry:
 	pop bc
 
 ; map name
-	ld a, BANK(JohtoGrassWildMons)
+	ld a, BANK(JohtoGrassWildMonsForDex)
 	pop hl
 	push bc
 	call GetFarHalfword
@@ -412,11 +412,11 @@ Pokedex_Skip_Empty_Area_Category:
 	ret
 
 Pokedex_DetailedArea_grass:
-	push hl ; JohtoGrassWildMons, KantoGrassWildMons, or SwarmGrassWildMons. still need this push because the function probably clobbers hl
+	push hl ; JohtoGrassWildMonsForDex, KantoGrassWildMons, or SwarmGrassWildMons. still need this push because the function probably clobbers hl
 	; need to preserve Wildmon Index
 	ld a, [wPokedexStatus]; wildmon entry index
 	push af ; wildmon index
-	ld a, BANK(JohtoGrassWildMons) ; same bank for all 3 thankfully
+	ld a, BANK(JohtoGrassWildMonsForDex) ; same bank for all 3 thankfully
 	call Dex_Check_Grass ; since we automatically roll into the next category, we need to check if there's even anything there for us again
 	ld b, a ; placeholder for a
 	pop af ; wildmon index
@@ -426,7 +426,7 @@ Pokedex_DetailedArea_grass:
 	and a
 	jp nz, Pokedex_Skip_Empty_Area_Category
 
-	push hl ; JohtoGrassWildMons, KantoGrassWildMons, or SwarmGrassWildMons
+	push hl ; JohtoGrassWildMonsForDex, KantoGrassWildMons, or SwarmGrassWildMons
 	ld a, [wPokedexEntryType]
 	cp DEXENTRY_AREA_GRASS_JOHTO
 	jr nz, .chk_kanto
@@ -456,14 +456,14 @@ Pokedex_DetailedArea_grass:
 	ld b, a
 	ldh a, [hProduct + 3]
 	ld c, a ; result of simple multiply in a
-	; ld hl, JohtoGrassWildMons
-	pop hl ; JohtoGrassWildMons, KantoGrassWildMons, or SwarmGrassWildMons
+	; ld hl, JohtoGrassWildMonsForDex
+	pop hl ; JohtoGrassWildMonsForDex, KantoGrassWildMons, or SwarmGrassWildMons
 	add hl, bc; pointing to map group and num?
 	ld bc, 0 ; printed line count
 	push bc ; printed line count
 	push hl ; points to map group/num
 .landmark_loop
-	ld a, BANK(JohtoGrassWildMons)
+	ld a, BANK(JohtoGrassWildMonsForDex)
 	call GetFarHalfword
 	pop hl  ; points to map group/num
 	pop bc ; line counter
@@ -511,7 +511,7 @@ Pokedex_DetailedArea_grass:
 	ld c, GRASS_WILDDATA_LENGTH
 	add hl, bc
 	; check to see if there is a next entry
-	ld a, BANK(JohtoGrassWildMons)
+	ld a, BANK(JohtoGrassWildMonsForDex)
 	call GetFarByte ; ***hl is preserved***
 	pop bc ; line counter in c
 	cp -1 ; if we've printed a 3rd entry, this doesn't get checked
@@ -561,7 +561,7 @@ Pokedex_Parse_grass:
 	; 30%, 30%, 20%, 10%, 5%, 4%, 1%
 	push bc ; % and NUM_GRASSMON
 .map_loop
-	ld a, BANK(JohtoGrassWildMons)
+	ld a, BANK(JohtoGrassWildMonsForDex)
 	call GetFarByte ; bkup hl and change to GetFarHalfword for pk16?
 	; a is species
 	inc hl ; pointing to next mon lvl
@@ -625,7 +625,7 @@ Grass_check_any_remaining:
 	ld c, GRASS_WILDDATA_LENGTH - AREA_ENTRY_SKIP_ENCOUNTER_RATES ; 6 ; to be at the right pointer to read the -1 if it's there, aka the mapgroup/num ptr
 	add hl, bc ; increment index without touching our wram index
 	; check to see if we've reached the end of the wild data file, -1
-	ld a, BANK(JohtoGrassWildMons)
+	ld a, BANK(JohtoGrassWildMonsForDex)
 	call GetFarByte ; hl is preserved
 	cp -1
 	jr nz, .landmark_loop
@@ -917,7 +917,7 @@ Add_encounter_percent_water:
 ;;;;;;;; First Pass Checking ;;;;;;;;;;;;;;
 
 Dex_Check_Grass:
-	; hl is JohtoGrassWildMons, KantoGrassWildMons, or SwarmGrassWildMons
+	; hl is JohtoGrassWildMonsForDex, KantoGrassWildMons, or SwarmGrassWildMons
 	call GetFarByte
 	cp -1 ; swarm water table will be empty, just -1
 	ret z
@@ -929,7 +929,7 @@ Dex_Check_Grass:
 	inc hl ; should now point to lvl of encounter slot
 	inc hl ; now pointing to species
 	inc hl ; equivalent to adding AREA_ENTRY_SKIP_ENCOUNTER_RATES to hl, 6 bytes
-	ld a, BANK(JohtoGrassWildMons)
+	ld a, BANK(JohtoGrassWildMonsForDex)
 	call Pokedex_LookCheck_grass
 	and a
 	jr z, .found
@@ -939,11 +939,11 @@ Dex_Check_Grass:
 	ld c, GRASS_WILDDATA_LENGTH
 	add hl, bc
 	; check to see if there is a next entry
-	ld a, BANK(JohtoGrassWildMons)
+	ld a, BANK(JohtoGrassWildMonsForDex)
 	call GetFarByte ; hl is preserved
 	cp -1
 	ret z
-	; push hl ; hl is JohtoGrassWildMons, KantoGrassWildMons, or SwarmGrassWildMons
+	; push hl ; hl is JohtoGrassWildMonsForDex, KantoGrassWildMons, or SwarmGrassWildMons
 	jr .landmark_loop
 .found
 	pop hl
@@ -987,7 +987,7 @@ Pokedex_LookCheck_grass:
 	ret
 
 Dex_Check_Surf:
-	; hl is JohtoGrassWildMons, KantoGrassWildMons, or SwarmGrassWildMons
+	; hl is JohtoGrassWildMonsForDex, KantoGrassWildMons, or SwarmGrassWildMons
 	call GetFarByte
 	cp -1 ; swarm water table will be empty, just -1
 	ret z
@@ -1017,7 +1017,7 @@ Dex_Check_Surf:
 	cp -1
 	;jr z, .reached_end
 	ret z
-	; push hl ; hl is JohtoGrassWildMons, KantoGrassWildMons, or SwarmGrassWildMons
+	; push hl ; hl is JohtoGrassWildMonsForDex, KantoGrassWildMons, or SwarmGrassWildMons
 	jr .landmark_loop
 .found
 	pop hl
