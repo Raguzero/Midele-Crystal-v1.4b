@@ -2,7 +2,8 @@ Field_Moves_List:
 	db TELEPORT, SOFTBOILED, MILK_DRINK, HEADBUTT, ROCK_SMASH, SWEET_SCENT, DIG, CUT, FLY, SURF, STRENGTH, FLASH, WATERFALL, WHIRLPOOL
 Field_Moves_Method_List:
 ; 0 means lvl-up only
-	db 0, 0, 0, TM01 + 1, TM01 + 7, TM01 + 11, TM01 + 27, HM01, HM01 + 1, HM01 + 2, HM01 + 3, HM01 + 4, HM01 + 5, HM01 + 6
+;  Fix Bug:  added up +1 ROCK SMASH, SWEET SCENT and DIG
+	db 0, 0, 0, TM01 + 1, TM01 + 8, TM01 + 12, TM01 + 28, HM01, HM01 + 1, HM01 + 2, HM01 + 3, HM01 + 4, HM01 + 5, HM01 + 6
 
 
 ; started as 5 before UI overhaul, now is 7
@@ -278,6 +279,16 @@ Pokedex_PrintFieldMoves:
 	pop de
 	and a
 	jr nz, .tm_or_hm
+    ld a, e ; si es 0 es que no es MT/MO ni lo aprende por nivel, pero sí por tutor
+    and a ; cp 0
+    jr nz, .printlvlupmove
+	push bc
+	hlcoord 1, 9
+	call DexEntry_adjusthlcoord
+	ld de, DexEntry_TUTOR_MOVE_text
+	call PlaceString
+	pop bc
+    jr .inc_line_count
 .printlvlupmove	
 	push bc
 	hlcoord 3, 9
@@ -587,10 +598,10 @@ Pokedex_PrintTMs:
 	ld c, 0 ; current line
 .tm_loop
 	push bc
-	ld a, TM01
-	add b ; machine moves index
-	ld [wCurItem], a ; machine moves index
-	farcall GetTMHMItemMove
+	ld a, b
+	inc a
+	ld [wd265], a
+	farcall GetTMHMMove
 	ld a, [wd265]	; wTempTMHM DA ERROR AL COMPILAR, es wd265? SE REPITE en wTempSpecies tambien
 	ld [wPutativeTMHMMove], a
 	farcall CanLearnTMHMMove
@@ -608,6 +619,13 @@ Pokedex_PrintTMs:
 	ld b, a
 	ld a, TM01
 	add b ; machine moves index
+	cp ITEM_C3 ; hay que desplazar las MT por los dos item en medio
+	jr c, .nomascorrecciones2
+	inc a
+	cp ITEM_DC
+	jr c, .nomascorrecciones2
+	inc a
+.nomascorrecciones2
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	push bc
@@ -653,10 +671,10 @@ Pokedex_anymoreTMs:
 	inc b
 .tmloop
 	push bc
-	ld a, TM01
-	add b
-	ld [wCurItem], a
-	farcall GetTMHMItemMove
+	ld a, b
+	inc a
+	ld [wd265], a
+	farcall GetTMHMMove
 	ld a, [wd265]	; wTempTMHM DA ERROR AL COMPILAR, es wd265? SE REPITE en wTempSpecies tambien	
 	ld [wPutativeTMHMMove], a
 	farcall CanLearnTMHMMove
@@ -687,10 +705,10 @@ Pokedex_PrintMTs:
 	ld c, 0 ; current line
 .mt_loop
 	push bc
-	ld a, HM01 + 7
-	add b
-	ld [wCurItem], a
-	farcall GetTMHMItemMove
+	ld a, b
+	add NUM_TMS + NUM_HMS + 1
+	ld [wd265], a
+	farcall GetTMHMMove
 	ld a, [wd265]	; wTempTMHM DA ERROR AL COMPILAR, es wd265? SE REPITE en wTempSpecies tambien
 	ld [wPutativeTMHMMove], a
 	farcall CanLearnTMHMMove
@@ -716,7 +734,7 @@ Pokedex_PrintMTs:
 	call DexEntry_IncPageNum
 	ret
 .notcompatible
-	ld a, 7 + -2  ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
+	ld a, 7 - 1 ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
 	cp b
 	jr z, .done
 	inc b
@@ -735,17 +753,17 @@ Pokedex_PrintMTs:
 	ret
 
 Pokedex_anymoreMTs:
-	ld a, 7 + -2 ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
+	ld a, 7 - 1 ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
 	cp b
 	jr z, .none
 	; b has the current HM index
 	inc b
 .mtloop
 	push bc
-	ld a, HM01 + 7
-	add b
-	ld [wCurItem], a
-	farcall GetTMHMItemMove
+	ld a, b
+	add NUM_TMS + NUM_HMS + 1
+	ld [wd265], a
+	farcall GetTMHMMove
 	ld a, [wd265]		; wTempTMHM DA ERROR AL COMPILAR, es wd265? SE REPITE en wTempSpecies tambien
 	ld [wPutativeTMHMMove], a
 	farcall CanLearnTMHMMove
@@ -753,7 +771,7 @@ Pokedex_anymoreMTs:
 	pop bc
 	and a
 	jr nz, .yes
-	ld a, 7 + -2  ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
+	ld a, 7 - 1  ; ld a, NUM_TUTORS - 1 DA ERROR AL COMPILAR, HAY 7 MOVE TUTORS
 	cp b
 	jr z, .none
 	inc b
@@ -868,3 +886,6 @@ DexEntry_NONE_text:
 	
 DexEntry_EVO_MOVE_text:
 	db "EVOL@"
+
+DexEntry_TUTOR_MOVE_text:
+	db "TUTOR@"	
