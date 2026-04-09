@@ -20,10 +20,10 @@ EvolutionMoves::
 	db NO_MOVE      ; RATTATA
 	db BUBBLEBEAM   ; RATICATE
 	db NO_MOVE      ; SPEAROW
-	db TRI_ATTACK      ; FEAROW
+	db WING_ATTACK      ; FEAROW
 	db NO_MOVE      ; EKANS
 	db ROCK_SLIDE       ; ARBOK
-	db NO_MOVE      ; PIKACHU
+	db REFLECT      ; PIKACHU
 	db SUBMISSION    ; RAICHU
 	db NO_MOVE      ; SANDSHREW
 	db SUBMISSION        ; SANDSLASH
@@ -63,10 +63,10 @@ EvolutionMoves::
 	db ROCK_SLIDE      ; POLIWRATH
 	db NO_MOVE      ; ABRA
 	db KINESIS    ; KADABRA
-	db KINESIS   ; ALAKAZAM
+	db METRONOME   ; ALAKAZAM
 	db NO_MOVE      ; MACHOP
 	db MACH_PUNCH      ; MACHOKE
-	db NO_MOVE     ; MACHAMP 
+	db THRASH     ; MACHAMP 
 	db NO_MOVE      ; BELLSPROUT
 	db RAZOR_LEAF      ; WEEPINBELL
 	db SWORDS_DANCE      ; VICTREEBEL
@@ -101,11 +101,11 @@ EvolutionMoves::
 	db NO_MOVE      ; VOLTORB
 	db REFLECT      ; ELECTRODE
 	db NO_MOVE      ; EXEGGCUTE
-	db SWORDS_DANCE        ; EXEGGUTOR
+	db GROWTH        ; EXEGGUTOR
 	db NO_MOVE      ; CUBONE
-	db SWORDS_DANCE      ; MAROWAK
+	db BODY_SLAM      ; MAROWAK
 	db DOUBLE_KICK  ; HITMONLEE
-	db COMET_PUNCH  ; HITMONCHAN
+	db MACH_PUNCH  ; HITMONCHAN
 	db NO_MOVE      ; LICKITUNG
 	db NO_MOVE      ; KOFFING
 	db PAIN_SPLIT      ; WEEZING
@@ -115,7 +115,7 @@ EvolutionMoves::
 	db NO_MOVE      ; TANGELA
 	db NO_MOVE      ; KANGASKHAN
 	db NO_MOVE      ; HORSEA
-	db FLAIL      ; SEADRA
+	db ICY_WIND      ; SEADRA
 	db NO_MOVE      ; GOLDEEN
 	db MEGAHORN      ; SEAKING
 	db NO_MOVE      ; STARYU
@@ -219,10 +219,10 @@ EvolutionMoves::
 	db NO_MOVE      ; SLUGMA
 	db EXPLOSION      ; MAGCARGO
 	db NO_MOVE      ; SWINUB
-	db BODY_SLAM      ; PILOSWINE
+	db HORN_ATTACK      ; PILOSWINE
 	db NO_MOVE      ; CORSOLA
 	db NO_MOVE      ; REMORAID
-	db CURSE      ; OCTILLERY
+	db SEISMIC_TOSS      ; OCTILLERY
 	db NO_MOVE      ; DELIBIRD
 	db NO_MOVE      ; MANTINE
 	db NO_MOVE      ; SKARMORY
@@ -245,8 +245,8 @@ EvolutionMoves::
 	db NO_MOVE      ; ENTEI
 	db NO_MOVE      ; SUICUNE
 	db NO_MOVE      ; LARVITAR
-	db NO_MOVE      ; PUPITAR
-	db NO_MOVE      ; TYRANITAR
+	db RAGE      ; PUPITAR
+	db BODY_SLAM      ; TYRANITAR
 	db NO_MOVE      ; LUGIA
 	db NO_MOVE      ; HO_OH
 	db NO_MOVE      ; CELEBI
