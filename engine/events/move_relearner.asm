@@ -186,7 +186,9 @@ GetRemindableMoves:
 	inc de
 	ld a, $ff
 	ld [de], a
+	pop bc
 	inc b
+	push bc
 .no_evolution_move
 
 	farcall GetPreEvolution
