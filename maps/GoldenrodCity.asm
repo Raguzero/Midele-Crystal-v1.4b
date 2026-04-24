@@ -32,10 +32,10 @@ GoldenrodCity_MapScripts:
 	return
 
 .MoveTutor:
-	;checkevent EVENT_BEAT_ELITE_FOUR
-	;iffalse .MoveTutorDone
-	;checkitem COIN_CASE
-	;iffalse .MoveTutorDisappear
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iffalse .MoveTutorDone
+	checkitem COIN_CASE
+	iffalse .MoveTutorDisappear
 	checkcode VAR_WEEKDAY
 	ifequal WEDNESDAY, .MoveTutorAppear
 	ifequal SATURDAY, .MoveTutorAppear
@@ -45,7 +45,7 @@ GoldenrodCity_MapScripts:
 	ifequal FRIDAY, .MoveTutorAppear
 	ifequal SUNDAY, .MoveTutorAppear
 .MoveTutorDisappear:
-	;disappear GOLDENRODCITY_POKEFAN_M2
+	disappear GOLDENRODCITY_POKEFAN_M2
 	return
 
 .MoveTutorAppear:
@@ -135,7 +135,7 @@ MoveTutorScript:
 .TeachMove:
 	writetext UnknownText_0x19913a
 	buttonsound
-	takecoins 0
+	takecoins 2000
 	waitsfx
 	playsound SFX_TRANSACTION
 	special DisplayCoinCaseBalance
@@ -147,14 +147,14 @@ MoveTutorScript:
 	;applymovement GOLDENRODCITY_POKEFAN_M2, MovementData_0x198a5f
 	;jump .GoInside
 
-.WalkAroundPlayer:
-	applymovement GOLDENRODCITY_POKEFAN_M2, MovementData_0x198a63
-.GoInside:
-	playsound SFX_ENTER_DOOR
-	disappear GOLDENRODCITY_POKEFAN_M2
-	clearevent EVENT_GOLDENROD_GAME_CORNER_MOVE_TUTOR
-	setflag ENGINE_DAILY_MOVE_TUTOR
-	waitsfx
+;.WalkAroundPlayer:
+	;applymovement GOLDENRODCITY_POKEFAN_M2, MovementData_0x198a63
+;.GoInside:
+	;playsound SFX_ENTER_DOOR
+	;disappear GOLDENRODCITY_POKEFAN_M2
+	;clearevent EVENT_GOLDENROD_GAME_CORNER_MOVE_TUTOR
+	;setflag ENGINE_DAILY_MOVE_TUTOR
+	;waitsfx
 	end
 
 .Incompatible:
