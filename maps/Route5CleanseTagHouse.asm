@@ -63,7 +63,7 @@ SupernerdFelipex88BeatenText:
 	line "mi lengua."
     done
 
-SupernerdFelipex88AfterBattleText
+SupernerdFelipex88AfterBattleText:
     text "Maldita sea."
 	line "Ahora mismo voy"
 	cont "a cortar la lengua"

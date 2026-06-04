@@ -2013,7 +2013,7 @@ CheckUserHasEnoughHP: ; 3ccde
 	ret
 ; 3ccef
 
-RestoreHP ; 3ccef
+RestoreHP: ; 3ccef
 	ld hl, wEnemyMonMaxHP
 	ld a, [hBattleTurn]
 	and a
@@ -9653,7 +9653,7 @@ ApplyEnemyStatBoost:
 ; Boosts a enemy party move's PP by
 ; 60% of its original PPs.
 ; By LavenderG
-ApplyPartyPPHappinessBoost
+ApplyPartyPPHappinessBoost:
 	push bc
 	push de
 	push hl

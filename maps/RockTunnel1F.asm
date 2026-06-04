@@ -52,7 +52,7 @@ PokemaniacJzombieBeatenText:
 	line "es valida."
     done
 
-PokemaniacJzombieAfterBattleText
+PokemaniacJzombieAfterBattleText:
     text "Si, habra KALOS"
 	line "SUR porque mi"
 	cont ":censured:"
@@ -107,7 +107,7 @@ ScientistProgamerBeatenText:
 	cont "la luz."
     done
 
-ScientistProgamerAfterBattleText
+ScientistProgamerAfterBattleText:
 	text "No necesito"
 	line "fuentes,"
 	cont "debatir con"
@@ -164,7 +164,7 @@ SageVladilandBeatenText:
 	cont "children!!"
     done
 
-SageVladilandAfterBattleText
+SageVladilandAfterBattleText:
     text "Es que aqui nadie"
 	line "piensa en los"
 	cont "ninos?"

@@ -46,7 +46,7 @@ PsychicTSantiagoBeatenText:
     line "to Keikaku"
     done
 
-PsychicTSantiagoAfterBattleText
+PsychicTSantiagoAfterBattleText:
    text "Felicidades!"
    line "Me has vencido!"
    
@@ -98,7 +98,7 @@ GruntMGhaddarBeatenText:
     line "Buddy..."
     done
 
-GruntMGhaddarAfterBattleText
+GruntMGhaddarAfterBattleText:
     text "Yo… estoy acabado…"
     line "Se acabo..."
     cont "..."
@@ -134,7 +134,7 @@ JugglerUtalaweaBeatenText:
     line "Mis bolas!!"
     done
 
-JugglerUtalaweaAfterBattleText
+JugglerUtalaweaAfterBattleText:
     text "Sabia que no era"
 	line "buena idea."
     cont "Pero lo hice..."
@@ -168,7 +168,7 @@ SuperNerdDarkiBeatenText:
 	cont "condenados!"
 	done
 
-SuperNerdDarkiAfterBattleText
+SuperNerdDarkiAfterBattleText:
 	text "Creo que tengo que"
     line "madurar mas para"
 	cont "encontrar la"
@@ -202,7 +202,7 @@ BeautyEntropiaBeatenText:
     line "Sashay away!"
     done
 
-BeautyEntropiaAfterBattleText
+BeautyEntropiaAfterBattleText:
     text "La categoria es:"
     line "Como perder la"
     cont "elegancia"
@@ -244,7 +244,7 @@ DenisBeatenText:
     text "RIP"
     done
 
-DenisAfterBattleText
+DenisAfterBattleText:
     text "He perdido solo"
 	line "porque"
 	cont "Mega Abomasnow"
@@ -292,3 +292,4 @@ SilverCaveOutside_MapEvents:
 	object_event  28, 32, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerSupernerdDarki, -1
 	object_event  37, 33, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBeautyEntropia, -1
 	object_event  18, 24, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, CooltrainermDenis, -1
+

@@ -41,7 +41,7 @@ SupernerdGoldyBeatenText:
     text "W-W-W-WHAAAAT!?"
     done
 
-SupernerdGoldyAfterBattleText
+SupernerdGoldyAfterBattleText:
     text "Como he perdido"
     line "asi de facil?"
 
@@ -93,7 +93,7 @@ CooltrainermRaguBeatenText:
     text "NOOOOO!!!"
     done
 
-CooltrainermRaguAfterBattleText
+CooltrainermRaguAfterBattleText:
     text "Tienes algun"
 	line "PIKACHU para poder"
 	cont "aplastarlo con mis"
@@ -137,7 +137,7 @@ SwimmermPacoBeerBeatenText:
 	cont "69 litros"
     done
 
-SwimmermPacoBeerAfterBattleText
+SwimmermPacoBeerAfterBattleText:
     text "Sabes..."  
 	line "Me dijeron que..."
     cont "nunca llegaria a"
@@ -184,7 +184,7 @@ CamperSpolkerBeatenText:
     text "Ouch! Mi alcohol.."
     done
 
-CamperSpolkerAfterBattleText
+CamperSpolkerAfterBattleText:
     text "Ahora no tengo"
     line "dinero para algo"
     cont "de ginebra o"
@@ -232,7 +232,7 @@ CooltrainermSheleaBeatenText:
     line "I've lost my wig"
     done
 
-CooltrainermSheleaAfterBattleText
+CooltrainermSheleaAfterBattleText:
     text "Okay guuuurl"
     line "Quiero la"
 	para "revancha."
@@ -295,7 +295,7 @@ CamperExiBeatenText:
 	para "de nuevo."
     done
 
-CamperExiAfterBattleText
+CamperExiAfterBattleText:
     text "Ok. Quieres"
 	line "otro combate?"
     para "Tu eres..."
@@ -347,7 +347,7 @@ JugglerMerumBeatenText:
 	line "Pues manda narices"
     done
 
-JugglerMerumAfterBattleText
+JugglerMerumAfterBattleText:
     text "No entiendo como"
     line "el pokemon Brujula"
 	cont "podria perderse."
@@ -375,7 +375,7 @@ CooltrainerFSapphBeatenText:
     line "decia a MILTANK!"
     done
 
-CooltrainerFSapphAfterBattleText
+CooltrainerFSapphAfterBattleText:
     text "Ah... ah..."
     line "(Estoy cansada)"
     cont "Te perdono por"

@@ -142,7 +142,7 @@ Psychic_THypeantoBeatenText:
 	cont "battle..."
     done
 
-Psychic_THypeantoAfterBattleText
+Psychic_THypeantoAfterBattleText:
     text "I think this place"
 	line "might be linked"
 	cont "with Terminus"
