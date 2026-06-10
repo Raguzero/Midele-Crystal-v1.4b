@@ -4,6 +4,10 @@
 	const ROUTE13_POKEFAN_M1
 	const ROUTE13_POKEFAN_M2
 	const ROUTE13_POKEFAN_M3
+	const ROUTE13_PICNICKER1
+	const ROUTE13_PICNICKER2
+	const ROUTE13_CAMPER1
+	const ROUTE13_CAMPER2
 
 Route13_MapScripts:
 	db 0 ; scene scripts
@@ -61,6 +65,50 @@ TrainerHikerKenny:
 	endifjustbattled
 	opentext
 	writetext HikerKennyAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerPicnickerPiper:
+	trainer PICNICKER, PIPER, EVENT_BEAT_PICNICKER_PIPER, PicnickerPiperSeenText, PicnickerPiperBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext PicnickerPiperAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerPicnickerGinger:
+	trainer PICNICKER, GINGER, EVENT_BEAT_PICNICKER_GINGER, PicnickerGingerSeenText, PicnickerGingerBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext PicnickerGingerAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCamperClark:
+	trainer CAMPER, CLARK, EVENT_BEAT_CAMPER_CLARK, CamperClarkSeenText, CamperClarkBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CamperClarkAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCamperTanner:
+	trainer CAMPER, TANNER, EVENT_BEAT_CAMPER_TANNER, CamperTannerSeenText, CamperTannerBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CamperTannerAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -165,6 +213,87 @@ HikerKennyAfterBattleText:
 	line "change, little by"
 	cont "little."
 	done
+	
+PicnickerPiperSeenText:
+	text "Hey, hey, how"
+	line "about we bring"
+	cont "out your Pokémon"
+	cont "and mine for a"
+	cont "battle?"
+	done
+
+PicnickerPiperBeatenText:
+	text "Oh, that's too"
+	line "bad…"
+	done
+
+PicnickerPiperAfterBattleText:
+	text "The way you were"
+	line "walking with your"
+	cont "Pokémon made me"
+	cont "think that I could"
+	cont "win."
+	done
+	
+PicnickerGingerSeenText:
+	text "Why is it I always"
+	line "get the urge to"
+	cont "whistle when"
+	cont "walking through"
+	cont "nature?"
+	done
+
+PicnickerGingerBeatenText:
+	text "Tweeee!"
+	done
+
+PicnickerGingerAfterBattleText:
+	text "Instead of"
+	line "communicating with"
+	cont "Pokémon with"
+	cont "words, you can"
+	cont "communicate with"
+	cont "them through"
+	cont "whistling!"
+	done
+	
+CamperClarkSeenText:
+	text "Collect water!"
+	line "Don't let the fire"
+	cont "go out! Look out"
+	cont "for wild Pokémon!"
+	
+	para "Let's go, Campfire!"
+	done
+
+CamperClarkBeatenText:
+	text "Pfuuuuhh…"
+	done
+
+CamperClarkAfterBattleText:
+	text "It doesn't matter"
+	line "what kind of"
+	cont "preparation you've"
+	cont "done. If you lose,"
+	cont "you lose."
+	done
+	
+CamperTannerSeenText:
+	text "I can fit in a"
+	line "quick battle while"
+	cont "I'm in the midst of"
+	cont "preparing a meal!"
+	done
+
+CamperTannerBeatenText:
+	text "Oh, I'm hungry…"
+	done
+
+CamperTannerAfterBattleText:
+	text "I figured it would"
+	line "be easy to knock"
+	cont "you out…"
+	done
 
 Route13TrainerTipsText:
 	text "TRAINER TIPS"
@@ -202,9 +331,13 @@ Route13_MapEvents:
 	bg_event 17, 13, BGEVENT_READ, Route13DirectionsSign
 	bg_event 30, 13, BGEVENT_ITEM, Route13HiddenCalcium
 
-	db 5 ; object events
+	db 9 ; object events
 	object_event 42,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperPerry, -1
 	object_event 43,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperBret, -1
 	object_event 32,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
 	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerHikerKenny, -1
 	object_event 25,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
+	object_event 45, 10, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPicnickerPiper, -1
+	object_event  4,  8, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPicnickerGinger, -1
+	object_event  4,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerCamperClark, -1
+	object_event 34,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCamperTanner, -1

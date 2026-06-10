@@ -2,6 +2,7 @@
 	const PEWTERGYM_BROCK
 	const PEWTERGYM_YOUNGSTER
 	const PEWTERGYM_GYM_GUY
+	const PEWTERGYM_HIKER
 
 PewterGym_MapScripts:
 	db 0 ; scene scripts
@@ -70,6 +71,17 @@ TrainerCamperJerry:
 	endifjustbattled
 	opentext
 	writetext CamperJerryAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerHikerEdwin:
+	trainer HIKER, EDWIN, EVENT_BEAT_HIKER_EDWIN, HikerEdwinSeenText, HikerEdwinBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext HikerEdwinAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -199,6 +211,20 @@ CamperJerryAfterBattleText:
 	para "don't take him"
 	line "seriously."
 	done
+	
+HikerEdwinSeenText:
+	text "R-r-r-r-R-CRASH!"
+	done
+
+HikerEdwinBeatenText:
+	text "BOOM!"
+	done
+
+HikerEdwinAfterBattleText:
+	text "Phew…"
+
+	para "Broken in pieces."
+	done
 
 PewterGymGuyText:
 	text "Yo! CHAMP in"
@@ -266,7 +292,8 @@ PewterGym_MapEvents:
 	bg_event  2, 11, BGEVENT_READ, PewterGymStatue
 	bg_event  7, 11, BGEVENT_READ, PewterGymStatue
 
-	db 3 ; object events
+	db 4 ; object events
 	object_event  5,  1, SPRITE_BROCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PewterGymBrockScript, -1
 	object_event  2,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperJerry, -1
 	object_event  6, 11, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 1, PewterGymGuyScript, -1
+	object_event  6,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerHikerEdwin, -1

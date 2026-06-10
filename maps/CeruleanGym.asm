@@ -5,6 +5,7 @@
 	const CERULEANGYM_SWIMMER_GIRL2
 	const CERULEANGYM_SWIMMER_GUY
 	const CERULEANGYM_GYM_GUY
+	const CERULEANGYM_SWIMMER_GIRL3
 
 CeruleanGym_MapScripts:
 	db 2 ; scene scripts
@@ -72,6 +73,7 @@ CeruleanGymMistyScript:
 	setevent EVENT_BEAT_SWIMMERF_DIANA
 	setevent EVENT_BEAT_SWIMMERF_BRIANA
 	setevent EVENT_BEAT_SWIMMERM_PARKER
+	setevent EVENT_BEAT_SWIMMERF_JOY
 	opentext
 	writetext UnknownText_0x188768
 	playsound SFX_GET_BADGE
@@ -138,6 +140,17 @@ TrainerSwimmermParker:
 	endifjustbattled
 	opentext
 	writetext SwimmermParkerAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerSwimmerfJoy:
+	trainer SWIMMERF, JOY, EVENT_BEAT_SWIMMERF_JOY, SwimmerfJoySeenText, SwimmerfJoyBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext SwimmerfJoyAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -365,6 +378,29 @@ SwimmermParkerAfterBattleText:
 	line "guard down, or"
 	cont "you'll be crushed!"
 	done
+	
+SwimmerfJoySeenText:
+	text "Swimming isn't"
+	line "just about speed!"
+	cont "It's also about"
+	cont "the beauty of"
+	cont "grace!"
+	done
+
+SwimmerfJoyBeatenText:
+	text "I lost"
+	line "beautifully…"
+	done
+
+SwimmerfJoyAfterBattleText:
+	text "It seems an"
+	line "intruder has"
+	cont "appeared in this"
+	cont "Gym…"
+	
+	para "I don't like"
+	line "that idea…"
+	done
 
 CeruleanGymGuyText:
 	text "Yo! CHAMP in"
@@ -424,10 +460,11 @@ CeruleanGym_MapEvents:
 	bg_event  2, 13, BGEVENT_READ, CeruleanGymStatue1
 	bg_event  6, 13, BGEVENT_READ, CeruleanGymStatue2
 
-	db 6 ; object events
+	db 7 ; object events
 	object_event  4, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
 	object_event  5,  3, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanGymMistyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  4,  6, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  1,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  8,  9, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermParker, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  8,  5, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSwimmerfJoy, EVENT_TRAINERS_IN_CERULEAN_GYM

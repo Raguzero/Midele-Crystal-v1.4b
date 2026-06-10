@@ -33,7 +33,7 @@ crystal11_obj := $(crystal_obj:.o=11.o)
 ### Build targets
 
 .SUFFIXES:
-.PHONY: all crystal crystal11 clean compare tools
+.PHONY: all crystal crystal11 clean compare tools bppsha1
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
@@ -82,10 +82,14 @@ pokecrystal.gbc: $(crystal_obj) pokecrystal.link
 	tools/sort_symfile.sh pokecrystal.sym
 
 pokecrystal11.gbc: $(crystal11_obj) pokecrystal.link
+	@sha1sum -c --quiet bppsha1.txt || echo "Los archivos anteriores no coinciden con los de la release de Midele Crystal"
 	$(RGBLINK) -n pokecrystal11.sym -m pokecrystal11.map -l pokecrystal.link -o $@ $(crystal11_obj)
 	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t PM_CRYSTAL $@
 	tools/sort_symfile.sh pokecrystal11.sym
 
+bppsha1.txt: bppsha1
+bppsha1:
+	sha1sum */*/*.*bpp */*/*/*.*bpp > bppsha1.txt
 
 # For files that the compressor can't match, there will be a .lz file suffixed with the md5 hash of the correct uncompressed file.
 # If the hash of the uncompressed file matches, use this .lz instead.

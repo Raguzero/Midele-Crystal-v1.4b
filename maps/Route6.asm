@@ -3,6 +3,8 @@
 	const ROUTE6_POKEFAN_M2
 	const ROUTE6_POKEFAN_M3
 	const ROUTE6_ZZZ
+	const ROUTE6_CAMPER1
+	const ROUTE6_PICNICKER1
 
 Route6_MapScripts:
 	db 0 ; scene scripts
@@ -26,6 +28,28 @@ TrainerPokefanmAllan:
 	endifjustbattled
 	opentext
 	writetext PokefanmAllanAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCamperVirgil:
+	trainer CAMPER, VIRGIL, EVENT_BEAT_CAMPER_VIRGIL, CamperVirgilSeenText, CamperVirgilBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CamperVirgilAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerPicnickerSelina:
+	trainer PICNICKER, SELINA, EVENT_BEAT_PICNICKER_SELINA, PicnickerSelinaSeenText, PicnickerSelinaBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext PicnickerSelinaAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -123,6 +147,53 @@ PokefanmAllanAfterBattleText:
 	line "enough to make"
 	cont "your heart melt?"
 	done
+	
+CamperVirgilSeenText:
+	text "Walking along"
+	line "with luggage and"
+	cont "your companion"
+	cont "Pokémon gives a"
+	cont "great feeling of"
+	cont "outdoor life!"
+	done
+
+CamperVirgilBeatenText:
+	text "Yaha! I lost!"
+	done
+
+CamperVirgilAfterBattleText:
+	text "Are you also on"
+	line "a solo journey?"
+	
+	para "See you again"
+	line "sometime."
+	cont "Bye for now!"
+	done
+	
+PicnickerSelinaSeenText:
+	text "I'm headed out"
+	line "on a picnic."
+	
+	para "Do you know why?"
+	done
+
+PicnickerSelinaBeatenText:
+	text "You are pretty"
+	line "good!"
+	done
+
+PicnickerSelinaAfterBattleText:
+	text "The reason I'm"
+	line "going on a picnic…"
+	
+	para "It's because I"
+	line "really want to"
+	cont "smell the fresh"
+	cont "air…"
+	
+	para "Do you know what"
+	line "I mean?"
+	done
 
 ScholarZzzSeenText:
 	text "Yo no se ingles"
@@ -200,8 +271,10 @@ Route6_MapEvents:
 	db 1 ; bg events
 	bg_event 19,  5, BGEVENT_READ, Route6UndergroundPathSign
 
-	db 4 ; object events
+	db 6 ; object events
 	object_event 17,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 2, Route6PokefanMScript, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	object_event  9, 12, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 0, TrainerPokefanmRex, -1
 	object_event 10, 12, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 0, TrainerPokefanmAllan, -1
 	object_event 6, 2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 2, ZzzBattle, EVENT_BEAT_ZZZ
+	object_event  4,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCamperVirgil, -1
+	object_event 19, 11, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerPicnickerSelina, -1

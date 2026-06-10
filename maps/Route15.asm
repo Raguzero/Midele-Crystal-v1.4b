@@ -6,6 +6,8 @@
 	const ROUTE15_TEACHER1
 	const ROUTE15_TEACHER2
 	const ROUTE15_POKE_BALL
+	const ROUTE15_POKEFANM
+	const ROUTE15_POKEFANF
 
 Route15_MapScripts:
 	db 0 ; scene scripts
@@ -74,6 +76,28 @@ TrainerSchoolboyBilly:
 	endifjustbattled
 	opentext
 	writetext SchoolboyBillyAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerPokefanfEleanor:
+	trainer POKEFANF, ELEANOR, EVENT_BEAT_POKEFANF_ELEANOR, PokefanfEleanorSeenText, PokefanfEleanorBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext PokefanfEleanorAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerPokefanmBoone:
+	trainer POKEFANM, BOONE, EVENT_BEAT_POKEFANM_BOONE, PokefanmBooneSeenText, PokefanmBooneBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext PokefanmBooneAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -191,6 +215,41 @@ SchoolboyBillyAfterBattleText:
 	line "subject at school,"
 	cont "I'd be the best!"
 	done
+	
+PokefanfEleanorSeenText:
+	text "All right,"
+	line "Pokémon, time"
+	cont "for a battle!"
+	done
+
+PokefanfEleanorBeatenText:
+	text "Oh, well…"
+	done
+
+PokefanfEleanorAfterBattleText:
+	text "It's not that my"
+	line "Pokémon are weak!"
+	
+	para "It's that your"
+	line "Pokémon are too"
+	cont "strong!"
+	done
+	
+PokefanmBooneSeenText:
+	text "Hey, your Pokémon…"
+	line "Show me. Show me!"
+	done
+
+PokefanmBooneBeatenText:
+	text "Yay!"
+	done
+
+PokefanmBooneAfterBattleText:
+	text "When you battle"
+	line "you get to see"
+	cont "a bunch of Pokémon"
+	cont "you've never seen."
+	done
 
 Route15SignText:
 	text "ROUTE 15"
@@ -211,7 +270,7 @@ Route15_MapEvents:
 	db 1 ; bg events
 	bg_event 19,  9, BGEVENT_READ, Route15Sign
 
-	db 7 ; object events
+	db 9 ; object events
 	object_event 10, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerSchoolboyKipp, -1
 	object_event 15, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyTommy, -1
 	object_event 33, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyJohnny, -1
@@ -219,3 +278,5 @@ Route15_MapEvents:
 	object_event 30, 12, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerTeacherColette, -1
 	object_event 20, 10, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerTeacherHillary, -1
 	object_event 12,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route15PPUp, EVENT_ROUTE_15_PP_UP
+	object_event 24, 13, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerPokefanfEleanor, -1
+	object_event  7,  8, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPokefanmBoone, -1

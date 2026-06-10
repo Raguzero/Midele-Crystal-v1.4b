@@ -8,6 +8,12 @@ BattleText_PlayerPickedUpPayDayMoney: ; 0x80730
 	prompt
 ; 0x80746
 
+
+BattleText_QuickClaw:
+	text "<USER>'s"
+	line "QUICK CLAW procs!"
+	prompt
+
 WildPokemonAppearedText: ; 0x80746
 	text "Wild @"
 	text_from_ram wEnemyMonNick

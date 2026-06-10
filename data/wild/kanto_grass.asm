@@ -524,7 +524,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 65, SKIPLOOM
 	db 67, SKIPLOOM
 	db 67, JUMPLUFF
-	db 55, CHANSEY
+	db 60, CHANSEY
 	; day
 	db 63, NIDORINO
 	db 63, NIDORINA
@@ -532,15 +532,15 @@ KantoGrassWildMons: ; 0x2b274
 	db 65, SKIPLOOM
 	db 67, SKIPLOOM
 	db 67, JUMPLUFF
-	db 55, CHANSEY
+	db 60, CHANSEY
 	; nite
-	db 53, VENONAT
-	db 53, QUAGSIRE
+	db 63, VENONAT
+	db 63, QUAGSIRE
 	db 65, NOCTOWL
-	db 55, VENOMOTH
-	db 55, QUAGSIRE
-	db 55, QUAGSIRE
-	db 55, CHANSEY
+	db 65, VENOMOTH
+	db 65, QUAGSIRE
+	db 65, QUAGSIRE
+	db 60, CHANSEY
 
 	map_id ROUTE_16
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -577,7 +577,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 61, GRIMER
 	db 62, FEAROW
 	db 63, GRIMER
-	db 63, MUK
+	db 63, MAGCARGO
 	db 63, MUK
 	; day
 	db 60, FEAROW
@@ -592,8 +592,8 @@ KantoGrassWildMons: ; 0x2b274
 	db 59, GRIMER
 	db 61, GRIMER
 	db 62, GRIMER
-	db 63, GRIMER
-	db 63, MUK
+	db 63, MAGCARGO
+	db 63, MAGCARGO
 	db 63, MUK
 
 	map_id ROUTE_18

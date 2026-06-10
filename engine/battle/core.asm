@@ -524,6 +524,8 @@ DetermineMoveOrder: ; 3c314
 	call BattleRandom
 	cp e
 	jr nc, .speed_check
+	ld hl, BattleText_QuickClaw
+	call StdBattleTextBox
 	jp .player_first
 
 .player_no_quick_claw
@@ -533,6 +535,9 @@ DetermineMoveOrder: ; 3c314
 	call BattleRandom
 	cp c
 	jr nc, .speed_check
+	call SetEnemyTurn
+	ld hl, BattleText_QuickClaw
+	call StdBattleTextBox
 	jp .enemy_first
 
 .both_have_quick_claw
@@ -541,20 +546,34 @@ DetermineMoveOrder: ; 3c314
 	jr z, .player_2b
 	call BattleRandom
 	cp c
-	jp c, .enemy_first
+	jr nc, .check_player_claw
+	call SetEnemyTurn
+	ld hl, BattleText_QuickClaw
+	call StdBattleTextBox
+	jp .enemy_first
+.check_player_claw
 	call BattleRandom
 	cp e
-	jp c, .player_first
-	jr .speed_check
+	jr nc, .speed_check
+	ld hl, BattleText_QuickClaw
+	call StdBattleTextBox
+	jp .player_first
 
 .player_2b
 	call BattleRandom
 	cp e
-	jp c, .player_first
+	jr nc, .check_enemy_claw
+	ld hl, BattleText_QuickClaw
+	call StdBattleTextBox
+	jp .player_first
+.check_enemy_claw
 	call BattleRandom
 	cp c
-	jp c, .enemy_first
-	jr .speed_check
+	jr nc, .speed_check
+	call SetEnemyTurn
+	ld hl, BattleText_QuickClaw
+	call StdBattleTextBox
+	jp .enemy_first
 
 .speed_check
 	ld de, wBattleMonSpeed
@@ -7081,36 +7100,36 @@ INCLUDE "data/battle/stat_multipliers_2.asm"
 ;;	ret
 ; 3ed7c
 
-BoostStat: ; 3ed7c
-; Raise stat at hl by 1/8.
-
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	srl d
-	rr e
-	srl d
-	rr e
-	srl d
-	rr e
-	ld a, [hl]
-	add e
-	ld [hld], a
-	ld a, [hl]
-	adc d
-	ld [hli], a
-
-; Cap at 999.
-	ld a, [hld]
-	sub LOW(MAX_STAT_VALUE)
-	ld a, [hl]
-	sbc HIGH(MAX_STAT_VALUE)
-	ret c
-	ld a, HIGH(MAX_STAT_VALUE)
-	ld [hli], a
-	ld a, LOW(MAX_STAT_VALUE)
-	ld [hld], a
-	ret
+;BoostStat: ; 3ed7c
+;; Raise stat at hl by 1/8.
+;
+;	ld a, [hli]
+;	ld d, a
+;	ld e, [hl]
+;	srl d
+;	rr e
+;	srl d
+;	rr e
+;	srl d
+;	rr e
+;	ld a, [hl]
+;	add e
+;	ld [hld], a
+;	ld a, [hl]
+;	adc d
+;	ld [hli], a
+;
+;; Cap at 999.
+;	ld a, [hld]
+;	sub LOW(MAX_STAT_VALUE)
+;	ld a, [hl]
+;	sbc HIGH(MAX_STAT_VALUE)
+;	ret c
+;	ld a, HIGH(MAX_STAT_VALUE)
+;	ld [hli], a
+;	ld a, LOW(MAX_STAT_VALUE)
+;	ld [hld], a
+;	ret
 ; 3ed9f
 
 _LoadBattleFontsHPBar: ; 3ed9f
