@@ -7081,36 +7081,36 @@ INCLUDE "data/battle/stat_multipliers_2.asm"
 ;;	ret
 ; 3ed7c
 
-BoostStat: ; 3ed7c
-; Raise stat at hl by 1/8.
-
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	srl d
-	rr e
-	srl d
-	rr e
-	srl d
-	rr e
-	ld a, [hl]
-	add e
-	ld [hld], a
-	ld a, [hl]
-	adc d
-	ld [hli], a
-
-; Cap at 999.
-	ld a, [hld]
-	sub LOW(MAX_STAT_VALUE)
-	ld a, [hl]
-	sbc HIGH(MAX_STAT_VALUE)
-	ret c
-	ld a, HIGH(MAX_STAT_VALUE)
-	ld [hli], a
-	ld a, LOW(MAX_STAT_VALUE)
-	ld [hld], a
-	ret
+;BoostStat: ; 3ed7c
+;; Raise stat at hl by 1/8.
+;
+;	ld a, [hli]
+;	ld d, a
+;	ld e, [hl]
+;	srl d
+;	rr e
+;	srl d
+;	rr e
+;	srl d
+;	rr e
+;	ld a, [hl]
+;	add e
+;	ld [hld], a
+;	ld a, [hl]
+;	adc d
+;	ld [hli], a
+;
+;; Cap at 999.
+;	ld a, [hld]
+;	sub LOW(MAX_STAT_VALUE)
+;	ld a, [hl]
+;	sbc HIGH(MAX_STAT_VALUE)
+;	ret c
+;	ld a, HIGH(MAX_STAT_VALUE)
+;	ld [hli], a
+;	ld a, LOW(MAX_STAT_VALUE)
+;	ld [hld], a
+;	ret
 ; 3ed9f
 
 _LoadBattleFontsHPBar: ; 3ed9f

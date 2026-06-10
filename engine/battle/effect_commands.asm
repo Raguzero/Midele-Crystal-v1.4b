@@ -1351,11 +1351,11 @@ BattleCommand_Stab: ; 346d2
 	pop de
 	pop hl
 
-	push de
-	push bc
+	;push de
+	;push bc
 	;farcall DoBadgeTypeBoosts
-	pop bc
-	pop de
+	;pop bc
+	;pop de
 
 	ld a, [wTypeMatchup]
 	cp b
