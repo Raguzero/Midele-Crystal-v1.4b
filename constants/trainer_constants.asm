@@ -147,6 +147,7 @@ KRIS EQU __enum__
 	const JASON
 	const JOEY4
 	const JOEY5
+	const REGIS
 
 	trainerclass SCHOOLBOY ; 17
 	const JACK1
@@ -177,6 +178,10 @@ KRIS EQU __enum__
 	const Zzz2
 	const Zzz3
 	const Zzz4
+	const SHERMAN
+	const CONNOR
+	const TORIN
+	const TRAVIS
 
 	trainerclass BIRD_KEEPER ; 18
 	const ROD
@@ -198,6 +203,8 @@ KRIS EQU __enum__
 	const JOSE3
 	const VANCE2
 	const VANCE3
+	const BERT
+	const ERNIE
 
 	trainerclass LASS ; 19
 	const CARRIE
@@ -241,6 +248,9 @@ KRIS EQU __enum__
 	const SHELEA
 	const GRIM
 	const DENYS
+	const FRENCH
+	const ARABEL
+	const BONITA
 
 	trainerclass COOLTRAINERF ; 1c
 	const GWEN
@@ -265,6 +275,8 @@ KRIS EQU __enum__
 	const REENA3
 	const CARA
 	const SAPPH
+	const SALMA
+	const ELAN
 
 	trainerclass BEAUTY ; 1d
 	const VICTORIA
@@ -344,6 +356,7 @@ KRIS EQU __enum__
 	const COLETTE
 	const HILLARY
 	const SHIRLEY
+	const CLARICE
 
 	trainerclass SABRINA ; 23
 	const SABRINA1
@@ -414,6 +427,8 @@ KRIS EQU __enum__
 	const PARKER
 	const PACOBEER
 	const PACOBEER2
+	const LUIS
+	const ELMO
 
 	trainerclass SWIMMERF ; 27
 	const ELAINE
@@ -429,6 +444,9 @@ KRIS EQU __enum__
 	const NIKKI
 	const DIANA
 	const BRIANA
+	const JOY
+	const MINA
+	const LEONA
 
 	trainerclass SAILOR ; 28
 	const EUGENE
@@ -494,6 +512,9 @@ KRIS EQU __enum__
 	const PARRY3
 	const ANTHONY4
 	const ANTHONY5
+	const BRUCE
+	const DWIGHT
+	const EDWIN
 
 	trainerclass BIKER ; 2d
 	const DWAYNE
@@ -538,6 +559,8 @@ KRIS EQU __enum__
 	const LUNG
 	const KENJI3
 	const WAI
+	const ANDER
+	const MANFORD
 
 	trainerclass EXECUTIVEM ; 33
 	const EXECUTIVEM_1
@@ -589,6 +612,9 @@ KRIS EQU __enum__
 	const GINA4
 	const GINA5
 	const TIFFANY4
+	const SELINA
+	const PIPER
+	const GINGER
 
 	trainerclass CAMPER ; 36
 	const ROLAND
@@ -609,6 +635,9 @@ KRIS EQU __enum__
 	const QUENTIN
 	const SPOLKER
 	const EXI
+	const VIRGIL
+	const CLARK
+	const TANNER
 
 	trainerclass EXECUTIVEF ; 37
 	const EXECUTIVEF_1
@@ -654,6 +683,7 @@ KRIS EQU __enum__
 	const ALEX
 	const REX
 	const ALLAN
+	const BOONE
 
 	trainerclass KIMONO_GIRL ; 3c
 	const NAOKO1
@@ -681,6 +711,7 @@ KRIS EQU __enum__
 	const RUTH
 	const GEORGIA
 	const JAIME
+	const ELEANOR
 
 	trainerclass RED ; 3f
 	const RED1

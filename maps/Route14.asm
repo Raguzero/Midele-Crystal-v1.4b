@@ -3,6 +3,10 @@
 	const ROUTE14_YOUNGSTER
 	const ROUTE14_POKEFAN_M2
 	const ROUTE14_KIM
+	const ROUTE14_YOUNGSTER2
+	const ROUTE14_YOUNGSTER3
+	const ROUTE14_YOUNGSTER4
+	const ROUTE14_TEACHER1
 
 Route14_MapScripts:
 	db 0 ; scene scripts
@@ -46,6 +50,50 @@ TrainerPokefanmTrevor:
 	endifjustbattled
 	opentext
 	writetext PokefanmTrevorAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerSchoolBoyConnor:
+	trainer SCHOOLBOY, CONNOR, EVENT_BEAT_SCHOOLBOY_CONNOR, SchoolBoyConnorSeenText, SchoolBoyConnorBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext SchoolBoyConnorAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerSchoolBoyTorin:
+	trainer SCHOOLBOY, TORIN, EVENT_BEAT_SCHOOLBOY_TORIN, SchoolBoyTorinSeenText, SchoolBoyTorinBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext SchoolBoyTorinAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerSchoolBoyTravis:
+	trainer SCHOOLBOY, TRAVIS, EVENT_BEAT_SCHOOLBOY_TRAVIS, SchoolBoyTravisSeenText, SchoolBoyTravisBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext SchoolBoyTravisAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerTeacherClarice:
+	trainer TEACHER, CLARICE, EVENT_BEAT_TEACHER_CLARICE, TeacherClariceSeenText, TeacherClariceBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext TeacherClariceAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -112,6 +160,79 @@ PokefanmTrevorAfterBattleText:
 	para "identify where I"
 	line "got my #MON…"
 	done
+	
+SchoolBoyConnorSeenText:
+	text "I can't wait to"
+	line "go home and drop"
+	cont "off my Bag!"
+	done
+
+SchoolBoyConnorBeatenText:
+	text "I was in too much"
+	line "of a hurry."
+	done
+
+SchoolBoyConnorAfterBattleText:
+	text "Don't rush, and"
+	line "take the road one"
+	cont "step at a time."
+	
+	para "Great advice!"
+	done
+
+SchoolBoyTorinSeenText:
+	text "It's good to put"
+	line "what you learn to"
+	cont "use immediately!"
+	done
+
+SchoolBoyTorinBeatenText:
+	text "I see. I see."
+	done
+
+SchoolBoyTorinAfterBattleText:
+	text "All right!"
+	line "Next time,"
+	cont "I won't make any"
+	cont "mistakes!"
+	done
+	
+SchoolBoyTravisSeenText:
+	text "Do you have"
+	line "after-school study"
+	cont "sessions?"
+	done
+
+SchoolBoyTravisBeatenText:
+	text "So strong…"
+	done
+
+SchoolBoyTravisAfterBattleText:
+	text "Maybe I should"
+	line "join your study"
+	cont "sessions!"
+	done
+	
+TeacherClariceSeenText:
+	text "All right, let's"
+	line "get this Pokémon"
+	cont "battle started!"
+	done
+
+TeacherClariceBeatenText:
+	text "All right!"
+	line "That concludes"
+	cont "today's battle."
+	done
+
+TeacherClariceAfterBattleText:
+	text "Don't relax just"
+	line "'cause you won."
+
+	para "Once you get home,"
+	line "you should do a"
+	cont "full review!"
+	done
 
 Route14_MapEvents:
 	db 0, 0 ; filler
@@ -122,8 +243,12 @@ Route14_MapEvents:
 
 	db 0 ; bg events
 
-	db 4 ; object events
+	db 8 ; object events
 	object_event 11, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmCarter, -1
 	object_event 11, 27, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperRoy, -1
 	object_event  6, 11, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmTrevor, -1
 	object_event  7,  5, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 4, Kim, -1
+	object_event 11,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolBoyConnor, -1
+	object_event 11,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolBoyTorin, -1
+	object_event 11, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerSchoolBoyTravis, -1
+	object_event 14,  8, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerTeacherClarice, -1

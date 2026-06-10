@@ -1,6 +1,10 @@
 	const_def 2 ; object constants
 	const VIRIDIANGYM_BLUE
 	const VIRIDIANGYM_GYM_GUY
+	const VIRIDIANGYM_COOLTRAINERM1
+	const VIRIDIANGYM_COOLTRAINERF1
+	const VIRIDIANGYM_COOLTRAINERM2
+	const VIRIDIANGYM_COOLTRAINERF2
 
 ViridianGym_MapScripts:
 	db 0 ; scene scripts
@@ -58,6 +62,50 @@ ViridianGymBlueScript:
     end
 	
 .Refused:
+	closetext
+	end
+	
+TrainerCooltrainermArabella:
+	trainer COOLTRAINERM, ARABEL, EVENT_BEAT_COOLTRAINERM_ARABELLA, CooltrainermArabellaSeenText, CooltrainermArabellaBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainermArabellaAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCooltrainerfSalma:
+	trainer COOLTRAINERF, SALMA, EVENT_BEAT_COOLTRAINERF_SALMA, CooltrainerfSalmaSeenText, CooltrainerfSalmaBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainerfSalmaAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCooltrainermBonita:
+	trainer COOLTRAINERM, BONITA, EVENT_BEAT_COOLTRAINERM_BONITA, CooltrainermBonitaSeenText, CooltrainermBonitaBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainermBonitaAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerCooltrainerfElan:
+	trainer COOLTRAINERF, ELAN, EVENT_BEAT_COOLTRAINERF_ELAN, CooltrainerfElanSeenText, CooltrainerfElanBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainerfElanAfterBattleText
+	waitbutton
 	closetext
 	end
 
@@ -213,6 +261,75 @@ Blue_RematchDefeat:
 Blue_Reward:
     text "Take your reward!"
     done
+	
+CooltrainermArabellaSeenText:
+	text "Anyway, fight me"
+	line "and see!"
+	done
+
+CooltrainermArabellaBeatenText:
+	text "I was deceived!"
+	done
+
+CooltrainermArabellaAfterBattleText:
+	text "Me, I should be a"
+	line "pretty good"
+	cont "practice partner…"
+	done
+	
+CooltrainerfSalmaSeenText:
+	text "You've never seen"
+	line "such a wonderful"
+	cont "Gym before,"
+	cont "have you?"
+	done
+
+CooltrainerfSalmaBeatenText:
+	text "Whatever!"
+	done
+
+CooltrainerfSalmaAfterBattleText:
+	text "There are many"
+	line "kinds of Gyms in"
+	cont "the world, but I"
+	cont "really like this"
+	cont "one!"
+	done
+	
+CooltrainermBonitaSeenText:
+	text "Looking around the"
+	line "room like that,"
+	cont "doesn't it make"
+	cont "you a little"
+	cont "dizzy?"
+	done
+
+CooltrainermBonitaBeatenText:
+	text "All of my Pokémon…"
+	line "All dizzy and"
+	cont "fainting…"
+	done
+
+CooltrainermBonitaAfterBattleText:
+	text "Looks like you've"
+	line "still got some"
+	cont "energy left."
+	done
+	
+CooltrainerfElanSeenText:
+	text "All right, let's"
+	line "get this fight"
+	cont "started!"
+	done
+
+CooltrainerfElanBeatenText:
+	text "Phew…"
+	done
+
+CooltrainerfElanAfterBattleText:
+	text "Huh? Not enough"
+	line "Pokémon?"
+	done
 
 ViridianGym_MapEvents:
 	db 0, 0 ; filler
@@ -227,6 +344,10 @@ ViridianGym_MapEvents:
 	bg_event  3, 13, BGEVENT_READ, ViridianGymStatue
 	bg_event  6, 13, BGEVENT_READ, ViridianGymStatue
 
-	db 2 ; object events
+	db 6 ; object events
 	object_event  5,  3, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianGymBlueScript, EVENT_VIRIDIAN_GYM_BLUE
 	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianGymGuyScript, EVENT_VIRIDIAN_GYM_BLUE
+	object_event  3, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermArabella, -1
+	object_event  6, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfSalma, -1
+	object_event  3,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainermBonita, -1
+	object_event  5,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfElan, -1
