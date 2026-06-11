@@ -1588,13 +1588,16 @@ MoveScreenLoop: ; 12fd5
 
 .moving_move
 	ld a, " "
-	hlcoord 1, 11
+	hlcoord 1, 12
 	ld bc, 5
 	call ByteFill
 	hlcoord 1, 12
-	lb bc, 5, SCREEN_WIDTH - 2
+	lb bc, 5, 7
 	call ClearBox
 	hlcoord 1, 12
+	lb bc, 5, SCREEN_WIDTH - 2
+	call ClearBox
+	hlcoord 2, 13
 	ld de, String_MoveWhere
 	call PlaceString
 	jp .joy_loop
@@ -1628,6 +1631,8 @@ MoveScreenLoop: ; 12fd5
 	ld a, [wCurPartyMon]
 	cp b
 	jp z, .joy_loop
+	ld de, SFX_SWITCH_POCKETS
+	call PlaySFX
 	jp MoveScreenLoop
 
 .d_left
@@ -1642,6 +1647,8 @@ MoveScreenLoop: ; 12fd5
 	ld a, [wCurPartyMon]
 	cp b
 	jp z, .joy_loop
+	ld de, SFX_SWITCH_POCKETS
+	call PlaySFX
 	jp MoveScreenLoop
 
 .cycle_right
@@ -1772,7 +1779,7 @@ MoveScreenAttributes: ; 13163
 ; 1316b
 
 String_MoveWhere: ; 1316b
-	db "Where?@"
+	db "Select a move<NEXT>to swap places.@"
 ; 13172
 
 SetUpMoveScreenBG: ; 13172
@@ -1792,8 +1799,8 @@ SetUpMoveScreenBG: ; 13172
 	ld [wd265], a
 	ld e, $2
 	farcall LoadMenuMonIcon
-	hlcoord 0, 1
-	ld b, 9
+	hlcoord 0, -1
+	ld b, 1
 	ld c, 18
 	call TextBox
 	hlcoord 0, 11
@@ -1813,6 +1820,7 @@ SetUpMoveScreenBG: ; 13172
 	push bc
 	farcall CopyMonToTempMon
 	pop hl
+	hlcoord 5, 0
 	call PrintLevel
 	ld hl, wPlayerHPPal
 	call SetHPPal
@@ -2053,10 +2061,10 @@ ConvertPercentages:
     ret
 
 String_MoveType_Top: ; 132ba
-	db "┌────────┐@"
+	db "          @"
 ; 132c2
 String_MoveType_Bottom: ; 132c2
-	db "│        └@"
+	db "┌─────────@"
 ; 132ca
 String_MoveAtk: ; 132ca
 	db "ATK/@"
