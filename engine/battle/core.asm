@@ -160,7 +160,7 @@ WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
 
 BattleTurn: ; 3c12f
 .loop
-	call Stubbed_Function3c1bf
+	;call Stubbed_Function3c1bf   ; CÓDIGO NO USADO, SOLO EN VERSIÓN JAPONESA
 	call CheckContestBattleOver
 	jp c, .quit
 
@@ -231,23 +231,23 @@ BattleTurn: ; 3c12f
 	ret
 ; 3c1bf
 
-Stubbed_Function3c1bf:
-	ret
-	ld a, 5 ; MBC30 bank used by JP Crystal; inaccessible by MBC3
-	call GetSRAMBank
-	ld hl, $a89b ; address of MBC30 bank
-	inc [hl]
-	jr nz, .finish
-	dec hl
-	inc [hl]
-	jr nz, .finish
-	dec [hl]
-	inc hl
-	dec [hl]
-
-.finish
-	call CloseSRAM
-	ret
+;Stubbed_Function3c1bf:  ; CÓDIGO NO USADO, SOLO EN VERSIÓN JAPONESA
+;	ret
+;	ld a, 5 ; MBC30 bank used by JP Crystal; inaccessible by MBC3
+;	call GetSRAMBank
+;	ld hl, $a89b ; address of MBC30 bank
+;	inc [hl]
+;	jr nz, .finish
+;	dec hl
+;	inc [hl]
+;	jr nz, .finish
+;	dec [hl]
+;	inc hl
+;	dec [hl]
+;
+;.finish
+;	call CloseSRAM
+;	ret
 ; 3c1d6
 
 HandleBetweenTurnEffects: ; 3c1d6
@@ -1997,24 +1997,24 @@ GetMaxHP: ; 3ccac
 	ret
 ; 3ccc2
 
-Unreferenced_GetHalfHP: ; 3ccc2
-	ld hl, wBattleMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, wEnemyMonHP
-.ok
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	srl b
-	rr c
-	ld a, [hli]
-	ld [wBuffer2], a
-	ld a, [hl]
-	ld [wBuffer1], a
-	ret
+;Unreferenced_GetHalfHP: ; 3ccc2   ; CÓDIGO NO USADO
+;	ld hl, wBattleMonHP
+;	ld a, [hBattleTurn]
+;	and a
+;	jr z, .ok
+;	ld hl, wEnemyMonHP
+;.ok
+;	ld a, [hli]
+;	ld b, a
+;	ld a, [hli]
+;	ld c, a
+;	srl b
+;	rr c
+;	ld a, [hli]
+;	ld [wBuffer2], a
+;	ld a, [hl]
+;	ld [wBuffer1], a
+;	ret
 ; 3ccde
 
 CheckUserHasEnoughHP: ; 3ccde
@@ -6766,16 +6766,16 @@ CheckUnownLetter: ; 3eb75
 INCLUDE "data/wild/unlocked_unowns.asm"
 
 
-Unreferenced_SwapBattlerLevels: ; 3ebc7
-	push bc
-	ld a, [wBattleMonLevel]
-	ld b, a
-	ld a, [wEnemyMonLevel]
-	ld [wBattleMonLevel], a
-	ld a, b
-	ld [wEnemyMonLevel], a
-	pop bc
-	ret
+;Unreferenced_SwapBattlerLevels: ; 3ebc7
+;	push bc
+;	ld a, [wBattleMonLevel]
+;	ld b, a
+;	ld a, [wEnemyMonLevel]
+;	ld [wBattleMonLevel], a
+;	ld a, b
+;	ld [wEnemyMonLevel], a
+;	pop bc
+;	ret
 ; 3ebd8
 
 BattleWinSlideInEnemyTrainerFrontpic: ; 3ebd8
@@ -7142,19 +7142,19 @@ _LoadHPBar: ; 3eda6
 	ret
 ; 3edad
 
-Unreferenced_LoadHPExpBarGFX:
-	ld de, EnemyHPBarBorderGFX
-	ld hl, vTiles2 tile $6c
-	lb bc, BANK(EnemyHPBarBorderGFX), 4
-	call Get1bpp
-	ld de, HPExpBarBorderGFX
-	ld hl, vTiles2 tile $73
-	lb bc, BANK(HPExpBarBorderGFX), 6
-	call Get1bpp
-	ld de, ExpBarGFX
-	ld hl, vTiles2 tile $55
-	lb bc, BANK(ExpBarGFX), 8
-	jp Get2bpp
+;Unreferenced_LoadHPExpBarGFX:
+;	ld de, EnemyHPBarBorderGFX
+;	ld hl, vTiles2 tile $6c
+;	lb bc, BANK(EnemyHPBarBorderGFX), 4
+;	call Get1bpp
+;	ld de, HPExpBarBorderGFX
+;	ld hl, vTiles2 tile $73
+;	lb bc, BANK(HPExpBarBorderGFX), 6
+;	call Get1bpp
+;	ld de, ExpBarGFX
+;	ld hl, vTiles2 tile $55
+;	lb bc, BANK(ExpBarGFX), 8
+;	jp Get2bpp
 ; 3edd1
 
 EmptyBattleTextBox: ; 3edd1
@@ -8100,10 +8100,10 @@ TextJump_GoodComeBack: ; 3f352
 	db "@"
 ; 3f357
 
-Unreferenced_TextJump_ComeBack: ; 3f357
+;Unreferenced_TextJump_ComeBack: ; 3f357
 ; this function doesn't seem to be used
-	ld hl, TextJump_ComeBack
-	ret
+	;ld hl, TextJump_ComeBack
+	;ret
 ; 3f35b
 
 TextJump_ComeBack: ; 3f35b
@@ -8111,36 +8111,36 @@ TextJump_ComeBack: ; 3f35b
 	db "@"
 ; 3f360
 
-Unreferenced_HandleSafariAngerEatingStatus:
-	ld hl, wSafariMonEating
-	ld a, [hl]
-	and a
-	jr z, .angry
-	dec [hl]
-	ld hl, BattleText_WildMonIsEating
-	jr .finish
-
-.angry
-	dec hl ; wSafariMonAngerCount
-	ld a, [hl]
-	and a
-	ret z
-	dec [hl]
-	ld hl, BattleText_WildMonIsAngry
-	jr nz, .finish
-	push hl
-	ld a, [wEnemyMonSpecies]
-	ld [wCurSpecies], a
-	call GetBaseData
-	ld a, [wBaseCatchRate]
-	ld [wEnemyMonCatchRate], a
-	pop hl
-
-.finish
-	push hl
-	call Call_LoadTempTileMapToTileMap
-	pop hl
-	jp StdBattleTextBox
+;Unreferenced_HandleSafariAngerEatingStatus:   ;  CÓDIGO NO USADO
+;	ld hl, wSafariMonEating
+;	ld a, [hl]
+;	and a
+;	jr z, .angry
+;	dec [hl]
+;	ld hl, BattleText_WildMonIsEating
+;	jr .finish
+;
+;.angry
+;	dec hl ; wSafariMonAngerCount
+;	ld a, [hl]
+;	and a
+;	ret z
+;	dec [hl]
+;	ld hl, BattleText_WildMonIsAngry
+;	jr nz, .finish
+;	push hl
+;	ld a, [wEnemyMonSpecies]
+;	ld [wCurSpecies], a
+;	call GetBaseData
+;	ld a, [wBaseCatchRate]
+;	ld [wEnemyMonCatchRate], a
+;	pop hl
+;
+;.finish
+;	push hl
+;	call Call_LoadTempTileMapToTileMap
+;	pop hl
+;	jp StdBattleTextBox
 ; 3f390
 
 FillInExpBar: ; 3f390
@@ -8378,9 +8378,9 @@ StartBattle: ; 3f4c1
 	ret
 ; 3f4d9
 
-Unreferenced_DoBattle: ; 3f4d9
-	call DoBattle
-	ret
+;Unreferenced_DoBattle: ; 3f4d9   ; CODIGO NO USADO
+	;call DoBattle
+	;ret
 ; 3f4dd
 
 BattleIntro: ; 3f4dd
@@ -8567,56 +8567,56 @@ InitEnemyWildmon: ; 3f607
 	ret
 ; 3f662
 
-Unreferenced_Function3f662: ; 3f662
-	ld hl, wEnemyMonMoves
-	ld de, wListMoves_MoveIndicesBuffer
-	ld b, NUM_MOVES
-.loop
-	ld a, [de]
-	inc de
-	ld [hli], a
-	and a
-	jr z, .clearpp
-
-	push bc
-	push hl
-
-	push hl
-	dec a
-	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
-	pop hl
-
-	ld bc, wEnemyMonPP - (wEnemyMonMoves + 1)
-	add hl, bc
-	ld [hl], a
-
-	pop hl
-	pop bc
-
-	dec b
-	jr nz, .loop
-	ret
-
-.clear
-	xor a
-	ld [hli], a
-
-.clearpp
-	push bc
-	push hl
-	ld bc, wEnemyMonPP - (wEnemyMonMoves + 1)
-	add hl, bc
-	xor a
-	ld [hl], a
-	pop hl
-	pop bc
-	dec b
-	jr nz, .clear
-	ret
+;Unreferenced_Function3f662: ; 3f662    ; CÓDIGO NO USADO
+;	ld hl, wEnemyMonMoves
+;	ld de, wListMoves_MoveIndicesBuffer
+;	ld b, NUM_MOVES
+;.loop
+;	ld a, [de]
+;	inc de
+;	ld [hli], a
+;	and a
+;	jr z, .clearpp
+;
+;	push bc
+;	push hl
+;
+;	push hl
+;	dec a
+;	ld hl, Moves + MOVE_PP
+;	ld bc, MOVE_LENGTH
+;	call AddNTimes
+;	ld a, BANK(Moves)
+;	call GetFarByte
+;	pop hl
+;
+;	ld bc, wEnemyMonPP - (wEnemyMonMoves + 1)
+;	add hl, bc
+;	ld [hl], a
+;
+;	pop hl
+;	pop bc
+;
+;	dec b
+;	jr nz, .loop
+;	ret
+;
+;.clear
+;	xor a
+;	ld [hli], a
+;
+;.clearpp
+;	push bc
+;	push hl
+;	ld bc, wEnemyMonPP - (wEnemyMonMoves + 1)
+;	add hl, bc
+;	xor a
+;	ld [hl], a
+;	pop hl
+;	pop bc
+;	dec b
+;	jr nz, .clear
+;	ret
 ; 3f69e
 
 ExitBattle: ; 3f69e

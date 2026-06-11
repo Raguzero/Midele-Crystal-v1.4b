@@ -413,11 +413,11 @@ CopyTrainerName: ; 39984
 	ret
 ; 39990
 
-Function39990: ; 39990
+;Function39990: ; 39990
 ; This function is useless.
-	ld de, wStringBuffer1
-	push de
-	ld bc, NAME_LENGTH
-	pop de
-	ret
+	;ld de, wStringBuffer1
+	;push de
+	;ld bc, NAME_LENGTH
+	;pop de
+	;ret
 ; 39999
