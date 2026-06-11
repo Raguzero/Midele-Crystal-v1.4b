@@ -6654,11 +6654,11 @@ LoadEnemyMon: ; 3e8eb
 	ret z
 
 ; NUEVO EVS EN TRAINER POR NIVEL
-	ld a, [wBattleMode]
 	cp TRAINER_BATTLE
 	jr nz, .skip_boosts
 	call ApplyEnemyStatBoost
-	call BoostHappiness
+    ld a, $ff
+    ld [wEnemyMonHappiness], a
 .skip_boosts
 ; NUEVO EVS EN TRAINER POR NIVEL
 
@@ -7289,24 +7289,18 @@ GiveExperiencePoints: ; 3ee3b
 	jp z, .skip_stats ; fainted
 
 ; NUEVO PARA BADGE LEVEL CAP
-	push hl
-	push bc
 	ld hl, MON_LEVEL
 	add hl, bc
 	ld a, [hl]
-; NUEVO PARA BADGE LEVEL CAP
+
 	cp $64
-	jr z, .not_cap
+	jr z, .gain_exp
+	push bc
 	call GetBadgeLevel
 	cp b
 	pop bc
-	pop hl
 	jp nc, .skip_stats
-	jr .gain_exp
 
-.not_cap
-	pop bc
-	pop hl
 .gain_exp
 ; NUEVO PARA BADGE LEVEL CAP
 
@@ -9534,14 +9528,6 @@ BattleStartMessage: ; 3fc8b
 ; 3fd26
 
 ; NUEVO EVS EN TRAINERS
-; Boosts a mon happiness to
-; its maximum
-
-BoostHappiness:
-	ld hl, wEnemyMonHappiness
-	ld a, $ff
-	ld [hl], a
-	ret
 
 ; Boosts stats of each enemy party mon,
 ; including current HP by
@@ -9664,8 +9650,7 @@ ApplyEnemyStatBoost:
 	inc c
 	ld a, c
 	cp 6 ; Number of stats not including Max HP and current HP
-	jr z, .done
-	jr .stats_loop
+	jr nz, .stats_loop
 .done
 	ret
 
