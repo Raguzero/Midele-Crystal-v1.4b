@@ -35,9 +35,7 @@ BattleCommand_BeatUp: ; 35461
 	ld a, [wd002]
 	ld c, a
 	ld a, [wCurBattleMon]
-	; BUG: this can desynchronize link battles
-	; Change "cp [hl]" to "cp c" to fix
-	cp [hl]
+	cp c
 	ld hl, wBattleMonStatus
 	jr z, .active_mon
 	ld a, MON_STATUS
