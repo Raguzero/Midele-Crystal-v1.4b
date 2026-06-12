@@ -297,6 +297,15 @@ PokeBallEffect: ; e8a2
 	srl b
 	rr c
 
+	; Divide by 2 again if there's still something in the high byte
+	ld a, d
+	and a
+	jr z, .check_cur_low
+	srl d
+	rr e
+	srl b
+	rr c
+.check_cur_low
 	ld a, c
 	and a
 	jr nz, .okay_1
