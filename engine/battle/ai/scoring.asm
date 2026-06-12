@@ -3259,7 +3259,7 @@ AI_Cautious: ; 39418
 
 	call Random
 	cp 90 percent + 1
-	ret nc
+	jr nc, .asm_39425
 
 	inc [hl]
 	jr .asm_39425
