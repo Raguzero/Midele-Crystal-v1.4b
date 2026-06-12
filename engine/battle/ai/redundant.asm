@@ -113,7 +113,7 @@ AI_Redundant: ; 2c41a
 
 .Nightmare: ; 2c4d7
 	ld a, [wBattleMonStatus]
-	and a
+	and SLP
 	jr z, .Redundant
 	ld a, [wPlayerSubStatus1]
 	bit SUBSTATUS_NIGHTMARE, a
