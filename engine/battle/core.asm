@@ -5189,6 +5189,10 @@ BattleMenu_Pack: ; 3e1c7
 	and a
 	jp nz, .ItemsCantBeUsed
 
+	ld a, [wBattleMode]
+    cp TRAINER_BATTLE
+    jp z, .ItemsCantBeUsed 
+
 	ld a, [wInBattleTowerBattle]
 	and a
 	jp nz, .ItemsCantBeUsed
