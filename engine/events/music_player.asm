@@ -166,7 +166,7 @@ endr
 ; Music menu songs
 MusicMenuSongs:
   db MUSIC_FINALBATTLE
-  db MUSIC_MOTHERBEASTBATTLE
+  db MUSIC_NGE_INTRO
   db MUSIC_ELITEFOURUNOVA
 	db MUSIC_WALLYBATTLE
 	db MUSIC_LOOKZINNIA
@@ -191,7 +191,7 @@ rept NUM_ORIGINAL_MUSIC
   dw .None
 endr
   dw .FinalBattle
-  dw .MotherBeastBattle
+  dw .Evangelion
   dw .Elite4UnovaBattle
   dw .WallyBattle
   dw .LookZinnia
@@ -212,7 +212,7 @@ endr
 
 .None:              db "NONE@"
 .FinalBattle:       db "FINAL BATTLE@"
-.MotherBeastBattle: db "MOTHER BEAST@"
+.Evangelion: 		db "EVANGELION@"
 .Elite4UnovaBattle: db "ELITE4 UNOVA@"
 .WallyBattle:       db "WALLY BATTLE@"
 .LookZinnia:        db "LOOK ZINNIA@"

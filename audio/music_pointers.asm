@@ -113,7 +113,7 @@ Music: ; e906e
 
 ; New added songs
 	dba Music_FinalBattle
-	dba Music_MotherBeastBattle
+	dba Music_NGE_Intro ; A Cruel Angel's Thesis (EVANGELION)
 	dba Music_UnovaEliteFourBattle
 	dba Music_WallyBattle
 	dba Music_LookZinnia

@@ -693,7 +693,7 @@ OakSpeech: ; 0x5f99
 	call RotateThreePalettesRight
 	call ClearTileMap
 
-	ld a, WOOPER
+	ld a, BOMBSEEKER
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData
@@ -753,7 +753,7 @@ OakText1: ; 0x6045
 OakText2: ; 0x604a
 	text_jump _OakText2
 	start_asm
-	ld a, WOOPER
+	ld a, BOMBSEEKER
 	call PlayMonCry
 	call WaitSFX
 	ld hl, OakText3
@@ -1172,7 +1172,7 @@ TitleScreenEntrance: ; 62bc
 	ld [hLCDCPointer], a
 
 ; Play the title screen music.
-	ld de, MUSIC_TITLE
+	ld de, MUSIC_NGE_INTRO
 	call PlayMusic
 
 	ld a, $88

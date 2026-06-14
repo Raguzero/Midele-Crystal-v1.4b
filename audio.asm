@@ -145,7 +145,6 @@ INCLUDE "audio/music/postcredits.asm"
 SECTION "Custom Songs 1", ROMX
 
 INCLUDE "audio/music/finalbattle.asm"
-INCLUDE "audio/music/motherbeast.asm"
 INCLUDE "audio/music/elitefourunova.asm"
 INCLUDE "audio/music/wally.asm"
 INCLUDE "audio/music/zinnia.asm"
@@ -167,6 +166,7 @@ INCLUDE "audio/music/zinniabattle.asm"
 INCLUDE "audio/music/evergrandecity.asm"
 INCLUDE "audio/music/xylegendbattle.asm"
 INCLUDE "audio/music/heartmulholland.asm"
+INCLUDE "audio/music/evangelion.asm"
 
 SECTION "Sound Effects", ROMX
 

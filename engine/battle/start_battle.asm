@@ -369,7 +369,7 @@ PlayBattleMusic: ; 2ee6c
 	; Load trainer id at a
 	; Load music at de
 	ld a, b
-	ld de, MUSIC_MOTHERBEASTBATTLE
+	ld de, MUSIC_NGE_INTRO
 	; If the trainer id matches, done
 	cp MICOLO
 	jr z, .done_custom_music
