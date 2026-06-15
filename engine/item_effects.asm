@@ -201,6 +201,10 @@ PokeBallEffect: ; e8a2
 	ld a, [wBattleMode]
 	dec a
 	jp nz, UseBallInTrainerBattle
+	
+	ld a, [wBattleType]
+	cp BATTLETYPE_TUTORIAL
+	jr z, .room_in_party
 
 	call IsMicoloHideoutWildmon
 	jp c, UseBallInLevel100Mon
