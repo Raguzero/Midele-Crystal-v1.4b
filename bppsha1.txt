@@ -723,7 +723,7 @@ c6cda2014fffd4ad476ef3903c983ec8d2dbdfb5 *gfx/overworld/trainer_battle_pokeball_
 22b67e53a421ed25cf63571b68583bfd04ded71d *gfx/pack/pack_menu.2bpp
 244979e0b9f7089e6c4542862f62315e2f23528b *gfx/pc/pc.2bpp
 43f467f259b514399d0da479a8a892f849238a81 *gfx/pc/pc_mail.2bpp
-eab3142003fc6d8c2c4a343f6d7e12c318a7852a *gfx/player/chris.2bpp
+ebedd71d866e9d9cb84c22c29b3b0cdb8c00477b *gfx/player/chris.2bpp
 47b07f305e3d2414032e77e0f6f69c48248bb749 *gfx/player/chris_back.2bpp
 f0ba98ba594e4c044d943b58827df28f0a343cff *gfx/player/kris.2bpp
 f23f1d9271d62b98bd24dcfc3d6ff876dd4734c9 *gfx/player/kris_back.2bpp
