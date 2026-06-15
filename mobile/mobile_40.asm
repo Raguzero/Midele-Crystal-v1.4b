@@ -727,7 +727,7 @@ Function100493: ; 100493
 Function100495: ; 100495
 	jr asm_100497
 
-asm_100497
+asm_100497:
 	call Function100337
 	ret c
 	ret z
@@ -2320,7 +2320,7 @@ Function100eb4: ; 100eb4
 	and a
 	call Function100eca
 
-asm_100eb8
+asm_100eb8:
 	ld hl, wcd68
 	inc [hl]
 	ld a, [hl]
@@ -2332,7 +2332,7 @@ asm_100eb8
 Function100ec4: ; 100ec4
 	ret
 
-Function100ec5
+Function100ec5:
 	ld hl, wcd67
 	inc [hl]
 	ret
@@ -3152,7 +3152,7 @@ Function101406: ; 101406
 	and a
 	ret
 
-asm_101416
+asm_101416:
 	scf
 	ret
 ; 101418

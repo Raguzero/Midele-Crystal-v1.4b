@@ -11,7 +11,7 @@ ProfOaksPC: ; 0x265d3
 	call ExitMenu
 	ret
 
-ProfOaksPCBoot ; 0x265ee
+ProfOaksPCBoot: ; 0x265ee
 	ld hl, OakPCText2
 	call PrintText
 	call Rate

@@ -301,7 +301,7 @@ BattleAnim_Dazzling_Gleam:
 	anim_ret
 ; c92c1
 
-BattleAnim_ThrowPokeBall
+BattleAnim_ThrowPokeBall:
 	anim_if_param_equal NO_ITEM, .TheTrainerBlockedTheBall
 	anim_if_param_equal MASTER_BALL, .MasterBall
 	anim_if_param_equal ULTRA_BALL, .UltraBall
