@@ -93,12 +93,12 @@ EngineFlags: ; 80462
 	engine_flag wVisitedSpawns, SPAWN_CIANWOOD
 	engine_flag wVisitedSpawns, SPAWN_GOLDENROD
 	engine_flag wVisitedSpawns, SPAWN_OLIVINE
-	engine_flag wVisitedSpawns, SPAWN_ECRUTEAK ; $48
+	engine_flag wVisitedSpawns, SPAWN_BATTLE_TOWER
+	engine_flag wVisitedSpawns, SPAWN_ECRUTEAK ; $49
 	engine_flag wVisitedSpawns, SPAWN_MAHOGANY
 	engine_flag wVisitedSpawns, SPAWN_LAKE_OF_RAGE
 	engine_flag wVisitedSpawns, SPAWN_BLACKTHORN
 	engine_flag wVisitedSpawns, SPAWN_MT_SILVER
-	engine_flag wVisitedSpawns, NUM_SPAWNS ; unused
 
 	engine_flag wLuckyNumberShowFlag, LUCKYNUMBERSHOW_GAME_OVER_F
 

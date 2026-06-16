@@ -8,10 +8,11 @@ BattleTowerOutside_MapScripts:
 	db 0 ; scene scripts
 
 	db 2 ; callbacks
-	callback MAPCALLBACK_TILES, .Callback1
+	callback MAPCALLBACK_NEWMAP, .Callback1
 	callback MAPCALLBACK_OBJECTS, .Callback2
 
 .Callback1:
+	setflag ENGINE_FLYPOINT_BATTLE_TOWER
 	return
 
 .Callback2:

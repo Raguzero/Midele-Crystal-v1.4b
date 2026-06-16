@@ -14,6 +14,7 @@ Flypoints: ; 91c5e
 	flypoint GOLDENROD,    GOLDENROD_CITY
 	flypoint ECRUTEAK,     ECRUTEAK_CITY
 	flypoint OLIVINE,      OLIVINE_CITY
+	flypoint BATTLE_TOWER, BATTLE_TOWER
 	flypoint CIANWOOD,     CIANWOOD_CITY
 	flypoint MAHOGANY,     MAHOGANY_TOWN
 	flypoint LAKE_OF_RAGE, LAKE_OF_RAGE
