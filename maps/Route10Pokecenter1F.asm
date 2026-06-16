@@ -3,6 +3,7 @@
 	const ROUTE10POKECENTER1F_GENTLEMAN
 	const ROUTE10POKECENTER1F_GYM_GUY
 	const ROUTE10POKECENTER1F_COOLTRAINER_F
+	const ROUTE10POKECENTER1F_REMINDER
 
 Route10Pokecenter1F_MapScripts:
 	db 0 ; scene scripts
@@ -33,6 +34,14 @@ Route10Pokecenter1FGymGuyScript:
 
 Route10Pokecenter1FCooltrainerFScript:
 	jumptextfaceplayer Route10Pokecenter1FCooltrainerFText
+	
+MoveReminderScriptRoute10:
+	faceplayer
+	opentext
+	special MoveReminder
+	waitbutton
+	closetext
+	end
 
 Route10Pokecenter1FGentlemanText:
 	text "A #MON CENTER"
@@ -90,8 +99,9 @@ Route10Pokecenter1F_MapEvents:
 
 	db 0 ; bg events
 
-	db 4 ; object events
+	db 5 ; object events
 	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route10Pokecenter1FNurseScript, -1
 	object_event  7,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route10Pokecenter1FGentlemanScript, -1
-	object_event  7,  2, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route10Pokecenter1FGymGuyScript, -1
+	object_event  7,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route10Pokecenter1FGymGuyScript, -1
 	object_event  1,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route10Pokecenter1FCooltrainerFScript, -1
+	object_event  6,  1, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoveReminderScriptRoute10, -1

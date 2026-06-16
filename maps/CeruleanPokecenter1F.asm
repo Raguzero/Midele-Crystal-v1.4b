@@ -2,6 +2,7 @@
 	const CERULEANPOKECENTER1F_NURSE
 	const CERULEANPOKECENTER1F_SUPER_NERD
 	const CERULEANPOKECENTER1F_GYM_GUY
+	const CERULEANPOKECENTER1F_REMINDER
 
 CeruleanPokecenter1F_MapScripts:
 	db 0 ; scene scripts
@@ -21,6 +22,14 @@ CeruleanPokecenter1FSuperNerdScript:
 
 CeruleanPokecenter1FGymGuyScript:
 	jumptextfaceplayer CeruleanPokecenter1FGymGuyText
+	
+MoveReminderScriptCerulean:
+	faceplayer
+	opentext
+	special MoveReminder
+	waitbutton
+	closetext
+	end
 
 CeruleanPokecenter1FSuperNerdText:
 	text "For battles, I'd"
@@ -72,7 +81,8 @@ CeruleanPokecenter1F_MapEvents:
 
 	db 0 ; bg events
 
-	db 3 ; object events
+	db 4 ; object events
 	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeruleanPokecenter1FNurseScript, -1
 	object_event  8,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeruleanPokecenter1FSuperNerdScript, -1
 	object_event  1,  5, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeruleanPokecenter1FGymGuyScript, -1
+	object_event  6,  1, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoveReminderScriptCerulean, -1

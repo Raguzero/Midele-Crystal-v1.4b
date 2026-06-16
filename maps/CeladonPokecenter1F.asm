@@ -4,6 +4,7 @@
 	const CELADONPOKECENTER1F_PHARMACIST
 	const CELADONPOKECENTER1F_COOLTRAINER_F
 	const CELADONPOKECENTER1F_EUSINE
+	const CELADONPOKECENTER1F_REMINDER
 
 CeladonPokecenter1F_MapScripts:
 	db 0 ; scene scripts
@@ -21,6 +22,14 @@ CeladonPokecenter1FCooltrainerFScript:
 
 CeladonPokecenter1FPharmacistScript:
 	jumptextfaceplayer CeladonPokecenter1FPharmacistText
+	
+MoveReminderScriptCeladon:
+	faceplayer
+	opentext
+	special MoveReminder
+	waitbutton
+	closetext
+	end
 
 CeladonEusine:
 	faceplayer
@@ -155,9 +164,10 @@ CeladonPokecenter1F_MapEvents:
 
 	db 0 ; bg events
 
-	db 5 ; object events
+	db 6 ; object events
 	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonPokecenter1FNurseScript, -1
 	object_event  1,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonPokecenter1FGentlemanScript, -1
 	object_event  0,  3, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonPokecenter1FPharmacistScript, -1
 	object_event  8,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonPokecenter1FCooltrainerFScript, -1
 	object_event  4,  3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
+	object_event  6,  1, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoveReminderScriptCeladon, -1

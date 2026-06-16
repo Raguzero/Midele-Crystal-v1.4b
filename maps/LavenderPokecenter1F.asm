@@ -3,6 +3,7 @@
 	const LAVENDERPOKECENTER1F_GENTLEMAN
 	const LAVENDERPOKECENTER1F_TEACHER
 	const LAVENDERPOKECENTER1F_YOUNGSTER
+	const LAVENDERPOKECENTER1F_REMINDER
 
 LavenderPokecenter1F_MapScripts:
 	db 0 ; scene scripts
@@ -30,6 +31,14 @@ LavenderPokecenter1FYoungsterScript:
 
 .ReturnedMachinePart:
 	writetext LavenderPokecenter1FYoungsterText_ReturnedMachinePart
+	waitbutton
+	closetext
+	end
+	
+MoveReminderScriptLavender:
+	faceplayer
+	opentext
+	special MoveReminder
 	waitbutton
 	closetext
 	end
@@ -90,8 +99,9 @@ LavenderPokecenter1F_MapEvents:
 
 	db 0 ; bg events
 
-	db 4 ; object events
+	db 5 ; object events
 	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavenderPokecenter1FNurseScript, -1
 	object_event  7,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavenderPokecenter1FGentlemanScript, -1
 	object_event  5,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LavenderPokecenter1FTeacherScript, -1
 	object_event  1,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LavenderPokecenter1FYoungsterScript, -1
+	object_event  6,  1, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoveReminderScriptLavender, -1

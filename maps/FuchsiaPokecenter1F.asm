@@ -3,6 +3,7 @@
 	const FUCHSIAPOKECENTER1F_COOLTRAINER_M
 	const FUCHSIAPOKECENTER1F_COOLTRAINER_F
 	const FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR
+	const FUCHSIAPOKECENTER1F_REMINDER
 
 FuchsiaPokecenter1F_MapScripts:
 	db 1 ; scene scripts
@@ -40,6 +41,14 @@ FuchsiaPokecenter1FJanineImpersonatorScript:
 	faceplayer
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_LASS
 	special LoadUsedSpritesGFX
+	end
+	
+MoveReminderScriptFuchsia:
+	faceplayer
+	opentext
+	special MoveReminder
+	waitbutton
+	closetext
 	end
 
 FuchsiaPokecenter1FJanineImpersonatorSpinMovement:
@@ -98,8 +107,9 @@ FuchsiaPokecenter1F_MapEvents:
 
 	db 0 ; bg events
 
-	db 4 ; object events
+	db 5 ; object events
 	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FuchsiaPokecenter1FNurseScript, -1
 	object_event  8,  4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FuchsiaPokecenter1FCooltrainerMScript, -1
 	object_event  1,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FuchsiaPokecenter1FCooltrainerFScript, -1
 	object_event  5,  3, SPRITE_JANINE_IMPERSONATOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaPokecenter1FJanineImpersonatorScript, -1
+	object_event  6,  1, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoveReminderScriptFuchsia, -1
