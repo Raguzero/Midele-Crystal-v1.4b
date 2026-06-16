@@ -1887,10 +1887,10 @@ PlaceMoveData: ; 13256
 	hlcoord 12, 12
 	ld de, String_MoveAtk
 	call PlaceString
-	hlcoord 12, 13
+	hlcoord 11, 13
 	ld de, String_MoveAcc
 	call PlaceString
-	hlcoord 4, 13
+	hlcoord 2, 13
 	ld de, String_MoveEff
 	call PlaceString
 
@@ -1905,7 +1905,7 @@ PlaceMoveData: ; 13256
 	ld a, BANK(Moves)
 	call GetFarByte
 	hlcoord 16, 12
-	cp 2
+	cp 1
 	jr c, .status_move
 	
 ; Verifify if physical or special
@@ -1956,8 +1956,10 @@ PlaceMoveData: ; 13256
 	ld [wBuffer1], a
 	ld de, wBuffer1
 	lb bc, 1, 3
-	hlcoord 16, 13
+	hlcoord 15, 13
 	call PrintNum
+	ld [hl], "<%>" ; displays percent symbol
+	hlcoord 5, 8
 ; Print move effect chance
 	ld a, [wCurSpecies]
 	ld bc, MOVE_LENGTH
@@ -1971,14 +1973,16 @@ PlaceMoveData: ; 13256
 	ld [wBuffer1], a
 	ld de, wBuffer1
 	lb bc, 1, 3
-	hlcoord 8, 13
+	hlcoord 6, 13
 	call PrintNum
+	ld [hl], "<%>" ; displays percent symbol
+	hlcoord 6, 8
 	jr .skip_null_chance
 
 .if_null_chance
 	ld de, String_MoveNoPower
 	ld bc, 3
-	hlcoord 8, 13
+	hlcoord 6, 13
 	call PlaceString
 
 .skip_null_chance
@@ -2067,7 +2071,7 @@ String_MoveType_Bottom: ; 132c2
 	db "┌─────────@"
 ; 132ca
 String_MoveAtk: ; 132ca
-	db "ATK/@"
+	db "POW/@"
 String_MoveAcc:
 	db "ACC/@"
 String_MoveEff:

@@ -102,7 +102,8 @@
 	charmap "<",		 $bc
 	charmap "=",		 $bd
 	charmap "+",		 $be
-	charmap "<%>",		 $bf
+	charmap "<%>",		 $c9
+	charmap "<⁂>",       $ca
 
 ; Actual characters (from gfx/font/font.png)
 
