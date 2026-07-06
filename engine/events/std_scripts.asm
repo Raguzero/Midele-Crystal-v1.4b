@@ -1171,6 +1171,10 @@ PhoneFullMScript:
 	end
 
 RematchMScript:
+; NUEVO Play encounter music for phone contact rematches
+	loadmemtrainer
+	encountermusic
+; NUEVO Play encounter music for phone contact rematches
 	checkcode VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
@@ -1646,6 +1650,10 @@ PhoneFullFScript:
 	end
 
 RematchFScript:
+; NUEVO Play encounter music for phone contact rematches
+	loadmemtrainer
+	encountermusic
+; NUEVO Play encounter music for phone contact rematches
 	checkcode VAR_CALLERID
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
