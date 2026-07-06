@@ -42,6 +42,10 @@ GetTMHMItemMove: ; 2c7b6 (b:47b6)
 	ret
 
 AskTeachTMHM: ; 2c7bf (b:47bf)
+; NUEVO Play a sound when booting TMs/HMs
+	ld de, SFX_CHOOSE_PC_OPTION
+	call WaitPlaySFX
+; NUEVO Play a sound when booting TMs/HMs
 	ld hl, wOptions
 	ld a, [hl]
 	push af
