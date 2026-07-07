@@ -3889,6 +3889,31 @@ UpdateMoveData: ; 35e40
 
 ; 35e5c
 
+CheckForStatusIfAlreadyHasAny:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	ld d, h
+	ld e, l
+	and SLP
+	ld hl, AlreadyAsleepText
+	ret nz
+	
+	ld a, [de]
+	bit FRZ, a
+	ld hl, AlreadyFrozenText
+	ret nz
+	
+	bit PAR, a
+	ld hl, AlreadyParalyzedText
+	ret nz
+	
+	bit PSN, a
+	ld hl, AlreadyPoisonedText
+	ret nz
+	
+	bit BRN, a
+	ld hl, AlreadyBurnedText
+	ret
 
 BattleCommand_SleepTarget: ; 35e5c
 ; sleeptarget
@@ -3905,22 +3930,12 @@ BattleCommand_SleepTarget: ; 35e5c
 	jr .fail
 
 .not_protected_by_item
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	ld d, h
-	ld e, l
-	ld a, [de]
-	and SLP
-	ld hl, AlreadyAsleepText
+	call CheckForStatusIfAlreadyHasAny
 	jr nz, .fail
 
 	ld a, [wAttackMissed]
 	and a
 	jp nz, PrintDidntAffect2
-
-	ld a, [de]
-	and a
-	jr nz, .fail
 
 	call CheckSubstituteOpp
 	jr nz, .fail
@@ -4005,11 +4020,7 @@ BattleCommand_Poison: ; 35f2c
 	call CheckIfTargetIsPoisonType
 	jp z, .failed
 
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	ld b, a
-	ld hl, AlreadyPoisonedText
-	and 1 << PSN
+	call CheckForStatusIfAlreadyHasAny
 	jp nz, .failed
 
 	call GetOpponentItem
@@ -6300,9 +6311,7 @@ BattleCommand_Confuse_CheckSnore_Swagger_ConfuseHit: ; 36db6
 BattleCommand_Paralyze: ; 36dc7
 ; paralyze
 
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	bit PAR, a
+	call CheckForStatusIfAlreadyHasAny
 	jr nz, .paralyzed
 	ld a, [wTypeModifier]
 	and $7f
@@ -6319,10 +6328,6 @@ BattleCommand_Paralyze: ; 36dc7
 	jp StdBattleTextBox
 
 .no_item_protection
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	and a
-	jr nz, .failed
 	ld a, [wAttackMissed]
 	and a
 	jr nz, .failed
@@ -6345,8 +6350,9 @@ BattleCommand_Paralyze: ; 36dc7
 	jp CallBattleCore
 
 .paralyzed
+	push hl
 	call AnimateFailedMove
-	ld hl, AlreadyParalyzedText
+	pop hl
 	jp StdBattleTextBox
 
 .failed

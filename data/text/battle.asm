@@ -805,6 +805,16 @@ AlreadyAsleepText: ; 0x811c1
 	prompt
 ; 0x811d5
 
+AlreadyBurnedText:
+	text "<TARGET>'s"
+	line "already burned!"
+	prompt
+
+AlreadyFrozenText:
+	text "<TARGET>'s"
+	line "already frozen!"
+	prompt
+
 WasPoisonedText: ; 0x811d5
 	text "<TARGET>"
 	line "was poisoned!"
