@@ -2,6 +2,7 @@
 	const ROUTE32POKECENTER1F_NURSE
 	const ROUTE32POKECENTER1F_FISHING_GURU
 	const ROUTE32POKECENTER1F_COOLTRAINER_F
+	const ROUTE32POKECENTER1F_REMINDER
 
 Route32Pokecenter1F_MapScripts:
 	db 0 ; scene scripts
@@ -36,6 +37,14 @@ Route32Pokecenter1FFishingGuruScript:
 
 .GotOldRod:
 	writetext Route32Pokecenter1FFishingGuruText_After
+	waitbutton
+	closetext
+	end
+	
+MoveReminderScriptRoute32:
+	faceplayer
+	opentext
+	special MoveReminder
 	waitbutton
 	closetext
 	end
@@ -104,7 +113,8 @@ Route32Pokecenter1F_MapEvents:
 
 	db 0 ; bg events
 
-	db 3 ; object events
+	db 4 ; object events
 	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route32Pokecenter1FNurseScript, -1
 	object_event  1,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route32Pokecenter1FFishingGuruScript, -1
-	object_event  6,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route32Pokecenter1FCooltrainerFScript, -1
+	object_event  6,  5, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route32Pokecenter1FCooltrainerFScript, -1
+	object_event  6,  1, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoveReminderScriptRoute32, -1
