@@ -55,9 +55,9 @@ HiddenPowerGuyText2:
 	line "power of #MON"
 	cont "for attacking."
 
-	para "Remember this: its"
-	line "type and power de-"
-	cont "pend on the #-"
+	para "Remember this:"
+	line "its type depend"
+	cont "on the #-"
 	cont "MON using it."
 	done
 

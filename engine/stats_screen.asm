@@ -1507,23 +1507,10 @@ PlaceHiddenPower:
 	call GetHiddenPowerTypeString
 	hlcoord 0, 15
 	call PlaceString
-	; Power
-	hlcoord 0, 16
-	ld de, .HiddenPowerPWRString
-	call PlaceString
-	call GetHiddenPowerPower
-
-	hlcoord 4, 16
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	ld de, wBuffer1
-	call PrintNum
-
 	ret
 
 .HiddenPowerString
 	db "H.POWER@"
-.HiddenPowerPWRString:
-	db "PWR@"
 
 ; Gets hidden power type string location of wTempMon in de
 GetHiddenPowerTypeString:
