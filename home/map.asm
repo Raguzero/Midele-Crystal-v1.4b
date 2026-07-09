@@ -385,12 +385,12 @@ CheckIndoorMap:: ; 22f4
 ; 2300
 
 ; unused
-	cp INDOOR
-	ret z
-	cp GATE
-	ret z
-	cp ENVIRONMENT_5
-	ret
+	;cp INDOOR
+	;ret z
+	;cp GATE
+	;ret z
+	;cp ENVIRONMENT_5
+	;ret
 ; 2309
 
 LoadMapAttributes:: ; 2309

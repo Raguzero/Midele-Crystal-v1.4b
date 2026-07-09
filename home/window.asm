@@ -100,6 +100,6 @@ SafeUpdateSprites:: ; 2e31
 	ret
 
 ; unused
-	scf
-	ret
+	;scf
+	;ret
 ; 2e50
