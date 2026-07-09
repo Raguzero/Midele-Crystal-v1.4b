@@ -43,6 +43,7 @@ TrainerAvader:
 	end
 
 AvaderSeenText:
+	ntag "A.VADER"
     text "Tu debes de ser"
 	line "quien derroto al"
 	para "TEAM ROCKET."
@@ -63,6 +64,7 @@ AvaderBeatenText:
     done
 
 AvaderAfterBattleText:
+	ntag "A.VADER"
     text "Yo manipule a"
 	line "GIOVANNI para"
 	cont "crear el"
@@ -76,7 +78,7 @@ AvaderAfterBattleText:
     para "Yo queria crear"
 	line "la forma de vida"
 	cont "definitiva:"
-    para "EL MICOLOL"
+    para "EL MICOLOL!"
 
     para "Pero la mayoria de"
 	line "los experimentos"

@@ -37,26 +37,26 @@ Zzz3Battle:
 	end
 
 ScholarZzz3SeenText:
+    ntag "Zzz"
 	text "Asi que eres"
 	line "<PLAYER>!"
 	cont "He conseguido" 
 	cont "todas las medallas"
-	cont "de KANTO"
-	cont "y me han dado"
-	cont "permiso para"
-	para "entrar aqui."
+	cont "de KANTO y me han"
+	cont "dado permiso para"
+	cont "entrar aqui."
 	
 	para "He oido rumores de"
-	line "que un tal Red"
+	line "que un tal RED"
 	cont "esta aqui."
 	cont "Sera mi sensei"
-	para "Red Crow?"
+	cont "RED KROW?"
 	
 	para "Pero no he tenido"
 	line "suerte, maldita"
 	cont "sea!!"
 	cont "Donde estas"
-	para "sensei!"
+	cont "sensei!"
 	
 	para "Y tu... que sepas"
 	line "que he entrenado" 
@@ -69,7 +69,7 @@ ScholarZzz3SeenText:
 	cont "Que pasa?" 
 	cont "quiero luchar!!"
 	cont "Pero es que"
-	para "nadie lucha?"
+	cont "nadie lucha?"
 	
 	para "Sois todos unos"
 	line "cobardes!"
@@ -91,12 +91,13 @@ ScholarZzz3LossText:
 	done
 
 ScholarZzz3AfterBattleText:
+    ntag "Zzz"
 	text "Donde estas sensei"
-	line "(a)Red Crow"
-	cont "(a)Red Crow"
+	line "(a)RED KROW"
+	cont "(a)RED KROW"
 	cont "Te estoy"
 	cont "mencionando"
-	para "(a)Red Crow"
+	para "(a)RED KROW"
 	
 	para "Me vuelvo a"
 	line "a casa."

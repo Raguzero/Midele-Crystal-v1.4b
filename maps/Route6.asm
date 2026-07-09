@@ -196,14 +196,14 @@ PicnickerSelinaAfterBattleText:
 	done
 
 ScholarZzzSeenText:
+    ntag "Zzz"
 	text "Yo no se ingles"
 	line "asi que te"
 	cont "aguantas"
 	cont "pero yo soy Zzz"
-	para "el mas grande"
-	
-	para "entrenador que"
-	line "ha habido jamas."
+	cont "el mas grande"
+	cont "entrenador que"
+	cont "ha habido jamas."
 	
 	para "Viajare a"
 	line "cualquier lugar,"
@@ -211,15 +211,15 @@ ScholarZzzSeenText:
 	cont "cualquier rincon,"
 	cont "hasta que" 
 	cont "encuentre a mi"
-	para "sensei Red Krow!!"
+	cont "sensei RED KROW!!"
 	
 	para "Lo has visto?"
 	line "Has visto a mi"
-	para "sensei Red Crow?"
+	cont "sensei RED KROW?"
 	
 	para "Pues que sepas que"
 	line "ahora te reto a un"
-	para "combate Pokemon."
+	cont "combate POKéMON."
 	
 	para "O tienes miedo?"
 	line "eh eh eh eh!!"
@@ -229,10 +229,10 @@ ScholarZzzBeatenText:
 	text "Noooooooo!!"
 	line "no se valen"
 	cont "trampas"
-	para "ni Pkhex"
+	cont "ni Pkhex."
 	
-	para "Sensei Red"
-	line "Crow!!"
+	para "Sensei RED"
+	line "KROW!!"
 	cont "Donde estas?"
 	done
 
@@ -242,6 +242,7 @@ ScholarZzzLossText:
 	done
 
 ScholarZzzAfterBattleText:
+    ntag "Zzz"
 	text "No usaste"
 	line "equipo monotipo"
 	para "eso no vale!"
@@ -252,7 +253,7 @@ ScholarZzzAfterBattleText:
 	para "Seguire la"
 	line "busqueda para"
 	cont "encontrar a mi"
-	para "sensei Red Crow."
+	para "sensei RED KROW."
 	
 	para "Nos volveremos"
 	line "a ver <PLAYER>," 

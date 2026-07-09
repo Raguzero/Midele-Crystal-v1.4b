@@ -766,6 +766,7 @@ TextCommands:: ; 1410
 	dw Text_TX_STRINGBUFFER  ; TX_STRINGBUFFER
 	dw Text_TX_DAY           ; TX_DAY
 	dw Text_TX_FAR           ; TX_FAR
+	dw Text_TX_NAMETAG       ; TX_NAMETAG ; ntag
 ; 143e
 
 Text_TX:: ; 143e
@@ -1086,6 +1087,26 @@ Text_LINK_WAIT_BUTTON:: ; 1562
 	pop hl
 	ret
 ; 156a
+
+Text_TX_NAMETAG::
+; write on the top line of the textbox
+;	push bc
+	ld d, h
+	ld e, l
+	hlcoord TEXTBOX_INNERX, TEXTBOX_Y
+	call PlaceString
+	inc de
+	push de
+	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY - 1
+	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
+	call ClearBox
+;	pop de
+;	ld h, d
+;	ld l, e
+	pop hl
+	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY
+;	pop bc
+	ret
 
 Text_TX_STRINGBUFFER:: ; 156a
 ; Print a string from one of the following:

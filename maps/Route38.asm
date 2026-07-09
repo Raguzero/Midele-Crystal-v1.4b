@@ -356,6 +356,7 @@ OfficerAlliareScript:
 	end
 
 OfficerAlliareSeenText:
+    ntag "ALLIARE"
 	text "Donde crees que"
 	line "vas?"
 
@@ -384,6 +385,7 @@ OfficerAlliareWinText:
 	done
 
 OfficerAlliareAfterText:
+    ntag "ALLIARE"
 	text "Me ha llegado un"
 	line "mensaje de SION."
 
@@ -399,6 +401,7 @@ OfficerAlliareAfterText:
 	done
 
 OfficerAlliareDaytimeText:
+    ntag "ALLIARE"
 	text "Eh, joven."
 	line "Mejor que no"
 	cont "andes por aqui"

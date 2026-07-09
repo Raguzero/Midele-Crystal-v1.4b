@@ -101,9 +101,10 @@ BirdKeeperDenisAfterBattleText:
 	done
 
 CooltrainermGrimSeenText:
+    ntag "GRIM"
 	text "You'll bend the"
 	line "knee or"
-	para "destroy you."
+	cont "destroy you."
 	done
 
 CooltrainermGrimBeatenText:
@@ -114,6 +115,7 @@ CooltrainermGrimBeatenText:
 	done
 
 CooltrainermGrimAfterBattleText:
+    ntag "GRIM"
 	text "Did you heard"
 	line "about the Lord"
 	cont "of Light"

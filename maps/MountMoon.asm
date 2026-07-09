@@ -117,38 +117,45 @@ TrainerPsychicHypeantonio:
 	end
 	
 Psychic_THypeantoSeenText:
-    text "I'm trying to find"
-	line "the origins of the" 
-	cont "legendary Pokemon"
-	para "Zygarde."
+	ntag "HYPEANTO"
+    text "Estoy intentando"
+	line "encontrar el"
+	cont "origen del POKéMON" 
+	cont "legendario"
+	cont "ZYGARDE."
 	
-	para "Maybe this region"
-	line "could have some"
-	para "clues..."
+	para "Tal vez esta"
+	line "region tenga"
+	cont "algunas pistas."
 	
-	para "Right now my HYPE"
-	line "is rising ABOVE"
-	cont "9000!!!"
-	cont "Can you feel it?.." 
-	cont "Can you feel the" 
-	cont "maximum power of"
+	para "Ahora mismo mi"
+	line "HYPE esta"
+	cont "subiendo por"
+	cont "encima de 9000!"
+
+	para "Puedes sentirlo?" 
+	line "Puedes sentir el"
+	cont "maximo poder del" 
 	cont "HYPE?"
 	done
 
 Psychic_THypeantoBeatenText:
-    text "Maybe I should  "
-	line "make a [Theory]"
-	cont "about this"
-	cont "battle..."
+    text "Tal vez deberia"
+	line "hacer una [Teoria]"
+	cont "sobre esta"
+	cont "batalla..."
     done
 
 Psychic_THypeantoAfterBattleText
-    text "I think this place"
-	line "might be linked"
-	cont "with Terminus"
-	cont "Cave..."
-	cont "They're both caves"
-    cont "after all!"
+	ntag "HYPEANTO"
+    text "Creo que este"
+	line "lugar podria"
+	cont "estar conectado"
+	cont "con TERMINUS CAVE"
+	cont "de KALOS."
+	
+	para "Ambas son cuevas"
+	line "despues de todo!"
 	done
 
 MountMoonSilverMovementBefore:

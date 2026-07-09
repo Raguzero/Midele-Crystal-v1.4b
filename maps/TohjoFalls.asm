@@ -36,6 +36,7 @@ TrainerSageUltramagic:
 	end	
 
 SageUltraMagicSeenText:
+    ntag "ULTRAMAGIC"
     text "Ey, DOOD! Conoces"
     line "a un hombre que"
     para "se llama LAVNDER?"
@@ -64,6 +65,7 @@ SageUltraMagicBeatenText:
     done
 
 SageUltraMagicAfterBattleText:
+    ntag "ULTRAMAGIC"
     text "DOOD, solo estaba"
     line "bromeando. Jaja!"
     cont "Soy una persona"

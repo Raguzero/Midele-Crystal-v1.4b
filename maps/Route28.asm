@@ -24,6 +24,7 @@ TrainerSupernerdGoldy:
 	end
 	
 SupernerdGoldySeenText:
+	ntag "GOLDY"
     text "*snif* *snif*"
     line "Ese olor..."
  
@@ -42,6 +43,7 @@ SupernerdGoldyBeatenText:
     done
 
 SupernerdGoldyAfterBattleText
+	ntag "GOLDY"
     text "Como he perdido"
     line "asi de facil?"
 
@@ -70,6 +72,7 @@ TrainerCooltrainermRagu:
 	end
 
 CooltrainermRaguSeenText:
+	ntag "RAGU"
     text "La gente me"
 	line "conoce como..."
     para "Master Hax!"
@@ -94,6 +97,7 @@ CooltrainermRaguBeatenText:
     done
 
 CooltrainermRaguAfterBattleText
+	ntag "RAGU"
     text "Tienes algun"
 	line "PIKACHU para poder"
 	cont "aplastarlo con mis"
@@ -112,6 +116,7 @@ TrainerSwimmermPacoBeer:
 	end
 	
 SwimmermPacoBeerSeenText:
+	ntag "PACOBEER"
     text "Gluurgrggh..."  
 	line "Mi nombre es..."     
     para "uh... PACOBEER!"  
@@ -138,6 +143,7 @@ SwimmermPacoBeerBeatenText:
     done
 
 SwimmermPacoBeerAfterBattleText
+	ntag "PACOBEER"
     text "Sabes..."  
 	line "Me dijeron que..."
     cont "nunca llegaria a"
@@ -169,11 +175,12 @@ TrainerCamperSpolker:
 	end
 	
 CamperSpolkerSeenText:
+	ntag "SPOLKER"
     text "Soy SPOLKER, pero"
     line "si me destilas"
     cont "algunas SITRUS"
 	cont "BERRIES, puedo"
-	cont "convertirme en"
+	cont "convertirme"
     cont "en SOPEN!!!"
     
 	para "Tu! DAME ALCOHOL!"
@@ -185,6 +192,7 @@ CamperSpolkerBeatenText:
     done
 
 CamperSpolkerAfterBattleText
+	ntag "SPOLKER"
     text "Ahora no tengo"
     line "dinero para algo"
     cont "de ginebra o"
@@ -209,8 +217,9 @@ TrainerCooltrainermShelea:
 	end
 
 CooltrainermSheleaSeenText:
-    text "Soy Shelea,"
-    line "Alpha Shelea"
+	ntag "SHELEA"
+    text "Soy SHELEA,"
+    line "ALPHA SHELEA"
     para "Tu sabes como"
 	line "empieza una"
 	cont "buena batalla?"
@@ -233,6 +242,7 @@ CooltrainermSheleaBeatenText:
     done
 
 CooltrainermSheleaAfterBattleText
+	ntag "SHELEA"
     text "Okay guuuurl"
     line "Quiero la"
 	para "revancha."
@@ -263,6 +273,7 @@ TrainerCamperExi:
 	end
 	
 CamperExiSeenText:
+	ntag "EXI"
     text "Es a mi a quien"
 	line "estas mirando?"
 
@@ -296,6 +307,7 @@ CamperExiBeatenText:
     done
 
 CamperExiAfterBattleText
+	ntag "EXI"
     text "Ok. Quieres"
 	line "otro combate?"
     para "Tu eres..."
@@ -337,6 +349,7 @@ TrainerJugglerMerum:
 	end
 	
 JugglerMerumSeenText:
+	ntag "MERUM"
     text "Mi pokemon se ha"
     line "perdido. Me ayudas"
 	cont "a buscarlo?"
@@ -348,6 +361,7 @@ JugglerMerumBeatenText:
     done
 
 JugglerMerumAfterBattleText
+	ntag "MERUM"
     text "No entiendo como"
     line "el pokemon Brujula"
 	cont "podria perderse."
@@ -365,6 +379,7 @@ CooltrainerFSapph:
 	end
 	
 CooltrainerFSapphSeenText:
+	ntag "SAPPH"
     text "Ah... ah..."
     line "Yo quiero..."
     cont "...tu leche..."
@@ -376,6 +391,7 @@ CooltrainerFSapphBeatenText:
     done
 
 CooltrainerFSapphAfterBattleText
+	ntag "SAPPH"
     text "Ah... ah..."
     line "(Estoy cansada)"
     cont "Te perdono por"

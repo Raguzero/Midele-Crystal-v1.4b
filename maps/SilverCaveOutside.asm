@@ -25,6 +25,7 @@ TrainerPsychicTSantyago:
 	end
 	
 PsychicTSantiagoSeenText:
+	ntag "SANTYAGO"
     text "Eh! Hermosura!"
     para "Debemos luchar!"
 
@@ -47,6 +48,7 @@ PsychicTSantiagoBeatenText:
     done
 
 PsychicTSantiagoAfterBattleText
+   ntag "SANTYAGO"
    text "Felicidades!"
    line "Me has vencido!"
    
@@ -80,6 +82,7 @@ GruntMGhaddar:
 	end
 	
 GruntMGhaddarSeenText:
+    ntag "GHADDAR"
     text "..."
     line "Tu no lo"
     cont "entiendes."
@@ -99,6 +102,7 @@ GruntMGhaddarBeatenText:
     done
 
 GruntMGhaddarAfterBattleText
+    ntag "GHADDAR"
     text "Yo… estoy acabado…"
     line "Se acabo..."
     cont "..."
@@ -119,6 +123,7 @@ JugglerUtalawea:
 	end
 	
 JugglerUtalaweaSeenText:
+    ntag "UTALAWEA"
     text "Jelou!"
     line "Aim not espik"
 	cont "llur idiom."
@@ -135,6 +140,7 @@ JugglerUtalaweaBeatenText:
     done
 
 JugglerUtalaweaAfterBattleText
+    ntag "UTALAWEA"
     text "Sabia que no era"
 	line "buena idea."
     cont "Pero lo hice..."
@@ -155,6 +161,7 @@ TrainerSupernerdDarki:
 	end
 	
 SuperNerdDarkiSeenText:
+    ntag "DARKI"
 	text "Hey dude!"
 	
 	para "Sabes como"
@@ -169,6 +176,7 @@ SuperNerdDarkiBeatenText:
 	done
 
 SuperNerdDarkiAfterBattleText
+    ntag "DARKI"
 	text "Creo que tengo que"
     line "madurar mas para"
 	cont "encontrar la"
@@ -189,6 +197,7 @@ TrainerBeautyEntropia:
 	end
 
 BeautyEntropiaSeenText:
+    ntag "ENTROPIA"
     text "Hello yellow!"
 
     para "No importa que"
@@ -203,6 +212,7 @@ BeautyEntropiaBeatenText:
     done
 
 BeautyEntropiaAfterBattleText
+    ntag "ENTROPIA"
     text "La categoria es:"
     line "Como perder la"
     cont "elegancia"
@@ -227,6 +237,7 @@ CooltrainermDenis:
 	end
 	
 DenisSeenText:
+    ntag "DENYS"
     text "Hello novato!"
 	line "Estos montes son"
 	cont "el lugar perfecto"
@@ -245,6 +256,7 @@ DenisBeatenText:
     done
 
 DenisAfterBattleText
+    ntag "DENYS"
     text "He perdido solo"
 	line "porque"
 	cont "Mega Abomasnow"

@@ -34,6 +34,7 @@ TrainerAvader2:
 	end
 
 AvaderSeenText2:
+    ntag "A.VADER"
     text "Ja ja ja!"
 	line "Yo soy"
 	para "omnipresente."
@@ -62,6 +63,7 @@ AvaderBeatenText2:
     done
 
 AvaderAfterBattleText2:
+	ntag "A.VADER"
     text "Yo manipule a"
 	line "GIOVANNI para"
 	cont "crear el"
@@ -75,7 +77,7 @@ AvaderAfterBattleText2:
     para "Yo queria crear"
 	line "la forma de vida"
 	cont "definitiva:"
-    para "EL MICOLOL"
+    para "EL MICOLOL!"
 
     para "Pero la mayoria de"
 	line "los experimentos"

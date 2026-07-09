@@ -308,6 +308,7 @@ FisherKaisser:
 	end
 	
 KaisserSeenText:
+    ntag "KAISSER"
     text "Acabo de meterme"
 	line "en el google eart"
 	cont "para ver si habia"
@@ -316,13 +317,13 @@ KaisserSeenText:
 	cont "pues hoy hace" 
 	cont "mucho viento y no"
 	cont "me apetecia ir a"
-	para "lo tonto."
+	cont "lo tonto."
     
 	para "Hasta que has"
 	line "venido a tocar" 
 	cont "los huevos,"
 	cont "asi que vamos"
-	cont "a luchar pirata"
+	cont "a luchar pirata."
     done
 
 KaisserBeatenText:
@@ -330,6 +331,7 @@ KaisserBeatenText:
     done
 
 KaisserAfterBattleText:
+    ntag "KAISSER"
     text "Vendo Opel Corsa"
     line "Siempre en garje,"
 	cont "usado por persona"

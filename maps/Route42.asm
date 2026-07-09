@@ -259,6 +259,7 @@ OfficerMelkorScript:
 	end
 
 OfficerMelkorSeenText:
+    ntag "MELKOR"
 	text "Alto ahi..."
 	line "Permiteme que"
 	cont "me presente."
@@ -295,6 +296,7 @@ OfficerMelkorWinText:
 	done
 
 OfficerMelkorAfterText:
+    ntag "MELKOR"
 	text "Vaya, parece que"
 	line "me confundi."
 
@@ -312,6 +314,7 @@ OfficerMelkorAfterText:
 	done
 
 OfficerMelkorDaytimeText:
+    ntag "MELKOR"
 	text "Lo que me faltaba."
 
 	para "ULTRAMAGIC se"

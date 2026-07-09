@@ -21,7 +21,7 @@ TrainerManiacLavender:
 	end
 
 ManiacLavenderSeenText:
-
+    ntag "LAVNDER"
     text "Ese tipo de"
 	line "nombre A.VADER."
     cont "Su PODER MIDELAR"
@@ -54,6 +54,7 @@ ManiacLavenderBeatenText:
     done
 
 ManiacLavenderAfterBattleText:
+    ntag "LAVNDER"
     text "Por favor, no me"
     line "delates a MELKOR,"
 	cont "el JEFE de POLICIA"

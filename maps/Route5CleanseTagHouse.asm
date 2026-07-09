@@ -43,19 +43,19 @@ TrainerSupernerdFelipex88:
 	end
 
 SupernerdFelipex88SeenText:
+	ntag "FELIPEX"
     text "No eres demasiado"
 	line "mayor para jugar"
-	para "a Pokemon? :video:"
+	cont "a POKéMON?"
 	
 	para "Adultos maduros"
     line "deberian jugar a"
 	cont "juegos sangrientos"
 	cont "de tiros y lucha."
-	cont ":video:"
-	cont "Pokemon es para"
+	cont "POKéMON es para"
 	cont "crios, no sigas"
-	cont "jugando. :video:"
-	cont "Te lo demostraré."
+	cont "jugando."
+	cont "Te lo demostraré!"
     done
 
 SupernerdFelipex88BeatenText:
@@ -64,6 +64,7 @@ SupernerdFelipex88BeatenText:
     done
 
 SupernerdFelipex88AfterBattleText
+	ntag "FELIPEX"
     text "Maldita sea."
 	line "Ahora mismo voy"
 	cont "a cortar la lengua"

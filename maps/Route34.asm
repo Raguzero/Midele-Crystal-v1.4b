@@ -908,6 +908,7 @@ DayCareSignText:
    done
 
 MicoloSeenText:
+    ntag "MICOLO"
     text "Hola reina n.n"
     line "Yo soy MICOLO."
     cont "Te doy la"
@@ -967,6 +968,7 @@ MicoloBeatenText:
     done
 
 MicoloHuevo:
+    ntag "MICOLO"
     text "Como te prometi."
     line "Te doy el"
     cont "huevo especial"
@@ -975,6 +977,7 @@ MicoloHuevo:
 	done
 
 Nositio:
+    ntag "MICOLO"
 	text "Pero si no hay"
 	line "sitio en tu equipo"
 
@@ -983,12 +986,14 @@ Nositio:
 	done
 
 Huevomastarde:
+    ntag "MICOLO"
 	text "Entonces has"
 	line "hecho sitio para"
 	cont "el huevo?"
 	done
 
 Responderno:
+    ntag "MICOLO"
 	text "Vas a rechazar un"
 	line "huevo del Rincon"
 	cont "de Midele?"
@@ -997,6 +1002,7 @@ Responderno:
 	done
 
 Micolotermina:
+    ntag "MICOLO"
 	text "Que por que este"
 	line "lugar lo llamo"
 	para "Rincon de Midele?"
@@ -1014,12 +1020,14 @@ Micolotermina:
 	done
 
 MicoloSeenText2:
+    ntag "MICOLO"
     text "Quieres luchar"
 	line "de nuevo contra"
 	cont "el PODER MIDELAR?"
 	done
 
 Micolobatalla2:
+    ntag "MICOLO"
 	text "MONOCICLOOOOOON!!"
     done
 

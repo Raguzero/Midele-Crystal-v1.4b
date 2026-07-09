@@ -45,60 +45,45 @@ MewtwoText:
 	done
 
 TrainerTwinsRazandLav1:
-	trainer TWINS, RAZANDLAV1, EVENT_16, TwinsRazSeenText, TwinsRazBeatenText, 0, .Script
+	trainer TWINS, RAZANDLAV1, EVENT_16, TwinsRazLavSeenText, TwinsRazLavBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
 	opentext
-	writetext TwinsRazAfterBattleText
+	writetext TwinsRazLavAfterBattleText
 	waitbutton
 	closetext
 	end
 
-TwinsRazSeenText:
+TwinsRazLavSeenText:
+    ntag "RAZ&LAV"
     text "El que pierda ve"
     line "Boku no Pico."
     done
 
-TwinsRazBeatenText:
+TwinsRazLavBeatenText:
     text "Al menos"
     line "agregame a"
     cont "MAL..."
     done
 
-TwinsRazAfterBattleText:
+TwinsRazLavAfterBattleText:
+    ntag "RAZ&LAV"
     text "A mi me"
     line "banearon por"
     cont "menos."
     done
 
 TrainerTwinsRazandLav2:
-	trainer TWINS, RAZANDLAV2, EVENT_16, TwinsLavSeenText, TwinsLavBeatenText, 0, .Script
+	trainer TWINS, RAZANDLAV2, EVENT_16, TwinsRazLavSeenText, TwinsRazLavBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
 	opentext
-	writetext TwinsLavAfterBattleText
+	writetext TwinsRazLavAfterBattleText
 	waitbutton
 	closetext
 	end
-
-TwinsLavSeenText:
-    text "El que pierda ve"
-    line "Boku no Pico."
-    done
-
-TwinsLavBeatenText:
-    text "Al menos"
-    line "agregame a"
-    cont "MAL..."
-    done
-
-TwinsLavAfterBattleText:
-    text "A mi me"
-    line "banearon por"
-    cont "menos."
-    done
 
 RockTunnelB1FIron:
 	itemball IRON

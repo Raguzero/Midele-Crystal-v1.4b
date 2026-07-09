@@ -687,6 +687,7 @@ CloneMewtwoAfterText:
   done
 
 OfficerTopoSeenText:
+  ntag "TOPO"
   text "No puedes pasar."
   done
 
@@ -695,12 +696,14 @@ OfficerTopoBeatenText:
   done
 
 OfficerTopoAfterText:
+  ntag "TOPO"
   text "Has cometido un"
   line "error al venir"
   cont "aqui."
   done
 
 PsychicSantySeenText:
+  ntag "SANTYAGO"
   text "Mi shifteo ha sido"
   line "un exito. Ahora te"
   cont "derrotare y la"
@@ -711,11 +714,13 @@ PsychicSantyBeatenText:
   done
 
 PsychicSantyAfterText:
+  ntag "SANTYAGO"
   text "Volvere a shiftear"
   line "hasta que te gane."
   done
 
 SwimmerPacochefSeenText:
+  ntag "PACOBEER"
   text "MELKOR ha"
   line "desbaneado a"
   cont "LAVNDER..."
@@ -729,6 +734,7 @@ SwimmerPacochefBeatenText:
   done
 
 SwimmerPacochefAfterText:
+  ntag "PACOBEER"
   text "Me da igual haber"
   line "perdido, la"
   cont "cerveza no me la"
@@ -736,6 +742,7 @@ SwimmerPacochefAfterText:
   done
 
 ScientistPhentSeenText:
+  ntag "PHENT"
   text "Mi investigacion"
   line "apenas ha empezado" 
   cont "a dar frutos y un"
@@ -754,16 +761,19 @@ ScientistPhentBeatenText:
   done
 
 ScientistPhentAfterText:
-  text "No podras contra el"
-  line "poder del Trueno" 
-  cont "de Oscuridad..."
+  ntag "PHENT"
+  text "No podras contra"
+  line "el poder del"
+  cont "Trueno de la" 
+  cont "Oscuridad..."
   
-  para "Vuelvete a tu casa" 
-  line "si quieres seguir" 
-  cont "con vida."
+  para "Vuelvete a tu" 
+  line "casa si quieres" 
+  cont "seguir con vida."
   done
 
 NerdLavenderSeenText:
+  ntag "LAVNDER"
   text "Llegas tarde."
   para "MICOLO ya tiene el"
   line "el poder necesario"
@@ -778,11 +788,13 @@ NerdLavenderBeatenText:
   line "Otra vez?"
   done
 NerdLavenderAfterText:
+  ntag "LAVNDER"
   text "Esto de perder ya"
   line "empieza a cansar."
   done
 
 ScientistAvaderSeenText:
+  ntag "A.VADER"
   text "Jeje, MICOLO me ha"
   line "permitido quedarme"
   cont "con los MEW."
@@ -802,6 +814,7 @@ ScientistAvaderBeatenText:
   cont "poder de ZANZA!"
   done
 ScientistAvaderAfterText:
+  ntag "A.VADER"
   text "Your blade..." 
   line "it did not cut" 
   cont "deep enough!"
@@ -812,7 +825,7 @@ ScientistAvaderAfterText:
   cont "otro idioma?"
   
   para "Yo soy bilingue!"
-  line "Este idioma me lo" 
+  line "Ese idioma me lo" 
   cont "aprendi gracias a"
   cont "..."
   cont "..."

@@ -32,11 +32,12 @@ TrainerPokemaniacJzombie:
 	end
 	
 PokemaniacJzombieSeenText:
+    ntag "JZOMBIE"
     text "[Teoria]"
 	line "El proximo juego"
-    cont "de Pokemon tendra"
+    cont "de POKéMON tendra"
 	cont "KALOS SUR como"
-	para "region!"
+	cont "region!"
 	
 	para "No te rias de mi"
 	line "teoria, o te juro" 
@@ -53,10 +54,10 @@ PokemaniacJzombieBeatenText:
     done
 
 PokemaniacJzombieAfterBattleText
+    ntag "JZOMBIE"
     text "Si, habra KALOS"
 	line "SUR porque mi"
-	cont ":censured:"
-    cont "lo pide."
+	cont "polla lo pide."
     done
 
 TrainerScientistProgamer:
@@ -71,16 +72,13 @@ TrainerScientistProgamer:
 	end
 	
 ScientistProgamerSeenText:
-    text "Aymi zorry"
-	line "Pero i don"
-	para "speak englis."
-	
-	para "No se si sabes"
+    ntag "PROGAMER"
+	text "No se si sabes"
 	line "que es un borrego," 
 	cont "pero es alguien" 
 	cont "que le cree todo"
 	cont "al nuevo orden"
-	para "mundial!"
+	cont "mundial!"
 	
 	para "El nuevo orden"
 	line "nos esta obligando"
@@ -90,11 +88,11 @@ ScientistProgamerSeenText:
 	cont "mentalmente, y asi"
 	cont "seamos todos suyos"
 	cont "a su completa"
-	para "disposicion"
+	cont "disposicion."
 	
-	para "es lo que eres:" 
+	para "Es lo que eres:" 
 	line "un borrego del"
-	cont "sistema"
+	cont "sistema."
 	done
 
 ScientistProgamerBeatenText:
@@ -108,6 +106,7 @@ ScientistProgamerBeatenText:
     done
 
 ScientistProgamerAfterBattleText
+    ntag "PROGAMER"
 	text "No necesito"
 	line "fuentes,"
 	cont "debatir con"
@@ -115,12 +114,12 @@ ScientistProgamerAfterBattleText
 	cont "mismo que perder"
 	cont "el tiempo, todas"
 	cont "las fuentes estan"
-	para "trucadas."
+	cont "trucadas."
 	
 	para "El borreguismo..."
 	line "de los borregos."
 	cont "Ese mal de nuestra"
-	para "sociedad actual."
+	cont "sociedad actual."
 	
 	para "Tu y todos"
 	line "vosotros estais"
@@ -143,11 +142,12 @@ TrainerSageVladiland:
 	end
 	
 SageVladilandSeenText:
+    ntag "VLADILAND"
     text "Hola monada!"
 	line "Cual es tu edad?" 
 	cont "Puedes pasarme"
 	cont "tu foto o tu"
-    para "feisbu?"	
+    cont "feisbu?"	
 	
 	para "No...? Ok..."
 	line "Hey, eres gay?"
@@ -165,9 +165,10 @@ SageVladilandBeatenText:
     done
 
 SageVladilandAfterBattleText
+    ntag "VLADILAND"
     text "Es que aqui nadie"
 	line "piensa en los"
-	cont "ninos?"
+	cont "childrens?"
     done
 
 RockTunnel1F_MapEvents:

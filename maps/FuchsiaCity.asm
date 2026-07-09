@@ -42,41 +42,43 @@ Zzz2Battle:
 	end
 
 ScholarZzz2SeenText:
+    ntag "Zzz"
 	text "Ah si! Tu eres"
 	line "<PLAYER> no?"
 	cont "Me has pillado"
 	cont "pensando una"
 	cont "estrategia para"
-	para "vencer a JANINE."
+	cont "vencer a JANINE."
 	
 	para "Que pasa? No te"
 	line "acuerdas de mi?"
 	cont "Soy Zzz, el mejor"
 	cont "entrenador que"
-	para "habra jamas."
+	cont "habra jamas."
 	
-	para "Sigo buscando a"
-	line "mi sensei Red Crow"
+	para "Sigo buscando"
+	line "a mi sensei"
+	cont "RED KROW."
 	cont "Lo has visto?"
 	cont "No? Vaya..."
 	cont "Donde estara?"
 	cont "Donde estas"
-	para "sensei!"
+	cont "sensei!"
 	
 	para "Pero ya que estas"
 	line "frente a mi..."
 	cont "Por que no"
-	para "vengarme de ti?"
+	cont "vengarme de ti?"
 	
 	para "Siiii! Es la hora"
 	line "de vengarme por"
-	para "derrotarme antes"
+	cont "derrotarme antes."
 	
 	para "Vamos! Lucha"
 	line "cobarde!"
 	cont "Quiero luchar!!"
 	cont "Pero es que"
-	para "nadie lucha?"
+	cont "nadie lucha?"
 	
 	para "Sois todos unos"
 	line "cobardes!"
@@ -98,12 +100,16 @@ ScholarZzz2LossText:
 	done
 
 ScholarZzz2AfterBattleText:
-    text "Donde estas sensei"
-	line "(a)Red Crow"
-	cont "(a)Red Crow"
-	cont "Te estoy"
-	cont "mencionando"
-	para "(a)Red Crow"
+    ntag "Zzz"
+    text "Donde estas"
+	line "sensei!"
+	
+	para "(a)RED KROW"
+	line "(a)RED KROW"
+
+	para "Te estoy"
+	line "mencionando"
+	cont "(a)RED KROW"
 	
 	para "En cuanto a ti."
 	line "Nos volveremos"

@@ -136,3 +136,20 @@ text_jump: MACRO
 	dw \1
 	db BANK(\1)
 ENDM
+
+	enum TX_NAMETAG ;text_nametag
+ntag: MACRO
+	db TX_NAMETAG
+	db \1
+	db "@"
+ENDM
+
+;UsageExampleText:
+;	ntag "SUPERNERD:"
+;	text "Did you check out"
+;	line "the MUSEUM?@" <- @ terminator before new ntag
+;	text_promptbutton   <- promptbutton before new ntag
+;
+;	ntag "NEW SPEAKER:"
+;	text "text test"
+;	done

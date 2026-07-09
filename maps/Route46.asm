@@ -204,15 +204,15 @@ OfficerFurryScript:
 	end
 
 OfficerFurrySeenText:
+    ntag "FURRY"
 	text "No des ni un"
 	line "paso mas."
 
 	para "Hueles a hackeo."
 	line "No lo niegues,"
 	cont "has tenido que"
-	cont "usar hacks"
-	cont "para llegar"
-	cont "hasta aqui."
+	cont "usar hacks para"
+	cont "llegar hasta aqui."
 
 	para "MELKOR, el jefe"
 	line "de POLICIA de"
@@ -221,14 +221,12 @@ OfficerFurrySeenText:
 	cont "baneo son muy"
 	cont "estrictas."
 
-	para "Pero me da"
-	line "igual."
-	cont "Denunciare a"
+	para "Pero me da igual."
+	line "Denunciare a"
 	cont "Noentiendo a"
-	cont "todos los"
-	cont "hackers que"
-	cont "usen POKESAV y"
-	cont "POKEHEX."
+	cont "todos los hackers"
+	cont "que usen POKESAV"
+	cont "y POKEHEX."
 
 	para "Preparate, hacker."
 	done
@@ -238,6 +236,7 @@ OfficerFurryWinText:
 	done
 
 OfficerFurryAfterText:
+    ntag "FURRY"
 	text "He perdido?"
 	line "Seguro que has"
 	cont "usado hacks."
@@ -251,6 +250,7 @@ OfficerFurryAfterText:
 	done
 
 OfficerFurryDaytimeText:
+    ntag "FURRY"
 	text "Estoy cazando"
 	line "hackers."
 	para "Por cierto..."
@@ -260,7 +260,8 @@ OfficerFurryDaytimeText:
 	cont "a que los malvados"
 	cont "hackers se suelen"
 	cont "esconder en la mas"
-	para "profunda oscuridad."
+	cont "profunda..."
+	para "oscuridad."
 
 	para "No molestes y"
 	line "recuerda,"

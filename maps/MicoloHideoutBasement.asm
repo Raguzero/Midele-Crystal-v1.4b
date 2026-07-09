@@ -115,8 +115,9 @@ TrainerMicolo:
   end
 
 OfficerFurrySeenText2:
+  ntag "FURRY"
   text "Como?"
-  line "Si, soy FURRY"
+  line "Si, soy FURRY."
   cont "Trabajaba para"
   cont "MICOLO desde el"
   cont "principio."
@@ -138,11 +139,13 @@ OfficerFurryBeatenText2:
   done
 
 OfficerFurryAfterText2:
+  ntag "FURRY"
   text "No me dirijas la"
   line "palabra."
   done
 
 MicoloHideoutSeenText:
+  ntag "???"
   text "DARKRAI: yo era el"
   line "malo desde el"
   cont "principio."
@@ -161,6 +164,7 @@ MicoloHideoutBeatenText:
   done
 
 MicoloHideoutAfterText:
+  ntag "MICOLO"
   text "Todo acabo???"
   line "Como has podido"
   cont "derrotarme?"
@@ -199,6 +203,7 @@ MicoloHideoutAfterText:
   done
 
 Zzz4SeenText:
+  ntag "Zzz"
   text "Asi que eres"
   line "tu otra vez!"
   cont "Este es mi..."
@@ -229,7 +234,7 @@ Zzz4SeenText:
   
   para "Pero entonces..."
   line "apareciste tu..."
-  cont "en la RUTA 6"
+  cont "en la ROUTE 6"
   cont "y me diste una"
   cont "soberana paliza"
   cont "de jamas olvidar."
@@ -269,7 +274,7 @@ Zzz4SeenText:
   para "Tenia que ir alli"
   line "ya que habia oido"
   cont "rumores de que"
-  cont "Red Krow estaba"
+  cont "RED KROW estaba"
   cont "alli."
   
   para "Pero cuando estaba"
@@ -288,7 +293,7 @@ Zzz4SeenText:
   cont "mas, me volviste"
   para "a derrotar."
  
-  para "Ademas Red Krow no"
+  para "Ademas RED KROW no"
   line "estaba alli."
   cont "Ese RED, no era"
   para "mi sensei."
@@ -320,6 +325,7 @@ Zzz4BeatenText:
   done
 
 Zzz4AfterText:
+  ntag "Zzz"
   text "LOOOOOOOOL"
   done
 

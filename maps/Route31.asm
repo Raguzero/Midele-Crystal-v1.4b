@@ -276,6 +276,7 @@ OfficerTsurukoScript:
 	end
 
 OfficerTsurukoSeenText:
+    ntag "TSURUKO"
 	text "Alto ahi, primate!"
 	line "Que haces por ahi"
 	cont "a estas horas?"
@@ -295,6 +296,7 @@ OfficerTsurukoWinText:
 	done
 
 OfficerTsurukoAfterText:
+    ntag "TSURUKO"
 	text "Parece que me"
 	line "confundi contigo."
 
@@ -306,6 +308,7 @@ OfficerTsurukoAfterText:
 	done
 
 OfficerTsurukoDaytimeText:
+    ntag "TSURUKO"
 	text "Estoy patrullando"
 	line "en busca de"
 	cont "multicuentas."
