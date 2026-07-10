@@ -81,21 +81,6 @@ MicoloHideoutPCText_PartyFull:
 	line "this in your team."
 	done
 	
-MicoloHideoutPCGift2Script:
-  opentext
-  playsound SFX_BOOT_PC
-  writetext MicoloHideoutPCGiftText
-  waitbutton
-  verbosegiveitem RARE_CANDY, 99
-  iffalse .BagFull
-  closetext
-  end
-
-.BagFull:
-	playsound SFX_SHUT_DOWN_PC
-	closetext
-	end
-	
 MicoloHideoutPCGiftText:
 	text "DOWNLOADING......."
 	line ".................."
@@ -849,6 +834,9 @@ MicoloHideoutMusicPlayer:
 
 MicoloHideoutSacredAsh:
   itemball SACRED_ASH, 50
+  
+MicoloHideoutGoldenCandy:
+  itemball GOLDEN_CANDY
 
 MicoloHideoutMewtwoGuardScript:
   faceplayer
@@ -876,7 +864,7 @@ MicoloHideout_MapEvents:
 
   db 0 ; coord events
 
-  db 40 ; bg events
+  db 38 ; bg events
   ; PCs
   ; PC 1
   bg_event 2, 10, BGEVENT_UP, MicoloHideoutPC1Script
@@ -936,10 +924,8 @@ MicoloHideout_MapEvents:
   ; PC Gift
   bg_event 7, 0, BGEVENT_UP, MicoloHideoutPCGiftScript
   bg_event 6, 0, BGEVENT_UP, MicoloHideoutPCGiftScript
-  bg_event 5, 0, BGEVENT_UP, MicoloHideoutPCGift2Script
-  bg_event 4, 0, BGEVENT_UP, MicoloHideoutPCGift2Script
 
-  db 10 ; object events
+  db 11 ; object events
   object_event  10,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN,   0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 6, TrainerOfficerTopo, -1
   object_event  11, 33, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerNerdLavender, -1
   object_event  11, 36, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerScientistAvader, -1
@@ -950,3 +936,4 @@ MicoloHideout_MapEvents:
   object_event  27,  13, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, MicoloHideoutMusicPlayer, EVENT_10C
   object_event  26,  34, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, MicoloHideoutSacredAsh, EVENT_10D
   object_event   9,   2, SPRITE_MEWTWO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MicoloHideoutMewtwoGuardScript, EVENT_115
+  object_event  4,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, MicoloHideoutGoldenCandy, EVENT_21

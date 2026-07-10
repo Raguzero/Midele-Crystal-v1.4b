@@ -64,7 +64,7 @@ ItemEffects: ; e73c
 	dw RestoreHPEffect     ; SODA_POP
 	dw RestoreHPEffect     ; LEMONADE
 	dw XItemEffect         ; X_ATTACK
-	dw NoEffect            ; ITEM_32
+	dw GoldenCandyEffect   ; GOLDEN_CANDY
 	dw XItemEffect         ; X_DEFEND
 	dw XItemEffect         ; X_SPEED
 	dw XItemEffect         ; X_SPECIAL
@@ -1309,28 +1309,6 @@ PKHexEffect:
 	ld [hli], a
 	ld [hl], a
 
-	; Level
-	ld a, MON_LEVEL
-	call GetPartyParamLocation
-	ld a, $64
-
-	ld [hl], a
-	ld [wCurPartyLevel], a
-	push de
-	ld d, a
-	farcall CalcExpAtLevel
-
-	pop de
-	ld a, MON_EXP
-	call GetPartyParamLocation
-
-	ld a, [hMultiplicand]
-	ld [hli], a
-	ld a, [hMultiplicand + 1]
-	ld [hli], a
-	ld a, [hMultiplicand + 2]
-	ld [hl], a
-
 	ld a, MON_MAXHP
 	call GetPartyParamLocation
 	ld a, [hli]
@@ -1357,9 +1335,7 @@ PKHexEffect:
 	adc b
 	ld [hl], a
 	farcall LevelUpHappinessMod
-
-	ld a, PARTYMENUTEXT_LEVEL_UP
-	call ItemActionText
+	call Play_SFX_FULL_HEAL
 
 	xor a ; PARTYMON
 	ld [wMonType], a
@@ -1375,25 +1351,6 @@ PKHexEffect:
 	predef PrintTempMonStats
 
 	call WaitPressAorB_BlinkCursor
-
-	xor a ; PARTYMON
-	ld [wMonType], a
-	ld a, [wCurPartySpecies]
-	ld [wd265], a
-	predef LearnLevelMoves
-
-	ld a, MON_LEVEL
-	push hl
-	call GetPartyParamLocation
-	ld a, [hl]
-	cp MAX_LEVEL
-	jr z, .skip_evolution
-
-	xor a
-	ld [wForceEvolution], a
-	farcall EvolvePokemon
-.skip_evolution
-	pop hl
 
 	jp ClearPalettes
 
@@ -1590,6 +1547,92 @@ RareCandyEffect: ; ef14
 	jp UseDisposableItem
 ; efad
 
+GoldenCandyEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+
+	jp c, RareCandy_StatBooster_ExitMenu
+
+	call RareCandy_StatBooster_GetParameters
+
+	; Level
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld a, $64
+	
+	ld [hl], a
+	ld [wCurPartyLevel], a
+	push de
+	ld d, a
+	farcall CalcExpAtLevel
+	
+	pop de
+	ld a, MON_EXP
+	call GetPartyParamLocation
+	
+	ld a, [hMultiplicand]
+	ld [hli], a
+	ld a, [hMultiplicand + 1]
+	ld [hli], a
+	ld a, [hMultiplicand + 2]
+	ld [hl], a
+	
+	ld a, MON_MAXHP
+	call GetPartyParamLocation
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+	push bc
+	call UpdateStatsAfterItem
+	
+	ld a, MON_MAXHP + 1
+	call GetPartyParamLocation
+	
+	pop bc
+	ld a, [hld]
+	sub c
+	ld c, a
+	ld a, [hl]
+	sbc b
+	ld b, a
+	dec hl
+	ld a, [hl]
+	add c
+	ld [hld], a
+	ld a, [hl]
+	adc b
+	ld [hl], a
+	farcall LevelUpHappinessMod
+	
+	ld a, PARTYMENUTEXT_LEVEL_UP
+	call ItemActionText
+
+	xor a ; PARTYMON
+	ld [wMonType], a
+	predef CopyMonToTempMon
+
+	hlcoord 9, 0
+	ld b, 10
+	ld c, 9
+	call TextBox
+
+	hlcoord 11, 1
+	ld bc, 4
+	predef PrintTempMonStats
+
+	call WaitPressAorB_BlinkCursor
+
+	xor a ; PARTYMON
+	ld [wMonType], a
+	ld a, [wCurPartySpecies]
+	ld [wd265], a
+	predef LearnLevelMoves
+
+	xor a
+	ld [wForceEvolution], a
+	farcall EvolvePokemon
+
+	jp ClearPalettes
 
 HealPowderEffect: ; efad
 	ld b, PARTYMENUACTION_HEALING_ITEM

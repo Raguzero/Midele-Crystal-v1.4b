@@ -49,7 +49,7 @@ ItemDescriptions:
 	dw SodaPopDesc
 	dw LemonadeDesc
 	dw XAttackDesc
-	dw TeruSama4Desc
+	dw GoldenCandyDesc
 	dw XDefendDesc
 	dw XSpeedDesc
 	dw XSpecialDesc
@@ -433,7 +433,7 @@ DireHitDesc:
 
 PKHexDesc:
 	db   "Makes your #MON"
-	next "perfect.@"
+	next "perfect and shiny.@"
 
 FreshWaterDesc:
 	db   "Restores #MON"
@@ -451,8 +451,9 @@ XAttackDesc:
 	db   "Raises ATTACK."
 	next "(1 BTL)@"
 
-TeruSama4Desc:
-	db   "?@"
+GoldenCandyDesc:
+	db   "Up your #MON"
+	next "to Lv100.@"
 
 XDefendDesc:
 	db   "Raises DEFENSE."
