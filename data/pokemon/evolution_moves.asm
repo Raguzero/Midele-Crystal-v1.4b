@@ -47,7 +47,7 @@ EvolutionMoves::
 	db NO_MOVE      ; PARAS
 	db SWORDS_DANCE      ; PARASECT
 	db NO_MOVE      ; VENONAT
-	db AGILITY         ; VENOMOTH
+	db SUBSTITUTE         ; VENOMOTH
 	db NO_MOVE      ; DIGLETT
 	db ROCK_SLIDE   ; DUGTRIO  
 	db NO_MOVE      ; MEOWTH
@@ -83,7 +83,7 @@ EvolutionMoves::
 	db AGILITY   ; MAGNETON
 	db NO_MOVE      ; FARFETCH_D
 	db NO_MOVE      ; DODUO
-	db MIRROR_MOVE   ; DODRIO
+	db TRI_ATTACK   ; DODRIO
 	db NO_MOVE      ; SEEL
 	db BODY_SLAM      ; DEWGONG
 	db NO_MOVE      ; GRIMER
@@ -101,7 +101,7 @@ EvolutionMoves::
 	db NO_MOVE      ; VOLTORB
 	db REFLECT      ; ELECTRODE
 	db NO_MOVE      ; EXEGGCUTE
-	db GROWTH        ; EXEGGUTOR
+	db EGG_BOMB        ; EXEGGUTOR
 	db NO_MOVE      ; CUBONE
 	db BODY_SLAM      ; MAROWAK
 	db DOUBLE_KICK  ; HITMONLEE
