@@ -205,6 +205,8 @@ KRIS EQU __enum__
 	const VANCE3
 	const BERT
 	const ERNIE
+	const KINSLEY
+	const EASTON
 
 	trainerclass LASS ; 19
 	const CARRIE
@@ -410,6 +412,9 @@ KRIS EQU __enum__
 	const RALPH5
 	const TULLY4
 	const KAISSER
+	const MURPHY
+	const LIAM
+	const GIDEON
 
 	trainerclass SWIMMERM ; 26
 	const HAROLD
@@ -429,6 +434,8 @@ KRIS EQU __enum__
 	const PACOBEER2
 	const LUIS
 	const ELMO
+	const ESTEBAN
+	const DUANE
 
 	trainerclass SWIMMERF ; 27
 	const ELAINE
@@ -447,6 +454,8 @@ KRIS EQU __enum__
 	const JOY
 	const MINA
 	const LEONA
+	const CHELAN
+	const KENDRA
 
 	trainerclass SAILOR ; 28
 	const EUGENE
