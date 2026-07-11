@@ -1760,6 +1760,8 @@ RapidSpin:
 	clearhazards
 	checkdestinybond
 	buildopponentrage
+    speedup
+    statupmessage
 	kingsrock
 	endmove
 

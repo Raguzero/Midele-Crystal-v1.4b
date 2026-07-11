@@ -138,7 +138,7 @@ Moves: ; 41afb
 	move SLUDGE,       EFFECT_POISON_HIT,         65, POISON,   100, 20,  30
 	move BONE_CLUB,    EFFECT_FLINCH_HIT,         65, GROUND,    85, 20,  10
 	move FIRE_BLAST,   EFFECT_BURN_HIT,          110, FIRE,      85,  5,  10
-	move WATERFALL,    EFFECT_NORMAL_HIT,         80, WATER,    100, 15,   0
+	move WATERFALL,    EFFECT_FLINCH_HIT,         80, WATER,    100, 15,  20
 	move CLAMP,        EFFECT_TRAP_TARGET,        35, WATER,     85, 15,   0
 	move SWIFT,        EFFECT_ALWAYS_HIT,         60, NORMAL,   100, 20,   0
 	move SKULL_BASH,   EFFECT_SKULL_BASH,        130, NORMAL,   100, 10,   0
@@ -162,8 +162,8 @@ Moves: ; 41afb
 	move FLASH,        EFFECT_ACCURACY_DOWN,       0, NORMAL,    100, 20,   0
 	move PSYWAVE,      EFFECT_PSYWAVE,             1, PSYCHIC,   100, 15,   0
 	move SPLASH,       EFFECT_SPLASH,              0, NORMAL,   100, 40,   0
-	move ACID_ARMOR,   EFFECT_DEFENSE_UP_2,        0, POISON,   100, 40,   0
-	move CRABHAMMER,   EFFECT_NORMAL_HIT,         100, WATER,     85, 10,   0
+	move ACID_ARMOR,   EFFECT_DEFENSE_UP_2,        0, POISON,   100, 20,   0
+	move CRABHAMMER,   EFFECT_NORMAL_HIT,         100, WATER,    95, 10,   0
 	move EXPLOSION,    EFFECT_SELFDESTRUCT,      250, NORMAL,   100,  5,   0
 	move FURY_SWIPES,  EFFECT_MULTI_HIT,          18, NORMAL,    80, 15,   0
 	move BONEMERANG,   EFFECT_DOUBLE_HIT,         50, GROUND,    90, 10,   0
@@ -209,7 +209,7 @@ Moves: ; 41afb
 	move PERISH_SONG,  EFFECT_PERISH_SONG,         0, NORMAL,   100,  5,   0
 	move ICY_WIND,     EFFECT_SPEED_DOWN_HIT,     55, ICE,       95, 15, 100
 	move DETECT,       EFFECT_PROTECT,             0, FIGHTING, 100,  5,   0
-	move BONE_RUSH,    EFFECT_MULTI_HIT,          25, GROUND,    90, 10,   0
+	move BONE_RUSH,    EFFECT_MULTI_HIT,          30, GROUND,    90, 10,   0
 	move LOCK_ON,      EFFECT_LOCK_ON,             0, NORMAL,   100,  5,   0
 	move OUTRAGE,      EFFECT_RAMPAGE,            120, DRAGON,   100, 10,   0
 	move SANDSTORM,    EFFECT_SANDSTORM,           0, ROCK,     100, 10,   0
@@ -240,7 +240,7 @@ Moves: ; 41afb
 	move BATON_PASS,   EFFECT_BATON_PASS,          0, NORMAL,   100, 40,   0
 	move ENCORE,       EFFECT_ENCORE,              0, NORMAL,   100,  5,   0
 	move PURSUIT,      EFFECT_PURSUIT,            40, DARK,     100, 20,   0
-	move RAPID_SPIN,   EFFECT_RAPID_SPIN,         20, NORMAL,   100, 40,   0
+	move RAPID_SPIN,   EFFECT_RAPID_SPIN,         50, NORMAL,   100, 40,   0
 	move SWEET_SCENT,  EFFECT_EVASION_DOWN,        0, NORMAL,   100, 20,   0
 	move IRON_TAIL,    EFFECT_DEFENSE_DOWN_HIT,  100, STEEL,     75, 15,  30
 	move METAL_CLAW,   EFFECT_ATTACK_UP_HIT,      50, STEEL,     95, 35,  10
