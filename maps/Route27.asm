@@ -62,7 +62,6 @@ TrainerBirdKeeperJose2:
 
 .Script:
 	writecode VAR_CALLERID, PHONE_BIRDKEEPER_JOSE
-	endifjustbattled
 	opentext
 	checkflag ENGINE_JOSE
 	iftrue .WantsBattle
@@ -197,7 +196,6 @@ TrainerCooltrainerfReena:
 
 .Script:
 	writecode VAR_CALLERID, PHONE_COOLTRAINERF_REENA
-	endifjustbattled
 	opentext
 	checkflag ENGINE_REENA
 	iftrue .WantsBattle

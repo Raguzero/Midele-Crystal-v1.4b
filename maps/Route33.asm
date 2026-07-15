@@ -16,7 +16,6 @@ TrainerHikerAnthony:
 
 .Script:
 	writecode VAR_CALLERID, PHONE_HIKER_ANTHONY
-	endifjustbattled
 	opentext
 	checkflag ENGINE_ANTHONY
 	iftrue .Rematch

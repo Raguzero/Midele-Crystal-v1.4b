@@ -55,7 +55,6 @@ TrainerFisherTully:
 
 .Script:
 	writecode VAR_CALLERID, PHONE_FISHER_TULLY
-	endifjustbattled
 	opentext
 	checkflag ENGINE_TULLY
 	iftrue .WantsBattle

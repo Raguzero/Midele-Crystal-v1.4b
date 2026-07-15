@@ -51,7 +51,6 @@ TrainerPokemaniacBrent:
 
 .Script:
 	writecode VAR_CALLERID, PHONE_POKEMANIAC_BRENT
-	endifjustbattled
 	opentext
 	checkflag ENGINE_BRENT
 	iftrue .WantsBattle
@@ -178,7 +177,6 @@ TrainerPicnickerTiffany:
 
 .Script:
 	writecode VAR_CALLERID, PHONE_PICNICKER_TIFFANY
-	endifjustbattled
 	opentext
 	checkflag ENGINE_TIFFANY
 	iftrue .WantsBattle
