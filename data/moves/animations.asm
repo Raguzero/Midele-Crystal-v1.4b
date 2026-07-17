@@ -140,7 +140,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Glare
 	dw BattleAnim_DreamEater
 	dw BattleAnim_PoisonGas
-	dw BattleAnim_Barrage
+	dw BattleAnim_NastyPlot
 	dw BattleAnim_LeechLife
 	dw BattleAnim_LovelyKiss
 	dw BattleAnim_SkyAttack
@@ -2522,17 +2522,6 @@ BattleAnim_PetalDance: ; ca564
 	anim_ret
 ; ca580
 
-BattleAnim_Barrage: ; ca580
-	anim_2gfx ANIM_GFX_EGG, ANIM_GFX_EXPLOSION
-	anim_sound 6, 2, SFX_THROW_BALL
-	anim_obj ANIM_OBJ_SLUDGE_BOMB, 64, 92, $10
-	anim_wait 36
-	anim_sound 0, 1, SFX_EGG_BOMB
-	anim_obj ANIM_OBJ_18, 136, 56, $0
-	anim_wait 16
-	anim_ret
-; ca596
-
 BattleAnim_PayDay: ; ca596
 	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_STATUS
 	anim_sound 0, 1, SFX_POUND
@@ -4741,6 +4730,7 @@ BattleAnim_MirrorCoat: ; cb8e9
 	anim_ret
 ; cb917
 
+BattleAnim_NastyPlot:
 BattleAnim_PsychUp: ; cb917
 	anim_1gfx ANIM_GFX_STATUS
 	anim_call BattleAnim_FollowEnemyFeet_0

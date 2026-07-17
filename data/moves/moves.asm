@@ -151,7 +151,7 @@ Moves: ; 41afb
 	move GLARE,        EFFECT_PARALYZE,            0, NORMAL,    100, 30,   0
 	move DREAM_EATER,  EFFECT_DREAM_EATER,       100, PSYCHIC,  100, 15,   0
 	move POISON_GAS,   EFFECT_POISON,              0, POISON,    90, 40,   0
-	move BARRAGE,      EFFECT_MULTI_HIT,          15, NORMAL,    85, 20,   0
+	move NASTY_PLOT,   EFFECT_SP_ATK_UP_2,         0, DARK,     100, 20,   0
 	move LEECH_LIFE,   EFFECT_LEECH_HIT,          80, BUG,      100, 10,   0
 	move LOVELY_KISS,  EFFECT_SLEEP,               0, NORMAL,    75, 10,   0
 	move SKY_ATTACK,   EFFECT_SKY_ATTACK,        140, FLYING,    90,  5,   0

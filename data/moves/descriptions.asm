@@ -139,7 +139,7 @@ MoveDescriptions:: ; 2cb52
 	dw GlareDescription
 	dw DreamEaterDescription
 	dw PoisonGasDescription
-	dw BarrageDescription
+	dw NastyPlotDescription
 	dw LeechLifeDescription
 	dw LovelyKissDescription
 	dw SkyAttackDescription
@@ -826,9 +826,9 @@ PoisonGasDescription:
 	db   "A move that may"
 	next "poison the foe.@"
 
-BarrageDescription:
-	db   "Throws orbs to hit"
-	next "2-5 times.@"
+NastyPlotDescription:
+	db   "Sharply increases"
+	next "user's SPCL.ATK.@"
 
 LeechLifeDescription:
 	db   "Steals 1/2 of the"
