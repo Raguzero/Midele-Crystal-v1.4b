@@ -107,6 +107,67 @@ MoveReminder:
 	call ReturnToMapWithSpeechTextbox
 	ld hl, MoveReminderMoveLearnedText
 	jp PrintText
+	
+EggMoveTutor:
+	ld hl, Text_EggMoveTutorIntro
+	call PrintText
+	call YesNoBox
+	jp c, .cancel
+
+	ld hl, Text_EggMoveTutorWhichMon
+	call PrintText
+	call JoyWaitAorB
+
+	farcall SelectMonFromParty
+	jp c, .cancel
+
+	ld a, [wCurPartySpecies]
+	cp EGG
+	jp z, .egg
+
+	call IsAPokemon
+	jp c, .no_mon
+
+	call GetValidEggMoves
+	jr z, .no_moves
+
+	ld hl, Text_EggMoveTutorWhichMove
+	call PrintText
+	call JoyWaitAorB
+
+	call ChooseMoveToLearn
+	jr c, .skip_learn
+
+	ld a, [wMenuSelection]
+	ld [wd265], a
+	call GetMoveName
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer2
+	ld bc, wStringBuffer2 - wStringBuffer1
+	call CopyBytes
+	ld b, 0
+	predef LearnMove
+	ld a, b
+	and a
+	jr z, .skip_learn
+
+.skip_learn
+	call ReturnToMapWithSpeechTextbox
+.cancel
+	ld hl, MoveReminderCancelText
+	jp PrintText
+
+.no_moves
+	ld hl, Text_EggMoveTutorNoMoves
+	jp PrintText
+
+.egg
+	ld hl, MoveReminderEggText
+	jp PrintText
+
+.no_mon
+	ld hl, MoveReminderNotaMonText
+	jp PrintText
 
 ; Checks for moves that can be learned and returns
 ; a zero flag if there are none.
@@ -249,6 +310,70 @@ GetRemindableMoves:
 	and a
 	ret
 
+GetValidEggMoves:
+; Get moves remindable by CurPartyMon
+; Returns z if no moves can be reminded.
+
+	ld hl, wd002
+	xor a
+	ld [hli], a
+	ld [hl], $ff
+
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [wCurPartySpecies], a
+
+	push af
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [wCurPartyLevel], a
+
+	ld b, 0
+	ld de, wd002 + 1
+
+; Based on GetEggMove in engine/breeding/egg.asm
+	ld a, [wCurPartySpecies]
+	dec a
+	push bc
+	ld c, a
+	ld hl, EggMovePointers
+	add hl, bc
+	add hl, bc
+	ld a, BANK(EggMovePointers)
+	call GetFarHalfword
+
+.loop_moves
+	ld a, BANK("Egg Moves")
+	call GetFarByte
+	inc hl
+	cp -1 ; last entry in egg move table is -1
+	jr z, .done
+	ld c, a
+
+	call CheckAlreadyInList
+	jr c, .loop_moves
+	call CheckPokemonAlreadyKnowsMove
+	jr c, .loop_moves
+	ld a, c
+	ld [de], a
+	inc de
+	ld a, $ff
+	ld [de], a
+	pop bc
+	inc b
+	push bc
+	jr .loop_moves
+
+.done
+	pop bc
+	pop af
+	ld [wCurPartySpecies], a
+	ld a, b
+	ld [wd002], a
+	and a
+	ret
 
 ; Checks if there is a move already placed
 ; in the move list. This prevents
@@ -806,3 +931,19 @@ MoveReminderMoveLearnedText:
 	line "remembered the"
 	cont "move."
 	done
+	
+Text_EggMoveTutorIntro:
+	text_jump EggMoveTutorIntroText
+	db "@"
+
+Text_EggMoveTutorWhichMon:
+	text_jump EggMoveTutorWhichMonText
+	db "@"
+
+Text_EggMoveTutorWhichMove:
+	text_jump EggMoveTutorWhichMoveText
+	db "@"
+
+Text_EggMoveTutorNoMoves:
+	text_jump EggMoveTutorNoMovesText
+	db "@"

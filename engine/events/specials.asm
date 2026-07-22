@@ -459,6 +459,10 @@ PrintDiploma: ; c4ac
 	farcall _PrintDiploma
 	call ExitAllMenus
 	ret
+	
+SpecialEggTutor:
+	farcall EggMoveTutor
+	ret
 ; c4b9
 
 TrainerHouse: ; 0xc4b9

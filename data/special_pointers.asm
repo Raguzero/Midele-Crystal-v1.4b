@@ -187,4 +187,5 @@ SpecialsPointers:: ; c029
 	add_special MusicPlayer
 	add_special HackMon
 	add_special CloneMon
+	add_special SpecialEggTutor
 ; c224

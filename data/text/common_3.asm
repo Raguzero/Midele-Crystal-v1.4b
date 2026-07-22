@@ -1591,3 +1591,45 @@ _KrissPCCantDepositTMHMText::
 	text "TMs and HMs can't"
 	line "be deposited."
 	prompt
+	
+EggMoveTutorIntroText::
+	text "Hello! I am the"
+	line "EGG MOVE TUTOR."
+
+	para "I study the"
+	line "egg moves that"
+	cont "#MON can learn."
+	
+	para "Are you"
+	line "interested?"
+	done
+
+EggMoveTutorWhichMonText::
+	text "Which #MON will"
+	line "you have me tutor?"
+	done
+
+EggMoveTutorWhichMoveText::
+	text "Which move will I"
+	line "be teaching it?"
+	done
+
+EggMoveTutorNoMovesText::
+	text "I'm sorry, that"
+	line "#MON does not"
+	cont "have any egg"
+	cont "moves to learn."
+
+	para "Try another,"
+	line "please."
+	done
+
+EggMoveTutorCancelText::
+	text "Take care now!"
+
+	para "Come see me if you"
+	line "want your #MON"
+	cont "to learn some new"
+	cont "egg moves."
+	done
+

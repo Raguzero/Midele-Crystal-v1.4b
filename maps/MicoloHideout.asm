@@ -9,6 +9,7 @@
   const MICOLO_HIDEOUT_ITEM_MUSIC_PLAYER
   const MICOLO_HIDEOUT_ITEM_SACRED_ASH
   const MICOLO_HIDEOUT_MEWTWO_GUARD
+  const MICOLO_HIDEOUT_EGG_MOVE_TUTOR
 
 MicoloHideout_MapScripts:
   db 0 ; scene scripts
@@ -852,7 +853,13 @@ MicoloHideoutMewtwoGuardText:
   cont "PUEDE PASAR."
   done
 
-
+MicoloHideoutEggTutor:
+	faceplayer
+	opentext
+	special SpecialEggTutor
+	waitbutton
+	closetext
+	end
 
 MicoloHideout_MapEvents:
   db 0, 0 ; filler
@@ -925,7 +932,7 @@ MicoloHideout_MapEvents:
   bg_event 7, 0, BGEVENT_UP, MicoloHideoutPCGiftScript
   bg_event 6, 0, BGEVENT_UP, MicoloHideoutPCGiftScript
 
-  db 11 ; object events
+  db 12 ; object events
   object_event  10,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN,   0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 6, TrainerOfficerTopo, -1
   object_event  11, 33, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerNerdLavender, -1
   object_event  11, 36, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerScientistAvader, -1
@@ -937,3 +944,4 @@ MicoloHideout_MapEvents:
   object_event  26,  34, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, MicoloHideoutSacredAsh, EVENT_10D
   object_event   9,   2, SPRITE_MEWTWO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_SILVER, OBJECTTYPE_SCRIPT, 0, MicoloHideoutMewtwoGuardScript, EVENT_115
   object_event  4,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, MicoloHideoutGoldenCandy, EVENT_21
+  object_event  3,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MicoloHideoutEggTutor, -1
