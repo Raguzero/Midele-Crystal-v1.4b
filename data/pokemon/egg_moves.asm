@@ -867,6 +867,26 @@ LarvitarEggMoves:
 	db FOCUS_ENERGY
 	db ANCIENTPOWER
 	db -1 ; end
+	
+NorowaraEggMoves:
+	db BITE
+	db SCARY_FACE
+	db DESTINY_BOND
+	db MEAN_LOOK
+	db FALSE_SWIPE
+	db OUTRAGE
+	db ANCIENTPOWER
+	db -1 ; end
+	
+BombseekerEggMoves:
+	db BODY_SLAM
+	db SUPERSONIC
+	db SING
+	db SONICBOOM
+	db SUBSTITUTE
+	db ANCIENTPOWER
+	db MIRROR_COAT
+	db -1 ; end
 
 NoEggMoves:
 	db -1 ; end

@@ -4389,7 +4389,7 @@ MicomonEvosAttacks: ; NOROWARA
 	db 7, BIDE
 	db 10, DISABLE
 	db 13, CONFUSE_RAY
-	db 18, BITE
+	db 18, MACH_PUNCH
 	db 21, HYPNOSIS
 	db 24, NIGHT_SHADE
 	db 27, CURSE
@@ -4398,12 +4398,9 @@ MicomonEvosAttacks: ; NOROWARA
 	db 35, GLARE
 	db 38, SHADOW_BALL
 	db 41, LEECH_LIFE
-	db 44, DESTINY_BOND
-	db 47, FUTURE_SIGHT
+	db 44, FUTURE_SIGHT
 	db 50, PAIN_SPLIT
-	db 53, MEAN_LOOK
-	db 58, OUTRAGE
-	db 61, SPIKES
+	db 58, SPIKES
 	db 0
 
 BombseekerEvosAttacks:
@@ -4420,8 +4417,7 @@ BombseekerEvosAttacks:
 	db 31, AURORA_BEAM
 	db 38, SKULL_BASH
 	db 43, RECOVER
-	db 46, MIRROR_COAT
-	db 54, FIRE_BLAST
-	db 54, HYDRO_PUMP
+	db 48, FIRE_BLAST
+	db 48, HYDRO_PUMP
 	db 0
 	
