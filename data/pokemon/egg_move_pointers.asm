@@ -193,8 +193,8 @@ endc
 	dw HoppipEggMoves
 	dw HoppipEggMoves
 	dw AipomEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
+	dw SunkernEggMoves
+	dw SunkernEggMoves
 	dw YanmaEggMoves
 	dw WooperEggMoves
 	dw WooperEggMoves
