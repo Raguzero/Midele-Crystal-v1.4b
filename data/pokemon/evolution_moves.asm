@@ -1,7 +1,7 @@
 EvolutionMoves::
 	db NO_MOVE      ; BULBASAUR
 	db ANCIENTPOWER      ; IVYSAUR
-	db PETAL_DANCE  ; VENUSAUR
+	db SOLARBEAM  ; VENUSAUR
 	db NO_MOVE      ; CHARMANDER
 	db SUBMISSION      ; CHARMELEON
 	db CRUNCH  ; CHARIZARD
@@ -33,8 +33,8 @@ EvolutionMoves::
 	db NO_MOVE      ; NIDORAN_M
 	db BUBBLEBEAM      ; NIDORINO
 	db SUBMISSION      ; NIDOKING
-	db THUNDER_WAVE      ; CLEFAIRY
-	db SEISMIC_TOSS      ; CLEFABLE
+	db SEISMIC_TOSS      ; CLEFAIRY
+	db THUNDER_WAVE      ; CLEFABLE
 	db NO_MOVE      ; VULPIX
 	db HEAL_BELL      ; NINETALES
 	db SUBMISSION     ; JIGGLYPUFF
@@ -57,7 +57,7 @@ EvolutionMoves::
 	db NO_MOVE      ; MANKEY
 	db ROCK_SLIDE ; PRIMEAPE
 	db NO_MOVE      ; GROWLITHE
-	db REVERSAL ; ARCANINE 
+	db SKULL_BASH ; ARCANINE 
 	db NO_MOVE      ; POLIWAG
 	db BUBBLEBEAM      ; POLIWHIRL
 	db ROCK_SLIDE      ; POLIWRATH
@@ -152,7 +152,7 @@ EvolutionMoves::
 	db NO_MOVE      ; MEW
 	db NO_MOVE      ; CHIKORITA
 	db ANCIENTPOWER      ; BAYLEEF
-	db PETAL_DANCE      ; MEGANIUM
+	db SOLARBEAM      ; MEGANIUM
 	db NO_MOVE      ; CYNDAQUIL
 	db REVERSAL      ; QUILAVA
 	db ROCK_SLIDE      ; TYPHLOSION
@@ -160,7 +160,7 @@ EvolutionMoves::
 	db SWORDS_DANCE     ; CROCONAW
 	db CRUNCH      ; FERALIGATR
 	db NO_MOVE      ; SENTRET
-	db AGILITY      ; FURRET
+	db SUBSTITUTE      ; FURRET
 	db NO_MOVE      ; HOOTHOOT
 	db NIGHT_SHADE      ; NOCTOWL
 	db NO_MOVE      ; LEDYBA
@@ -187,7 +187,7 @@ EvolutionMoves::
 	db PSYCHIC_M      ; POLITOED
 	db NO_MOVE      ; HOPPIP
 	db SWORDS_DANCE ; SKIPLOOM
-	db DOUBLE_EDGE ; JUMPLUFF
+	db MIMIC ; JUMPLUFF
 	db NO_MOVE      ; AIPOM
 	db NO_MOVE      ; SUNKERN
 	db HYPER_BEAM      ; SUNFLORA
@@ -215,7 +215,7 @@ EvolutionMoves::
 	db NO_MOVE      ; HERACROSS
 	db NO_MOVE      ; SNEASEL
 	db NO_MOVE      ; TEDDIURSA
-	db ROCK_SLIDE      ; URSARING
+	db BODY_SLAM      ; URSARING
 	db NO_MOVE      ; SLUGMA
 	db EXPLOSION      ; MAGCARGO
 	db NO_MOVE      ; SWINUB
@@ -227,10 +227,10 @@ EvolutionMoves::
 	db NO_MOVE      ; MANTINE
 	db NO_MOVE      ; SKARMORY
 	db NO_MOVE      ; HOUNDOUR
-	db REVERSAL      ; HOUNDOOM
+	db BEAT_UP      ; HOUNDOOM
 	db FLAIL     ; KINGDRA
 	db NO_MOVE      ; PHANPY
-	db ROCK_SLIDE      ; DONPHAN
+	db HORN_ATTACK      ; DONPHAN
 	db CURSE      ; PORYGON2
 	db NO_MOVE      ; STANTLER
 	db NO_MOVE      ; SMEARGLE
