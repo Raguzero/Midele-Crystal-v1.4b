@@ -475,6 +475,7 @@ INCLUDE "engine/pokedex/pokedex_stats_page.asm"
 INCLUDE "engine/pokedex/pokedex_pics_page.asm"
 INCLUDE "engine/pokedex/pokedex_moves_page.asm"
 INCLUDE "engine/pokedex/pokedex_area_page.asm"
+INCLUDE "engine/pokedex/pokedex_current_area_page.asm"
 
 Pokedex_Clearbox:
 	lb bc, 7, SCREEN_WIDTH - 1

@@ -106,17 +106,24 @@ DrawPokedexSearchResultsWindow: ; 1de1d1 (77:61d1)
 	hlcoord 0, 12
 	lb bc, 5, 11
 	call ClearBox
-	ld de, .esults_D
+	ld a, [wDexConvertedMonType]
+	cp $ff
+	ld de, .ResultsSuffix
+	jr nz, .got_title_suffix
+	ld de, wStringBuffer3
+.got_title_suffix
 	hlcoord 0, 12
+	call PlaceString
+	ld de, .FoundSuffix
+	hlcoord 0, 16
 	call PlaceString
 	ret
 
-.esults_D ; 1de23c
-; (SEARCH R)
-	db   "ESULTS"
-	next ""
-; (### FOUN)
-	next "D!@"
+.ResultsSuffix
+	db "ESULTS@"
+
+.FoundSuffix
+	db "D@"
 
 DrawDexEntryScreenRightEdge: ; 1de247
 	ldh a, [hBGMapAddress]

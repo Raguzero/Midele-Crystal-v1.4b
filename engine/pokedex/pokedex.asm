@@ -20,6 +20,9 @@
 POKEDEX_SCX EQU 5
 GLOBAL POKEDEX_SCX
 
+DEXSEARCH_SOURCE_TYPE         EQU 0
+DEXSEARCH_SOURCE_CURRENT_AREA EQU $ff
+
 Pokedex: ; 40000
 
 	ldh a, [hWX]
@@ -1182,7 +1185,9 @@ Pokedex_InitSearchScreen: ; 40443 (10:4443)
 	xor a
 	ldh [hBGMapMode], a
 	call ClearSprites
-	call Pokedex_LoadSlowpokeGFX ; restoring our precious Slowpoke Sprite
+; REMOVE SLOWPOKEGFX SEARCH
+	;call Pokedex_LoadSlowpokeGFX ; restoring our precious Slowpoke Sprite
+; REMOVE SLOWPOKEGFX SEARCH
 	call Pokedex_DrawSearchScreenBG
 	call Pokedex_InitArrowCursor
 	ld a, NORMAL + 1
@@ -1190,9 +1195,12 @@ Pokedex_InitSearchScreen: ; 40443 (10:4443)
 	xor a
 	ld [wDexSearchMonType2], a
 	call Pokedex_PlaceSearchScreenTypeStrings
-	xor a
-	ld [wDexSearchSlowpokeFrame], a
-	farcall DoDexSearchSlowpokeFrame
+; REMOVE SLOWPOKEGFX SEARCH
+	;xor a
+	;ld [wDexSearchSlowpokeFrame], a
+	;farcall DoDexSearchSlowpokeFrame
+; REMOVE SLOWPOKEGFX SEARCH
+	ld [wDexConvertedMonType], a
 	call WaitBGMap
 	ld a, SCGB_POKEDEX_SEARCH_OPTION
 	call Pokedex_GetSGBLayout
@@ -1220,19 +1228,23 @@ Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 	jp hl
 
 .cancel
+	xor a
+	ld [wDexConvertedMonType], a
 	call Pokedex_BlackOutBG
 	ld a, DEXSTATE_MAIN_SCR
 	ld [wJumptableIndex], a
 	ret
 
 .ArrowCursorData: ; 4049e
-	db D_UP | D_DOWN, 4
-	dwcoord 2, 4  ; TYPE 1
-	dwcoord 2, 6  ; TYPE 2
-	dwcoord 2, 13 ; BEGIN SEARCH
-	dwcoord 2, 15 ; CANCEL
+	db D_UP | D_DOWN, 5
+	dwcoord 2, 4  ; AREA SEARCH
+	dwcoord 2, 7  ; TYPE 1
+	dwcoord 2, 9  ; TYPE 2
+	dwcoord 2, 12 ; TYPE SEARCH
+	dwcoord 2, 14 ; CANCEL
 
 .MenuActionJumptable: ; 404a8
+	dw .MenuAction_CurrentAreaSearch
 	dw .MenuAction_MonSearchType
 	dw .MenuAction_MonSearchType
 	dw .MenuAction_BeginSearch
@@ -1244,8 +1256,12 @@ Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 	ret
 
 .MenuAction_BeginSearch: ; 404b7
+	ld a, DEXSEARCH_SOURCE_TYPE
+	ld [wDexConvertedMonType], a
 	call Pokedex_SearchForMons
-	farcall AnimateDexSearchSlowpoke
+; REMOVE SLOWPOKEGFX SEARCH
+	;farcall AnimateDexSearchSlowpoke
+; REMOVE SLOWPOKEGFX SEARCH
 	ld a, [wDexSearchResultCount]
 	and a
 	jr nz, .show_search_results
@@ -1253,6 +1269,23 @@ Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 ; No mon with matching types was found.
 	call Pokedex_OrderMonsByMode
 	call Pokedex_DisplayTypeNotFoundMessage
+	xor a
+	ldh [hBGMapMode], a
+	call Pokedex_DrawSearchScreenBG
+	call Pokedex_InitArrowCursor
+	call Pokedex_PlaceSearchScreenTypeStrings
+	call WaitBGMap
+	ret
+	
+.MenuAction_CurrentAreaSearch:
+	call Pokedex_SearchCurrentAreaMons
+	ld a, DEXSEARCH_SOURCE_CURRENT_AREA
+	ld [wDexConvertedMonType], a
+	ld a, [wDexSearchResultCount]
+	and a
+	jr nz, .show_search_results
+	call Pokedex_OrderMonsByMode
+	call Pokedex_DisplayCurrentAreaNotFoundMessage
 	xor a
 	ldh [hBGMapMode], a
 	call Pokedex_DrawSearchScreenBG
@@ -1278,6 +1311,8 @@ Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 	ret
 
 .MenuAction_Cancel: ; 40501
+	xor a
+	ld [wDexConvertedMonType], a
 	call Pokedex_BlackOutBG
 	ld a, DEXSTATE_MAIN_SCR
 	ld [wJumptableIndex], a
@@ -1292,6 +1327,7 @@ Pokedex_InitSearchResultsScreen: ; 4050a (10:450a)
 	call ByteFill
 	call Pokedex_SetBGMapMode4
 	call Pokedex_ResetBGMapMode
+	call Pokedex_PrepSearchResultsWindowText
 	farcall DrawPokedexSearchResultsWindow
 	call Pokedex_PlaceSearchResultsTypeStrings
 	ld a, 4
@@ -1356,6 +1392,8 @@ Pokedex_UpdateSearchResultsScreen: ; 40562 (10:4562)
 	call Pokedex_BlackOutBG
 	call ClearSprites
 	call Pokedex_OrderMonsByMode
+	xor a
+	ld [wDexConvertedMonType], a
 	ld a, DEXSTATE_SEARCH_SCR
 	ld [wJumptableIndex], a
 	xor a
@@ -2061,17 +2099,23 @@ Pokedex_DrawSearchScreenBG: ; 408f0 (10:48f0)
 	hlcoord 0, 1
 	ld de, .Title
 	call Pokedex_PlaceString
-	hlcoord 8, 4
+	hlcoord 8, 7
 	ld de, .TypeLeftRightArrows
 	call Pokedex_PlaceString
-	hlcoord 8, 6
+	hlcoord 8, 9
 	ld de, .TypeLeftRightArrows
 	call Pokedex_PlaceString
-	hlcoord 3, 4
+	hlcoord 3, 7
 	ld de, .Types
 	call PlaceString
-	hlcoord 3, 13
-	ld de, .Menu
+	hlcoord 3, 4
+	ld de, .AreaSearch
+	call PlaceString
+	hlcoord 3, 12
+	ld de, .TypeSearch
+	call PlaceString
+	hlcoord 3, 14
+	ld de, .Cancel
 	call PlaceString
 	ret
 
@@ -2086,10 +2130,14 @@ Pokedex_DrawSearchScreenBG: ; 408f0 (10:48f0)
 	next "TYPE2"
 	db   "@"
 
-.Menu: ; 4094c
-	db   "BEGIN SEARCH!!"
-	next "CANCEL"
-	db   "@"
+.AreaSearch:
+	db "AREA SEARCH@"
+
+.TypeSearch:
+	db "TYPE SEARCH@"
+
+.Cancel:
+	db "CANCEL@"
 
 Pokedex_DrawSearchResultsScreenBG: ; 40962 (10:4962)
 	call Pokedex_FillBackgroundColor2
@@ -2102,6 +2150,28 @@ Pokedex_DrawSearchResultsScreenBG: ; 40962 (10:4962)
 	hlcoord 1, 12
 	ld de, .BottomWindowText
 	call PlaceString
+	ld a, [wDexConvertedMonType]
+	cp DEXSEARCH_SOURCE_CURRENT_AREA
+	jr nz, .print_count
+	call Pokedex_GetLandmark
+	ld a, [wDexCurrentLocation]
+	ld e, a
+	farcall GetLandmarkName
+	hlcoord 1, 12
+	ld bc, 18
+	ld a, " "
+	call ByteFill
+	hlcoord 1, 12
+	ld de, wStringBuffer1
+	call PlaceString
+	hlcoord 1, 13
+	ld bc, 18
+	ld a, " "
+	call ByteFill
+	hlcoord 1, 14
+	ld de, .AreaTimeLabel
+	call PlaceString
+.print_count
 	ld de, wDexSearchResultCount
 	hlcoord 1, 16
 	lb bc, 1, 3
@@ -2126,8 +2196,40 @@ Pokedex_DrawSearchResultsScreenBG: ; 40962 (10:4962)
 	next "  TYPE"
 	next "    FOUND!"
 	db   "@"
+	
+.AreaTimeLabel:
+	db "  TIME@"
+
+Pokedex_SearchResultsTime_Morn:
+	db "MORN@"
+
+Pokedex_SearchResultsTime_Day:
+	db "DAY@"
+
+Pokedex_SearchResultsTime_Night:
+	db "NIGHT@"
 
 Pokedex_PlaceSearchResultsTypeStrings: ; 409cf (10:49cf)
+	hlcoord 0, 14
+	lb bc, 2, 9
+	call ClearBox
+	ld a, [wDexConvertedMonType]
+	cp DEXSEARCH_SOURCE_CURRENT_AREA
+	jr nz, .type_search
+	call Pokedex_SearchCurrentArea_GetGrassTimeOfDayIndex
+	hlcoord 1, 14
+	and a
+	ld de, Pokedex_SearchResultsTime_Morn
+	jr z, .place_area_time
+	cp DAY_F
+	ld de, Pokedex_SearchResultsTime_Day
+	jr z, .place_area_time
+	ld de, Pokedex_SearchResultsTime_Night
+.place_area_time
+	call PlaceString
+	ret
+
+.type_search
 	ld a, [wDexSearchMonType1]
 	hlcoord 0, 14
 	call Pokedex_PlaceTypeString
@@ -2397,10 +2499,23 @@ Pokedex_PlaceCaughtSymbolIfCaught: ; 40b82 (10:4b82)
 Pokedex_PlaceDefaultStringIfNotSeen: ; 40b8d (10:4b8d)
 	call Pokedex_CheckSeen
 	ret nz
+	ld a, [wDexConvertedMonType]
+	cp DEXSEARCH_SOURCE_CURRENT_AREA
+	jr nz, .not_seen
+	ld a, [wJumptableIndex]
+	cp DEXSTATE_SEARCH_RESULTS_SCR
+	jr z, .allow_name
+	cp DEXSTATE_UPDATE_SEARCH_RESULTS_SCR
+	jr z, .allow_name
+.not_seen
 	inc hl
 	ld de, .NameNotSeen
 	call PlaceString
 	scf
+	ret
+	
+.allow_name
+	and a
 	ret
 
 .NameNotSeen: ; 40b9a
@@ -2631,7 +2746,9 @@ String_ChangingModesPleaseWait: ; 40f32
 
 Pokedex_UpdateSearchMonType: ; 40f4f (10:4f4f)
 	ld a, [wDexArrowCursorPosIndex]
-	cp 2
+	cp 1
+	jr c, .no_change
+	cp 3
 	jr nc, .no_change
 	ld hl, hJoyLast
 	ld a, [hl]
@@ -2646,7 +2763,7 @@ Pokedex_UpdateSearchMonType: ; 40f4f (10:4f4f)
 
 Pokedex_PrevSearchMonType: ; 40f65
 	ld a, [wDexArrowCursorPosIndex]
-	and a
+	cp 1
 	jr nz, .type2
 
 	ld hl, wDexSearchMonType1
@@ -2673,7 +2790,7 @@ Pokedex_PrevSearchMonType: ; 40f65
 
 Pokedex_NextSearchMonType: ; 40f84
 	ld a, [wDexArrowCursorPosIndex]
-	and a
+	cp 1
 	jr nz, .type2
 
 	ld hl, wDexSearchMonType1
@@ -2703,15 +2820,15 @@ Pokedex_NextSearchMonType: ; 40f84
 Pokedex_PlaceSearchScreenTypeStrings: ; 40fa8 (10:4fa8)
 	xor a
 	ldh [hBGMapMode], a
-	hlcoord 9, 3
+	hlcoord 9, 6
 	lb bc, 4, 8
 	ld a, " "
 	call Pokedex_FillBox
 	ld a, [wDexSearchMonType1]
-	hlcoord 9, 4
+	hlcoord 9, 7
 	call Pokedex_PlaceTypeString
 	ld a, [wDexSearchMonType2]
-	hlcoord 9, 6
+	hlcoord 9, 9
 	call Pokedex_PlaceTypeString
 	ld a, $1
 	ldh [hBGMapMode], a
@@ -2732,6 +2849,322 @@ endr
 	ret
 
 INCLUDE "data/types/search_strings.asm"
+
+Pokedex_PrepSearchResultsWindowText:
+	ld a, [wDexConvertedMonType]
+	cp DEXSEARCH_SOURCE_CURRENT_AREA
+	jr z, .area_search
+	ld hl, .ResultsSuffix
+	ld de, wStringBuffer3
+	jr .copy_suffix
+
+.area_search
+	call Pokedex_GetLandmark
+	ld a, [wDexCurrentLocation]
+	ld e, a
+	farcall GetLandmarkName
+	ld hl, wStringBuffer1
+	ld b, 8
+.skip_visible_prefix
+	ld a, [hli]
+	cp "@"
+	jr z, .empty_suffix
+	dec b
+	jr nz, .skip_visible_prefix
+	ld de, wStringBuffer3
+.copy_suffix
+	ld a, [hli]
+	ld [de], a
+	inc de
+	cp "@"
+	ret z
+	jr .copy_suffix
+
+.empty_suffix
+	ld a, "@"
+	ld [wStringBuffer3], a
+	ret
+
+.ResultsSuffix
+	db "esults@"
+
+Pokedex_SearchCurrentAreaMons:
+	xor a
+	ld [wDexSearchResultCount], a
+	call Pokedex_SearchCurrentArea_GetSectionFlags
+	bit 0, a
+	call nz, .AddGrassMons
+	call Pokedex_SearchCurrentArea_GetSectionFlags
+	bit 1, a
+	call nz, .AddSurfMons
+	jp Pokedex_ClearRemainingSearchResults
+
+.AddGrassMons
+	call Pokedex_SearchCurrentArea_GetGrassPointer
+	ret nc
+	ld bc, 5
+	add hl, bc
+	call Pokedex_SearchCurrentArea_GetGrassTimeOfDayIndex
+	and a
+	jr z, .grass_loop
+	ld bc, NUM_GRASSMON * AREA_ENTRY_SIZE_BYTES
+	cp 1
+	jr z, .apply_grass_offset
+	add hl, bc
+.apply_grass_offset
+	add hl, bc
+.grass_loop
+	ld b, NUM_GRASSMON
+.next_grass_mon
+	inc hl
+	ld a, BANK(JohtoGrassWildMons)
+	call GetFarByte
+	push hl
+	push bc
+	call Pokedex_AddSearchResult
+	pop bc
+	pop hl
+	inc hl
+	dec b
+	jr nz, .next_grass_mon
+	ret
+
+.AddSurfMons
+	call Pokedex_SearchCurrentArea_GetSurfPointer
+	ret nc
+	ld bc, 3
+	add hl, bc
+	ld b, NUM_WATERMON
+.next_surf_mon
+	inc hl
+	ld a, BANK(JohtoWaterWildMons)
+	call GetFarByte
+	push hl
+	push bc
+	call Pokedex_AddSearchResult
+	pop bc
+	pop hl
+	inc hl
+	dec b
+	jr nz, .next_surf_mon
+	ret
+
+Pokedex_AddSearchResult:
+	ld e, a
+	ld hl, wPokedexOrder
+	ld a, [wDexSearchResultCount]
+	ld b, a
+.loop
+	ld a, b
+	and a
+	jr z, .append
+	ld a, [hli]
+	cp e
+	ret z
+	dec b
+	jr .loop
+
+.append
+	ld a, e
+	ld [hl], a
+	ld a, [wDexSearchResultCount]
+	inc a
+	ld [wDexSearchResultCount], a
+	ret
+
+Pokedex_SearchCurrentArea_GetSectionFlags:
+; bit 0 = grass, bit 1 = surf
+	xor a
+	push af
+	call Pokedex_SearchCurrentArea_GetGrassPointer
+	pop bc
+	ld a, b
+	jr nc, .no_grass
+	or 1
+.no_grass
+	push af
+	call Pokedex_SearchCurrentArea_GetSurfPointer
+	pop bc
+	ld a, b
+	jr nc, .no_surf
+	or 2
+.no_surf
+	ret
+
+Pokedex_SearchCurrentArea_GetGrassTimeOfDayIndex:
+	ld a, [wTimeOfDay]
+	cp NITE_F
+	ret
+
+Pokedex_SearchCurrentArea_GetGrassPointer:
+	call Pokedex_SearchCurrentArea_CheckGrassSwarm
+	ret c
+
+	call IsInJohto
+	and a
+	ld hl, KantoGrassWildMons
+	jr nz, .table_ready
+	ld hl, JohtoGrassWildMons
+
+.table_ready
+	call Pokedex_SearchCurrentArea_CopyCurrMapDE
+	jp Pokedex_SearchCurrentArea_LookUpGrassWildmonsForMapDE
+
+Pokedex_SearchCurrentArea_GetSurfPointer:
+	call Pokedex_SearchCurrentArea_CheckWaterSwarm
+	ret c
+
+	call IsInJohto
+	and a
+	ld hl, KantoWaterWildMons
+	jr nz, .table_ready
+	ld hl, JohtoWaterWildMons
+
+.table_ready
+	call Pokedex_SearchCurrentArea_CopyCurrMapDE
+	jp Pokedex_SearchCurrentArea_LookUpWaterWildmonsForMapDE
+
+Pokedex_SearchCurrentArea_CheckGrassSwarm:
+	ld hl, SwarmGrassWildMons
+	call Pokedex_SearchCurrentArea_CopyCurrMapDE
+	push hl
+	ld hl, wSwarmFlags
+	bit SWARMFLAGS_DUNSPARCE_SWARM_F, [hl]
+	pop hl
+	jr z, .check_yanma
+	ld a, [wDunsparceMapGroup]
+	cp d
+	jr nz, .check_yanma
+	ld a, [wDunsparceMapNumber]
+	cp e
+	jr nz, .check_yanma
+	jp Pokedex_SearchCurrentArea_LookUpGrassWildmonsForMapDE
+
+.check_yanma
+	push hl
+	ld hl, wSwarmFlags
+	bit SWARMFLAGS_YANMA_SWARM_F, [hl]
+	pop hl
+	jr z, .not_found
+	ld a, [wYanmaMapGroup]
+	cp d
+	jr nz, .not_found
+	ld a, [wYanmaMapNumber]
+	cp e
+	jr nz, .not_found
+	jp Pokedex_SearchCurrentArea_LookUpGrassWildmonsForMapDE
+
+.not_found
+	and a
+	ret
+
+Pokedex_SearchCurrentArea_CheckWaterSwarm:
+	ld hl, SwarmWaterWildMons
+	call Pokedex_SearchCurrentArea_CopyCurrMapDE
+	push hl
+	ld hl, wSwarmFlags
+	bit SWARMFLAGS_DUNSPARCE_SWARM_F, [hl]
+	pop hl
+	jr z, .check_yanma
+	ld a, [wDunsparceMapGroup]
+	cp d
+	jr nz, .check_yanma
+	ld a, [wDunsparceMapNumber]
+	cp e
+	jr nz, .check_yanma
+	jp Pokedex_SearchCurrentArea_LookUpWaterWildmonsForMapDE
+
+.check_yanma
+	push hl
+	ld hl, wSwarmFlags
+	bit SWARMFLAGS_YANMA_SWARM_F, [hl]
+	pop hl
+	jr z, .not_found
+	ld a, [wYanmaMapGroup]
+	cp d
+	jr nz, .not_found
+	ld a, [wYanmaMapNumber]
+	cp e
+	jr nz, .not_found
+	jp Pokedex_SearchCurrentArea_LookUpWaterWildmonsForMapDE
+
+.not_found
+	and a
+	ret
+
+Pokedex_SearchCurrentArea_CopyCurrMapDE:
+	ld a, [wMapGroup]
+	ld d, a
+	ld a, [wMapNumber]
+	ld e, a
+	ret
+
+Pokedex_SearchCurrentArea_LookUpGrassWildmonsForMapDE:
+	ld bc, GRASS_WILDDATA_LENGTH
+
+.loop
+	push hl
+	ld a, BANK(JohtoGrassWildMons)
+	call GetFarByte
+	inc a
+	jr z, .no_match
+	dec a
+	cp d
+	jr nz, .next
+	inc hl
+	ld a, BANK(JohtoGrassWildMons)
+	call GetFarByte
+	cp e
+	jr z, .found
+	jr .next
+
+.next
+	pop hl
+	add hl, bc
+	jr .loop
+
+.no_match
+	pop hl
+	and a
+	ret
+
+.found
+	pop hl
+	scf
+	ret
+
+Pokedex_SearchCurrentArea_LookUpWaterWildmonsForMapDE:
+	ld bc, WATER_WILDDATA_LENGTH
+
+.loop
+	push hl
+	ld a, BANK(JohtoWaterWildMons)
+	call GetFarByte
+	inc a
+	jr z, .no_match
+	dec a
+	cp d
+	jr nz, .next
+	inc hl
+	ld a, BANK(JohtoWaterWildMons)
+	call GetFarByte
+	cp e
+	jr z, .found
+
+.next
+	pop hl
+	add hl, bc
+	jr .loop
+
+.no_match
+	pop hl
+	and a
+	ret
+
+.found
+	pop hl
+	scf
+	ret
 
 Pokedex_SearchForMons: ; 41086
 	ld a, [wDexSearchMonType2]
@@ -2793,9 +3226,16 @@ Pokedex_SearchForMons: ; 41086
 	dec c
 	jr nz, .loop
 
-	ld l, e
-	ld h, d
+	call Pokedex_ClearRemainingSearchResults
+.done
+	ret
+
+Pokedex_ClearRemainingSearchResults:
 	ld a, [wDexSearchResultCount]
+	ld e, a
+	ld d, 0
+	ld hl, wPokedexOrder
+	add hl, de
 	ld c, 0
 
 .zero_remaining_mons
@@ -2829,6 +3269,25 @@ Pokedex_DisplayTypeNotFoundMessage: ; 41107
 .TypeNotFound: ; 41126
 	db   "The specified type"
 	next "was not found.@"
+	
+Pokedex_DisplayCurrentAreaNotFoundMessage:
+	xor a
+	ldh [hBGMapMode], a
+	hlcoord 0, 12
+	lb bc, 4, 18
+	call Pokedex_PlaceBorder
+	ld de, .CurrentAreaNotFound
+	hlcoord 1, 14
+	call PlaceString
+	ld a, $1
+	ldh [hBGMapMode], a
+	ld c, $80
+	call DelayFrames
+	ret
+
+.CurrentAreaNotFound:
+	db   "No wild encounters"
+	next "are here now.@"
 
 Pokedex_UpdateCursorOAM: ; 41148 (10:5148)
 	ld a, [wCurrentDexMode]
