@@ -76,7 +76,7 @@ b653ebb3a6b1021e761a5fbd3ef6c0e6eafb6d04 *gfx/evo/egg_hatch.2bpp
 be673e8a56eaa9d8c1d35064866701c11ef8e089 *gfx/font/black.1bpp
 bd162c4b30d7d866048d918577fe361f4d6e0003 *gfx/font/english.1bpp
 20784e20333f993a61b77423427eb510f8f08dee *gfx/font/feet_inches.2bpp
-bd162c4b30d7d866048d918577fe361f4d6e0003 *gfx/font/font.1bpp
+f17f5f961c5de212508509526f24b78594972d79 *gfx/font/font.1bpp
 5f557853d52985798da65d34902e58769821b715 *gfx/font/font_battle_extra.2bpp
 a981ee8fd0a5b05d21dcd1d2c26584820c93bcd7 *gfx/font/font_extra.2bpp
 733009b1182688eaf8dffa20e896a9fd3c1c5b2b *gfx/font/font_inversed.1bpp
