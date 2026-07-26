@@ -5910,9 +5910,9 @@ MoveInfoBox: ; 3e6c8
 	xor a
 	ld [hBGMapMode], a
 
-	hlcoord 0, 8
-	ld b, 3
-	ld c, 9
+	hlcoord 0, 7 ; upper right corner of the textbox
+	ld b, 4 ; Box height
+	ld c, 8 ; Box length
 	call TextBox
 	call MobileTextBorder
 
@@ -5930,7 +5930,7 @@ MoveInfoBox: ; 3e6c8
 	hlcoord 1, 10
 	ld de, .Disabled
 	call PlaceString
-	jr .done
+	jp .done
 
 .not_disabled
 	ld hl, wMenuCursorY
@@ -5961,35 +5961,99 @@ MoveInfoBox: ; 3e6c8
 	ld [wStringBuffer1], a
 	call .PrintPP
 
-	hlcoord 1, 9
-	ld de, .Type
-	call PlaceString
-
-	hlcoord 7, 11
-	ld [hl], "/"
+	;hlcoord 1, 9
+	;ld de, .Type
+	;call PlaceString
+	;
+	;hlcoord 7, 11
+	;ld [hl], "/"
 
 	callfar UpdateMoveData
 	ld a, [wPlayerMoveStruct + MOVE_ANIM]
 	ld b, a
-	hlcoord 2, 10
+	hlcoord 1, 8
 	predef PrintMoveType
+	
+; print "pp"
+	ld de, .pp_string ; "p"
+	hlcoord 1, 11
+	call PlaceString
+
+; print move BP (Base Power)
+	ld de, .power_string ; "p/"
+	hlcoord 1, 9
+	call PlaceString
+
+	hlcoord 5, 9
+	ld a, [wPlayerMoveStruct + MOVE_POWER]
+	cp 2
+	jr c, .nopower
+	; MOVE_POWER is 1 or higher
+
+	; code for moves with power 1+
+	jr .haspower
+
+.nopower:
+	ld de, .nopower_string
+	call PlaceString
+	jr .place_accuracy
+
+.haspower:
+	ld [wd265], a
+	ld de, wd265
+	lb bc, 1, 3 ; number of bytes this number is in, in 'b', number of possible digits in 'c'
+	call PrintNum
+
+; print move's accuracy
+.place_accuracy
+	ld de, .acc_string ; "ACC"
+	hlcoord 1, 10
+	call PlaceString
+
+	ld a, [wCurSpecies]
+	ld bc, MOVE_LENGTH
+
+	ld hl, (Moves + MOVE_ACC) - MOVE_LENGTH
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+
+	call ConvertPercentages3
+	ld [wBuffer1], a
+	ld de, wBuffer1
+	lb bc, 1, 3
+	hlcoord 5, 10
+	call PrintNum
+	ld [hl], "<%>" ; displays percent symbol
+	hlcoord 8, 9
 
 .done
 	ret
+	
+.nopower_string:
+	db "---@"
+.place_var_string:
+	db " VAR@"
+.power_string:
+	db "POW@"
+.pp_string:
+	db "PP@"
+.acc_string:
+	db "ACC@"
 ; 3e74f
 
 .Disabled:
-	db "Disabled!@"
-.Type:
-	db "TYPE/@"
+	db "Disabled@"
+;.Type:
+;	db "TYPE/@"
 ; 3e75f
 
 .PrintPP: ; 3e75f
-	hlcoord 5, 11
+	hlcoord 4, 11
 	ld a, [wLinkMode] ; What's the point of this check?
 	cp LINK_MOBILE
 	jr c, .ok
-	hlcoord 5, 11
+	hlcoord 4, 11
 .ok
 	push hl
 	ld de, wStringBuffer1
@@ -6005,6 +6069,52 @@ MoveInfoBox: ; 3e6c8
 	call PrintNum
 	ret
 ; 3e786
+
+; This converts values out of 256 into a value
+; out of 100. It achieves this by multiplying
+; the value by 100 and dividing it by 256.
+ConvertPercentages3:
+
+	; Overwrite the "hl" register.
+	ld l, a
+	ld h, 0
+	push af
+
+	; Multiplies the value of the "hl" register by 3.
+	add hl, hl
+	add a, l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+
+	; Multiplies the value of the "hl" register
+	; by 8. The value of the "hl" register
+	; is now 24 times its original value.
+	add hl, hl
+	add hl, hl
+	add hl, hl
+
+	; Add the original value of the "hl" value to itself,
+	; making it 25 times its original value.
+	pop af
+	add a, l
+	ld l, a
+	adc h
+	sbc l
+	ld h, a
+
+	; Multiply the value of the "hl" register by
+	; 4, making it 100 times its original value.
+	add hl, hl
+	add hl, hl
+
+    ; Round up value of the "h" register by adding 1.
+    ; Return the result in the "a" register.
+    ; The "l" register is ignored.
+    inc h
+    ld a, h
+    ret
 
 CheckPlayerHasUsableMoves: ; 3e786
 	ld a, STRUGGLE
