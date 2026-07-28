@@ -1414,17 +1414,17 @@ JohtoGrassWildMonsForDex: ; the ones before this line will not be shown in dex
 	db 16, SNUBBULL
 	db 16, PIDGEY
 	db 16, GROWLITHE
-	db 16, YANMA
-	db 18, JIGGLYPUFF
-	db 10, DITTO
+	db 16, JIGGLYPUFF
+	db 18, DITTO
+	db 20, YANMA
 	db 20, YANMA
 	; day
 	db 16, SNUBBULL
 	db 16, PIDGEY
 	db 16, GROWLITHE
-	db 16, YANMA
-	db 18, JIGGLYPUFF
-	db 10, DITTO
+	db 16, JIGGLYPUFF
+	db 18, DITTO
+	db 20, YANMA
 	db 20, YANMA
 	; nite
 	db 16, DROWZEE
@@ -1432,7 +1432,7 @@ JohtoGrassWildMonsForDex: ; the ones before this line will not be shown in dex
 	db 18, PSYDUCK
 	db 16, HOUNDOUR
 	db 18, JIGGLYPUFF
-	db 10, DITTO
+	db 18, DITTO
 	db 20, YANMA
 
 	map_id ROUTE_36
