@@ -1962,26 +1962,26 @@ ChanseyEvosAttacks:
 
 TangelaEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, ABSORB
 	db 1, BIND
-	db 4, SLEEP_POWDER
-	db 7, ABSORB
-	db 10, REFLECT
-	db 13, POISONPOWDER
+	db 1, SLEEP_POWDER
+	db 7, VINE_WHIP
+	db 10, POISONPOWDER
+	db 13, MEGA_DRAIN
 	db 16, GROWTH
-	db 19, VINE_WHIP
-	db 25, MIMIC
-	db 28, GIGA_DRAIN
-	db 31, SUBSTITUTE
-	db 34, STUN_SPORE
-	db 38, ANCIENTPOWER
-	db 40, SLAM
-	db 43, LEECH_SEED
-	db 49, SWORDS_DANCE
-	db 51, BODY_SLAM
-	db 54, PAIN_SPLIT
-	db 61, DOUBLE_EDGE
-	db 64, AMNESIA
-	db 68, SYNTHESIS
+	db 18, MIMIC
+	db 22, GIGA_DRAIN
+	db 25, STUN_SPORE
+	db 29, ANCIENTPOWER
+	db 33, SUBSTITUTE
+	db 36, SLAM
+	db 39, LEECH_SEED
+	db 44, SWORDS_DANCE
+	db 47, BODY_SLAM
+	db 49, PAIN_SPLIT
+	db 52, DOUBLE_EDGE
+	db 55, AMNESIA
+	db 57, SYNTHESIS
 	db 0 ; no more level-up moves
 
 KangaskhanEvosAttacks:
@@ -3046,42 +3046,40 @@ IgglybuffEvosAttacks:
 TogepiEvosAttacks:
 	db EVOLVE_HAPPINESS, TR_ANYTIME, TOGETIC
 	db 0 ; no more evolutions
-	db 1, FAIRY_WIND
+	db 1, METRONOME
 	db 1, CHARM
-	db 5, METRONOME
+	db 5, SWEET_KISS
 	db 7, HEAL_BELL
-	db 10, SWEET_KISS
+	db 9, FAIRY_WIND
 	db 13, ANCIENTPOWER
 	db 17, ENCORE
 	db 21, SAFEGUARD
 	db 24, DAZZLING_GLEAM
-	db 27, DOUBLE_EDGE
-	db 32, HEAL_BELL
-	db 37, BATON_PASS
-	db 41, NASTY_PLOT
+	db 30, BATON_PASS
+	db 37, NASTY_PLOT
+	db 42, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 TogeticEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, METRONOME
 	db 1, FAIRY_WIND
 	db 1, CHARM
 	db 1, HEAL_BELL
-	db 8, METRONOME
-	db 12, SWEET_KISS
+	db 9, SWEET_KISS
 	db 15, ANCIENTPOWER
 	db 19, ENCORE
-	db 27, DAZZLING_GLEAM
-	db 31, BODY_SLAM
-	db 34, SAFEGUARD
-	db 38, SEISMIC_TOSS
-	db 41, BATON_PASS
-	db 44, NASTY_PLOT
-	db 46, PSYCHIC_M
-	db 49, COUNTER
-	db 52, THUNDER_WAVE
-	db 55, DOUBLE_EDGE
-	db 58, REFLECT
-	db 62, LIGHT_SCREEN
+	db 22, BODY_SLAM
+	db 25, SAFEGUARD
+	db 28, DAZZLING_GLEAM
+	db 33, SEISMIC_TOSS
+	db 36, BATON_PASS
+	db 39, NASTY_PLOT
+	db 42, PSYCHIC_M
+	db 45, COUNTER
+	db 48, LIGHT_SCREEN
+	db 55, REFLECT
+	db 58, THUNDER_WAVE
 	db 0 ; no more level-up moves
 
 NatuEvosAttacks:
@@ -3341,12 +3339,11 @@ SunkernEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ABSORB
 	db 4, GROWTH
-	db 10, MEGA_DRAIN
-	db 13, LEECH_SEED
-	db 16, RAZOR_LEAF
-	db 18, MORNING_SUN
-	db 22, GIGA_DRAIN
-	db 27, DOUBLE_EDGE
+	db 7, MEGA_DRAIN
+	db 10, LEECH_SEED
+	db 13, RAZOR_LEAF
+	db 16, SYNTHESIS
+	db 19, GIGA_DRAIN
 	db 0 ; no more level-up moves
 
 SunfloraEvosAttacks:
@@ -3355,43 +3352,47 @@ SunfloraEvosAttacks:
 	db 1, SWORDS_DANCE
 	db 1, GROWTH
 	db 1, MEGA_DRAIN
-	db 16, LEECH_SEED
-	db 19, MORNING_SUN
-	db 21, RAZOR_LEAF
-	db 23, ENCORE
-	db 25, GIGA_DRAIN
-	db 28, SUNNY_DAY
-	db 31, DAZZLING_GLEAM
-	db 34, SYNTHESIS
-	db 37, SOLARBEAM
-	db 39, MIMIC
-	db 41, PETAL_DANCE
-	db 43, LIGHT_SCREEN
+	db 13, LEECH_SEED
+	db 15, RAZOR_LEAF
+	db 18, SYNTHESIS
+	db 20, ENCORE
+	db 22, GIGA_DRAIN
+	db 24, LIGHT_SCREEN
+	db 27, DAZZLING_GLEAM
+	db 29, SLUDGE_BOMB
+	db 31, SUNNY_DAY
+	db 31, SOLARBEAM
+	db 34, MIMIC
+	db 39, PETAL_DANCE
+	db 41, SUBSTITUTE
 	db 0 ; no more level-up moves
 
 YanmaEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SUPERSONIC
+	db 1, SONICBOOM
 	db 1, FORESIGHT
 	db 1, PURSUIT
-	db 6, GUST
+	db 6, QUICK_ATTACK
 	db 9, SWEET_KISS
-	db 13, QUICK_ATTACK
-	db 15, SWORDS_DANCE
-	db 18, SONICBOOM
+	db 13, GUST
+	db 15, FAINT_ATTACK
+	db 18, SWORDS_DANCE
 	db 21, HYPNOSIS
 	db 21, DREAM_EATER
-	db 24, WING_ATTACK
+	db 23, WING_ATTACK
+	db 25, STEEL_WING
 	db 28, ANCIENTPOWER
-	db 29, GIGA_DRAIN
-	db 31, DOUBLE_TEAM
-	db 32, LEECH_LIFE
-	db 34, REVERSAL
-	db 34, ENDURE
-	db 37, PSYCHIC_M
-	db 39, SCREECH
+	db 31, GIGA_DRAIN
+	db 33, DOUBLE_TEAM
+	db 36, LEECH_LIFE
+	db 38, REVERSAL
+	db 38, ENDURE
+	db 40, PSYCHIC_M
+	db 42, SCREECH
 	db 44, DOUBLE_EDGE
 	db 47, BATON_PASS
+	db 49, SUBSTITUTE
 	db 0 ; no more level-up moves
 
 WooperEvosAttacks:
@@ -3467,6 +3468,7 @@ UmbreonEvosAttacks:
 MurkrowEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, PECK
+	db 1, SPITE
 	db 7, PURSUIT
 	db 10, HAZE
 	db 14, ICY_WIND
@@ -3477,7 +3479,8 @@ MurkrowEvosAttacks:
 	db 27, NIGHT_SHADE
 	db 29, STEEL_WING
 	db 32, DRILL_PECK
-	db 36, NASTY_PLOT
+	db 34, NASTY_PLOT
+	db 36, SUBSTITUTE
 	db 39, MEAN_LOOK
 	db 42, PERISH_SONG
 	db 45, PSYCHIC_M
@@ -3693,19 +3696,23 @@ QwilfishEvosAttacks:
 	db 1, HARDEN
 	db 1, TACKLE
 	db 1, POISON_STING
-	db 10, MINIMIZE
-	db 15, WATER_GUN
-	db 19, SPIKES
-	db 21, PIN_MISSILE
-	db 24, SHADOW_BALL
+	db 7, MINIMIZE
+	db 10, WATER_GUN
+	db 13, SPIKES
+	db 17, PIN_MISSILE
+	db 19, TOXIC
+	db 21, BUBBLEBEAM
+	db 24, CRUNCH
 	db 28, SWORDS_DANCE
-	db 33, SELFDESTRUCT
-	db 37, TAKE_DOWN
-	db 39, THUNDER_WAVE
-	db 42, DESTINY_BOND
-	db 46, HYDRO_PUMP
-	db 51, PAIN_SPLIT
-	db 56, EXPLOSION
+	db 31, DOUBLE_EDGE
+	db 35, SELFDESTRUCT
+	db 38, THUNDER_WAVE
+	db 41, PAIN_SPLIT
+	db 44, EXPLOSION
+	db 47, DESTINY_BOND
+	db 50, HYDRO_PUMP
+	db 53, REVERSAL
+	db 55, SUBSTITUTE
 	db 0 ; no more level-up moves
 
 ScizorEvosAttacks:
