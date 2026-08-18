@@ -12,6 +12,9 @@ ReadTrainerParty: ; 39771
 	ld a, [wLinkMode]
 	and a
 	ret nz
+	
+; Dynamic Pokemon Levels
+	call SetTeamMaxLevel
 
 	ld hl, wOTPartyCount
 	xor a
@@ -148,6 +151,8 @@ ReadTrainerPartyPieces:
 	cp -1
 	ret z
 
+; Dynamic Pokemon Levels
+	call SetDynamicLevel
 ; level
 	ld [wCurPartyLevel], a
 
@@ -421,3 +426,55 @@ CopyTrainerName: ; 39984
 	;pop de
 	;ret
 ; 39999
+
+SetTeamMaxLevel:
+	ld a, [wPartyCount]
+	ld b, a
+	ld hl, wPartyMon1Level
+	ld a, [hl]
+	cp 50
+	jr nc, .cincuentaporlomenos
+	ld a, 50
+.cincuentaporlomenos
+	dec b
+	jr z, .SetLevel
+	ld de, PARTYMON_STRUCT_LENGTH
+	ld c, a
+
+.LoopPartyLevel
+	add hl, de
+	ld a, [hl]
+	cp c
+	jr c, .Continue
+	ld c, a
+.Continue
+	dec b
+	jr nz, .LoopPartyLevel
+	ld a, c
+.SetLevel
+	ld b, a
+	ld a, [wInBattleTowerBattle]
+	and a
+	ret nz
+	ld a, b
+	ld [wTeamMaxLevel], a
+	; fallthrough
+
+SetDynamicLevel:
+	cp MAX_LEVEL + 1
+	ret c
+	cp 199
+	ret c
+	sub LEVEL_FROM_PARTY
+	ld b, a
+	ld a, [wTeamMaxLevel]
+	add b
+	cp MAX_LEVEL
+	ret c
+; cap overflowflow at level 100
+	cp LEVEL_FROM_PARTY
+	ld a, MAX_LEVEL
+	ret c
+; cap overflow at level 2
+	ld a, 2
+	ret

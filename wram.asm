@@ -586,7 +586,7 @@ wEnemySAtkLevel:: db ; c6d7
 wEnemySDefLevel:: db ; c6d8
 wEnemyAccLevel:: db ; c6d9
 wEnemyEvaLevel:: db ; c6da
-	ds 1
+wTeamMaxLevel:: db
 
 wEnemyTurnsTaken:: db ; c6dc
 wPlayerTurnsTaken:: db ; c6dd
