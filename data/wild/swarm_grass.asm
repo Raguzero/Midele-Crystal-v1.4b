@@ -10,7 +10,7 @@ SwarmGrassWildMons: ; 0x2b8d0
 	db 3, DUNSPARCE
 	db 2, ZUBAT
 	db 2, GEODUDE
-	db 2, DUNSPARCE
+	db 2, TEDDIURSA
 	db 4, DUNSPARCE
 	db 4, DUNSPARCE
 	; day
@@ -34,28 +34,28 @@ SwarmGrassWildMons: ; 0x2b8d0
 	map_id ROUTE_35
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 16, NIDORAN_M
-	db 16, NIDORAN_F
+	db 16, SNUBBULL
+	db 16, PIDGEY
 	db 18, YANMA
 	db 20, YANMA
-	db 16, PIDGEY
-	db 10, DITTO
-	db 10, DITTO
+	db 16, GROWLITHE
+	db 16, JIGGLYPUFF
+	db 18, DITTO
 	; day
-	db 16, NIDORAN_M
-	db 16, NIDORAN_F
-	db 18, YANMA
-	db 20, YANMA
+	db 16, SNUBBULL
 	db 16, PIDGEY
-	db 10, DITTO
-	db 10, DITTO
-	; nite
-	db 16, NIDORAN_M
-	db 16, NIDORAN_F
 	db 18, YANMA
 	db 20, YANMA
-	db 16, HOOTHOOT
-	db 10, DITTO
-	db 10, DITTO
+	db 16, GROWLITHE
+	db 16, JIGGLYPUFF
+	db 18, DITTO
+	; nite
+	db 16, DROWZEE
+	db 17, HOOTHOOT
+	db 20, YANMA
+	db 18, PSYDUCK
+	db 16, HOUNDOUR
+	db 16, JIGGLYPUFF
+	db 18, DITTO
 
 	db -1 ; end

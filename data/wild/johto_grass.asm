@@ -1416,7 +1416,7 @@ JohtoGrassWildMonsForDex: ; the ones before this line will not be shown in dex
 	db 16, GROWLITHE
 	db 16, JIGGLYPUFF
 	db 18, DITTO
-	db 20, YANMA
+	db 18, YANMA
 	db 20, YANMA
 	; day
 	db 16, SNUBBULL
@@ -1424,7 +1424,7 @@ JohtoGrassWildMonsForDex: ; the ones before this line will not be shown in dex
 	db 16, GROWLITHE
 	db 16, JIGGLYPUFF
 	db 18, DITTO
-	db 20, YANMA
+	db 18, YANMA
 	db 20, YANMA
 	; nite
 	db 16, DROWZEE
