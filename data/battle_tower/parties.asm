@@ -820,7 +820,7 @@ BattleTowerMons2:
 
 	db BLISSEY
 	db BRIGHTPOWDER
-	db PSYCHIC_M, SUBMISSION, SOFTBOILED, COUNTER
+	db PSYCHIC_M, BRICK_BREAK, SOFTBOILED, COUNTER
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -830,7 +830,7 @@ BattleTowerMons2:
 	bigdw 30000
 	bigdw 50000
 	db $bd, $fe ; DVs
-	db 10, 20, 10, 20 ; PP
+	db 10, 15, 10, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db 20 ; Level
@@ -1175,7 +1175,7 @@ BattleTowerMons3:
 
 	db POLIWRATH
 	db BRIGHTPOWDER
-	db DOUBLE_TEAM, SURF, FISSURE, SUBMISSION
+	db DOUBLE_TEAM, SURF, FISSURE, BRICK_BREAK
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1185,7 +1185,7 @@ BattleTowerMons3:
 	bigdw 55000
 	bigdw 50000
 	db $dd, $fb ; DVs
-	db 15, 15, 5, 20 ; PP
+	db 15, 15, 5, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db 30 ; Level
@@ -4381,7 +4381,7 @@ BattleTowerMons8:
 
 	db MOLTRES
 	db CHARCOAL
-	db FLAMETHROWER, SKY_ATTACK, STEEL_WING, HYPER_BEAM
+	db FLAMETHROWER, BRAVE_BIRD, STEEL_WING, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4391,7 +4391,7 @@ BattleTowerMons8:
 	bigdw 40000
 	bigdw 50000
 	db $dd, $fe ; DVs
-	db 15, 5, 25, 5 ; PP
+	db 15, 15, 25, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db 80 ; Level
@@ -4516,7 +4516,7 @@ BattleTowerMons8:
 
 	db PINSIR
 	db GOLD_BERRY
-	db HYPER_BEAM, SUBMISSION, STRENGTH, TOXIC
+	db HYPER_BEAM, BRICK_BREAK, STRENGTH, TOXIC
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4526,7 +4526,7 @@ BattleTowerMons8:
 	bigdw 30000
 	bigdw 30000
 	db $74, $64 ; DVs
-	db 5, 20, 15, 10 ; PP
+	db 5, 15, 15, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db 80 ; Level

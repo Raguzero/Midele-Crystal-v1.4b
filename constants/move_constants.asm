@@ -71,7 +71,7 @@
 	const HYPER_BEAM   ; 3f
 	const PECK         ; 40
 	const DRILL_PECK   ; 41
-	const SUBMISSION   ; 42
+	const BRICK_BREAK   ; 42
 	const LOW_KICK     ; 43
 	const COUNTER      ; 44
 	const SEISMIC_TOSS ; 45
@@ -148,7 +148,7 @@
 	const NASTY_PLOT   ; 8c
 	const LEECH_LIFE   ; 8d
 	const LOVELY_KISS  ; 8e
-	const SKY_ATTACK   ; 8f
+	const BRAVE_BIRD   ; 8f
 	const TRANSFORM    ; 90
 	const BUBBLE       ; 91
 	const DIZZY_PUNCH  ; 92

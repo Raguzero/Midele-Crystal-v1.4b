@@ -77,7 +77,7 @@ Moves: ; 41afb
 	move HYPER_BEAM,   EFFECT_HYPER_BEAM,        150, NORMAL,    90,  5,   0
 	move PECK,         EFFECT_NORMAL_HIT,         35, FLYING,   100, 35,   0
 	move DRILL_PECK,   EFFECT_NORMAL_HIT,         80, FLYING,   100, 20,   0
-	move SUBMISSION,   EFFECT_RECOIL_HIT,         80, FIGHTING,  80, 20,   0
+	move BRICK_BREAK,  EFFECT_NORMAL_HIT,         75, FIGHTING, 100, 15,   0
 	move LOW_KICK,     EFFECT_FLINCH_HIT,         50, FIGHTING,  100, 20,  30
 	move COUNTER,      EFFECT_COUNTER,             1, FIGHTING, 100, 20,   0
 	move SEISMIC_TOSS, EFFECT_LEVEL_DAMAGE,        1, FIGHTING, 100, 20,   0
@@ -154,7 +154,7 @@ Moves: ; 41afb
 	move NASTY_PLOT,   EFFECT_SP_ATK_UP_2,         0, DARK,     100, 20,   0
 	move LEECH_LIFE,   EFFECT_LEECH_HIT,          80, BUG,      100, 10,   0
 	move LOVELY_KISS,  EFFECT_SLEEP,               0, NORMAL,    75, 10,   0
-	move SKY_ATTACK,   EFFECT_SKY_ATTACK,        140, FLYING,    90,  5,   0
+	move BRAVE_BIRD,   EFFECT_RECOIL_HIT,        120, FLYING,   100, 15,   0
 	move TRANSFORM,    EFFECT_TRANSFORM,           0, NORMAL,   100, 10,   0
 	move BUBBLE,       EFFECT_SPEED_DOWN_HIT,     40, WATER,    100, 30,  10
 	move DIZZY_PUNCH,  EFFECT_CONFUSE_HIT,        70, NORMAL,   100, 10,  20

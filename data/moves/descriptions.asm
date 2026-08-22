@@ -65,7 +65,7 @@ MoveDescriptions:: ; 2cb52
 	dw HyperBeamDescription
 	dw PeckDescription
 	dw DrillPeckDescription
-	dw SubmissionDescription
+	dw BrickBreakDescription
 	dw LowKickDescription
 	dw CounterDescription
 	dw SeismicTossDescription
@@ -142,7 +142,7 @@ MoveDescriptions:: ; 2cb52
 	dw NastyPlotDescription
 	dw LeechLifeDescription
 	dw LovelyKissDescription
-	dw SkyAttackDescription
+	dw BraveBirdDescription
 	dw TransformDescription
 	dw BubbleDescription
 	dw DizzyPunchDescription
@@ -530,9 +530,9 @@ DrillPeckDescription:
 	db   "A strong, spin-"
 	next "ning-peck attack.@"
 
-SubmissionDescription:
-	db   "An attack that al-"
-	next "so hurts the user.@"
+BrickBreakDescription:
+	db   "Attack with tough"
+	next "fists, etc.@"
 
 LowKickDescription:
 	db   "An attack that may"
@@ -838,9 +838,9 @@ LovelyKissDescription:
 	db   "May cause the foe"
 	next "to fall asleep.@"
 
-SkyAttackDescription:
-	db   "1st turn: Prepare"
-	next "2nd turn: Attack@"
+BraveBirdDescription:
+	db   "A attack that also"
+	next "hurts the user.@"
 TransformDescription:
 	db   "The user assumes"
 	next "the foe's guise.@"

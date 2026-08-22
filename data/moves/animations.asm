@@ -66,7 +66,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_HyperBeam
 	dw BattleAnim_Peck
 	dw BattleAnim_DrillPeck
-	dw BattleAnim_Submission
+	dw BattleAnim_BrickBreak
 	dw BattleAnim_LowKick
 	dw BattleAnim_Counter
 	dw BattleAnim_SeismicToss
@@ -143,7 +143,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_NastyPlot
 	dw BattleAnim_LeechLife
 	dw BattleAnim_LovelyKiss
-	dw BattleAnim_SkyAttack
+	dw BattleAnim_BraveBird
 	dw BattleAnim_Transform
 	dw BattleAnim_Bubble
 	dw BattleAnim_DizzyPunch
@@ -1833,7 +1833,6 @@ BattleAnim_Softboiled: ; c9f85
 BattleAnim_FocusEnergy: ; c9fb5
 BattleAnim_RazorWind_branch_c9fb5: ; c9fb5
 BattleAnim_SkullBash_branch_c9fb5: ; c9fb5
-BattleAnim_SkyAttack_branch_c9fb5: ; c9fb5
 	anim_1gfx ANIM_GFX_SPEED
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_bgeffect ANIM_BG_16, $0, $1, $40
@@ -2278,7 +2277,7 @@ BattleAnim_DoubleEdge: ; ca35c
 	anim_ret
 ; ca382
 
-BattleAnim_Submission: ; ca382
+BattleAnim_BrickBreak: ; ca382
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_FollowEnemyFeet_1
 	anim_bgeffect ANIM_BG_26, $0, $0, $0
@@ -2758,8 +2757,7 @@ BattleAnim_Minimize: ; ca78a
 	anim_ret
 ; ca7a1
 
-BattleAnim_SkyAttack: ; ca7a1
-	anim_if_param_equal $1, BattleAnim_SkyAttack_branch_c9fb5
+BattleAnim_BraveBird: ; ca7a1
 	anim_1gfx ANIM_GFX_SKY_ATTACK
 	anim_bgeffect ANIM_BG_27, $0, $1, $0
 	anim_wait 32

@@ -6016,10 +6016,6 @@ BattleCommand_Charge: ; 36b4d
 	ld hl, .SkullBash
 	jr z, .done
 
-	cp SKY_ATTACK
-	ld hl, .SkyAttack
-	jr z, .done
-
 	cp FLY
 	ld hl, .Fly
 	jr z, .done

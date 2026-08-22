@@ -570,7 +570,6 @@ CyndaquilEggMoves:
 	db REVERSAL
 	db THRASH
 	db FORESIGHT
-	db SUBMISSION
 	; Egg Moves from later generations
 	db DOUBLE_KICK
 	db DOUBLE_EDGE
@@ -604,7 +603,6 @@ HoothootEggMoves:
 	db FAINT_ATTACK
 	db WING_ATTACK
 	db WHIRLWIND
-	db SKY_ATTACK
 	; Egg Moves from later generations
 	db NIGHT_SHADE
 	db AGILITY
@@ -765,7 +763,7 @@ MurkrowEggMoves:
 	db QUICK_ATTACK
 	db MIRROR_MOVE
 	db WING_ATTACK
-	db SKY_ATTACK
+	db BRAVE_BIRD
 	db -1 ; end
 
 MisdreavusEggMoves:
@@ -933,7 +931,7 @@ SkarmoryEggMoves:
 	db DRILL_PECK
 	db PURSUIT
 	db WHIRLWIND
-	db SKY_ATTACK
+	db BRAVE_BIRD
 	db -1 ; end
 
 HoundourEggMoves:

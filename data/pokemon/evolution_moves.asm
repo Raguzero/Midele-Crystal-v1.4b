@@ -3,7 +3,7 @@ EvolutionMoves::
 	db ANCIENTPOWER      ; IVYSAUR
 	db SOLARBEAM  ; VENUSAUR
 	db NO_MOVE      ; CHARMANDER
-	db SUBMISSION      ; CHARMELEON
+	db BRICK_BREAK      ; CHARMELEON
 	db CRUNCH  ; CHARIZARD
 	db NO_MOVE      ; SQUIRTLE
 	db ROCK_SLIDE      ; WARTORTLE
@@ -16,7 +16,7 @@ EvolutionMoves::
 	db FURY_ATTACK      ; BEEDRILL
 	db NO_MOVE      ; PIDGEY
 	db REFLECT      ; PIDGEOTTO
-	db SKY_ATTACK      ; PIDGEOT
+	db SUBSTITUTE      ; PIDGEOT
 	db NO_MOVE      ; RATTATA
 	db BUBBLEBEAM   ; RATICATE
 	db NO_MOVE      ; SPEAROW
@@ -24,20 +24,20 @@ EvolutionMoves::
 	db NO_MOVE      ; EKANS
 	db ROCK_SLIDE       ; ARBOK
 	db REFLECT      ; PIKACHU
-	db SUBMISSION    ; RAICHU
+	db BODY_SLAM    ; RAICHU
 	db NO_MOVE      ; SANDSHREW
-	db SUBMISSION        ; SANDSLASH
+	db BRICK_BREAK        ; SANDSLASH
 	db NO_MOVE      ; NIDORAN_F
 	db BUBBLEBEAM      ; NIDORINA
-	db SUBMISSION      ; NIDOQUEEN
+	db BRICK_BREAK      ; NIDOQUEEN
 	db NO_MOVE      ; NIDORAN_M
 	db BUBBLEBEAM      ; NIDORINO
-	db SUBMISSION      ; NIDOKING
+	db BRICK_BREAK      ; NIDOKING
 	db SEISMIC_TOSS      ; CLEFAIRY
 	db THUNDER_WAVE      ; CLEFABLE
 	db NO_MOVE      ; VULPIX
 	db HEAL_BELL      ; NINETALES
-	db SUBMISSION     ; JIGGLYPUFF
+	db BRICK_BREAK     ; JIGGLYPUFF
 	db THUNDER_WAVE      ; WIGGLYTUFF
 	db NO_MOVE      ; ZUBAT
 	db CRUNCH      ; GOLBAT
@@ -73,7 +73,7 @@ EvolutionMoves::
 	db NO_MOVE      ; TENTACOOL
 	db SWORDS_DANCE      ; TENTACRUEL
 	db NO_MOVE      ; GEODUDE
-	db SUBMISSION      ; GRAVELER
+	db BODY_SLAM      ; GRAVELER
 	db CURSE      ; GOLEM
 	db NO_MOVE      ; PONYTA
 	db SOLARBEAM      ; RAPIDASH
@@ -92,7 +92,7 @@ EvolutionMoves::
 	db TWINEEDLE      ; CLOYSTER 
 	db NO_MOVE      ; GASTLY
 	db MEGA_DRAIN      ; HAUNTER
-	db SUBMISSION      ; GENGAR
+	db BRICK_BREAK      ; GENGAR
 	db NO_MOVE      ; ONIX
 	db NO_MOVE      ; DROWZEE
 	db THUNDER_WAVE      ; HYPNO
