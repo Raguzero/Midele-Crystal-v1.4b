@@ -11,7 +11,7 @@ MoveNames::
 	db "SCRATCH@"
 	db "VICEGRIP@"
 	db "GUILLOTINE@"
-	db "RAZOR WIND@"
+	db "IRON HEAD@"
 	db "SWORDS DANCE@"
 	db "CUT@"
 	db "GUST@"

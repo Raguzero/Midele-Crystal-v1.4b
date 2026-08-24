@@ -12,7 +12,7 @@ MoveDescriptions:: ; 2cb52
 	dw ScratchDescription
 	dw VicegripDescription
 	dw GuillotineDescription
-	dw RazorWindDescription
+	dw IronHeadDescription
 	dw SwordsDanceDescription
 	dw CutDescription
 	dw GustDescription
@@ -318,9 +318,9 @@ GuillotineDescription:
 	db   "A one-hit KO,"
 	next "pincer attack.@"
 
-RazorWindDescription:
-	db   "1st turn: Prepare"
-	next "2nd turn: Attack@"
+IronHeadDescription:
+	db   "An attack that may"
+	next "make foe flinch.@"
 
 SwordsDanceDescription:
 	db   "A dance that in-"

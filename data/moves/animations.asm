@@ -13,7 +13,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Scratch
 	dw BattleAnim_Vicegrip
 	dw BattleAnim_Guillotine
-	dw BattleAnim_RazorWind
+	dw BattleAnim_IronHead
 	dw BattleAnim_SwordsDance
 	dw BattleAnim_Cut
 	dw BattleAnim_Gust
@@ -1361,29 +1361,23 @@ BattleAnim_Thunder: ; c9b9a
 	anim_ret
 ; c9bbd
 
-BattleAnim_RazorWind: ; c9bbd
-	anim_if_param_equal $1, BattleAnim_RazorWind_branch_c9fb5
-	anim_1gfx ANIM_GFX_WHIP
-	anim_bgeffect ANIM_BG_06, $0, $1, $0
-.loop
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_42, 152, 40, $3
+BattleAnim_IronHead: ; c9bbd
+	anim_1gfx ANIM_GFX_REFLECT
+	anim_obp0 $0
+	anim_sound 0, 0, SFX_RAGE
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_call BattleAnim_IronHead_branch_cbc43
 	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_42, 136, 56, $3
+	anim_1gfx ANIM_GFX_HIT
+	anim_bgeffect ANIM_BG_1F, $14, $2, $0
+	anim_wait 32
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
 	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_42, 152, 64, $3
-	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_41, 120, 40, $83
-	anim_wait 4
-	anim_sound 0, 1, SFX_RAZOR_WIND
-	anim_obj ANIM_OBJ_41, 120, 64, $83
-	anim_wait 4
-	anim_loop 3, .loop
-	anim_wait 24
+	anim_sound 0, 1, SFX_HEADBUTT
+	anim_obj ANIM_OBJ_01, 136, 56, $0
+	anim_wait 8
+	anim_call BattleAnim_ShowMon_0
 	anim_ret
 ; c9c00
 
@@ -1831,7 +1825,6 @@ BattleAnim_Softboiled: ; c9f85
 ; c9fb5
 
 BattleAnim_FocusEnergy: ; c9fb5
-BattleAnim_RazorWind_branch_c9fb5: ; c9fb5
 BattleAnim_SkullBash_branch_c9fb5: ; c9fb5
 	anim_1gfx ANIM_GFX_SPEED
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -5059,6 +5052,7 @@ BattleAnim_Toxic_branch_cbc35: ; cbc35
 
 BattleAnim_Harden_branch_cbc43: ; cbc43
 BattleAnim_IronTail_branch_cbc43: ; cbc43
+BattleAnim_IronHead_branch_cbc43 ; cbc43
 BattleAnim_MetalClaw_branch_cbc43: ; cbc43
 BattleAnim_SteelWing_branch_cbc43: ; cbc43
 	anim_sound 0, 0, SFX_SHINE

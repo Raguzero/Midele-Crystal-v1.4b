@@ -6004,9 +6004,6 @@ BattleCommand_Charge: ; 36b4d
 	start_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp RAZOR_WIND
-	ld hl, .RazorWind
-	jr z, .done
 
 	cp SOLARBEAM
 	ld hl, .Solarbeam

@@ -17,7 +17,6 @@ BulbasaurEggMoves:
 	db SKULL_BASH
 	db SAFEGUARD
 	db CHARM
-	db RAZOR_WIND
 	db PETAL_DANCE
 	; Egg Moves from later generations
 	db AMNESIA
@@ -489,7 +488,6 @@ ScytherEggMoves:
 	db COUNTER
 	db SAFEGUARD
 	db BATON_PASS
-	db RAZOR_WIND
 	db REVERSAL
 	db LIGHT_SCREEN
 	db -1 ; end
@@ -580,7 +578,6 @@ TotodileEggMoves:
 	db THRASH
 	db HYDRO_PUMP
 	db ANCIENTPOWER
-	db RAZOR_WIND
 	db ROCK_SLIDE
 	; Egg Moves from later generations
 	db METAL_CLAW
@@ -804,7 +801,6 @@ DunsparceEggMoves:
 GligarEggMoves:
 	db METAL_CLAW
 	db WING_ATTACK
-	db RAZOR_WIND
 	db COUNTER
 	; Egg Moves from later generations
 	db DOUBLE_EDGE
