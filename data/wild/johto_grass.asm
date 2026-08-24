@@ -3,7 +3,7 @@
 JohtoGrassWildMons: ; 0x2a5e9
 
 	map_id MICOLO_HIDEOUT
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 1 percent, 1 percent, 1 percent ; encounter rates: morn/day/nite
 	; morn
 	db 100, ARTICUNO
 	db 100, ZAPDOS
@@ -30,7 +30,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 100, MEWTWO
 
 	map_id MICOLO_HIDEOUT_BASEMENT
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 1 percent, 1 percent, 1 percent ; encounter rates: morn/day/nite
 	; morn
 	db 100, ARTICUNO
 	db 100, ZAPDOS
@@ -1284,7 +1284,7 @@ JohtoGrassWildMonsForDex: ; the ones before this line will not be shown in dex
 	db 4, HOPPIP
 	db 4, HOPPIP
 	; day
-	db 3, PIDGEY
+	db 3, LEDYBA
 	db 3, CATERPIE
 	db 4, CATERPIE
 	db 4, PIDGEY
@@ -1311,7 +1311,7 @@ JohtoGrassWildMonsForDex: ; the ones before this line will not be shown in dex
 	db 5, HOPPIP
 	db 5, HOPPIP
 	; day
-	db 4, PIDGEY
+	db 4, LEDYBA
 	db 4, CATERPIE
 	db 5, BELLSPROUT
 	db 5, PIDGEY
@@ -1446,7 +1446,7 @@ JohtoGrassWildMonsForDex: ; the ones before this line will not be shown in dex
 	db 6, PIDGEY
 	db 6, PIDGEY
 	; day
-	db 4, PIDGEY
+	db 4, LEDYBA
 	db 4, PIDGEY
 	db 5, BELLSPROUT
 	db 5, GROWLITHE
@@ -1473,7 +1473,7 @@ JohtoGrassWildMonsForDex: ; the ones before this line will not be shown in dex
 	db 23, LEDIAN
 	db 23, LEDIAN
 	; day
-	db 21, GIRAFARIG
+	db 21, LEDYBA
 	db 21, GROWLITHE
 	db 21, GIRAFARIG
 	db 21, GROWLITHE

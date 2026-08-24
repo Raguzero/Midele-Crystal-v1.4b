@@ -203,10 +203,10 @@ KantoGrassWildMons: ; 0x2b274
 	db 64, PIKACHU
 	; day
 	db 63, CATERPIE
-	db 63, PIDGEY
+	db 63, LEDYBA
 	db 65, PIDGEOTTO
 	db 67, BUTTERFREE
-	db 67, PIDGEOTTO
+	db 67, LEDIAN
 	db 64, PIKACHU
 	db 64, PIKACHU
 	; nite
