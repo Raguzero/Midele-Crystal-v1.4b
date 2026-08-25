@@ -4481,8 +4481,30 @@ HandleHealingItems: ; 3dcf9
 HandleHPHealingItem: ; 3dd2f
 	callfar GetOpponentItem
 	ld a, b
+	cp HELD_GOLD_BERRY
+	jr z, .get_4th
 	cp HELD_BERRY
-	ret nz
+	jr z, .proceed
+	ret
+.get_4th
+	ld a, [hBattleTurn]
+	and a
+	push bc
+	jr z, .swapZeroToOne
+.swapOneToZero
+	call SetPlayerTurn
+	call GetQuarterMaxHP
+	call SetEnemyTurn
+	jr .preproceed
+.swapZeroToOne
+	call SetEnemyTurn
+	call GetQuarterMaxHP
+	call SetPlayerTurn
+.preproceed
+	ld a, c
+	pop bc
+	ld c, a
+.proceed
 	ld de, wEnemyMonHP + 1
 	ld hl, wEnemyMonMaxHP
 	ld a, [hBattleTurn]
