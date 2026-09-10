@@ -3,8 +3,8 @@ EvolutionMoves::
 	db ANCIENTPOWER      ; IVYSAUR
 	db SOLARBEAM  ; VENUSAUR
 	db NO_MOVE      ; CHARMANDER
-	db BRICK_BREAK      ; CHARMELEON
-	db CRUNCH  ; CHARIZARD
+	db BITE      ; CHARMELEON
+	db WING_ATTACK  ; CHARIZARD
 	db NO_MOVE      ; SQUIRTLE
 	db ROCK_SLIDE      ; WARTORTLE
 	db ZAP_CANNON ; BLASTOISE
@@ -26,7 +26,7 @@ EvolutionMoves::
 	db REFLECT      ; PIKACHU
 	db BODY_SLAM    ; RAICHU
 	db NO_MOVE      ; SANDSHREW
-	db BRICK_BREAK        ; SANDSLASH
+	db PIN_MISSILE        ; SANDSLASH
 	db NO_MOVE      ; NIDORAN_F
 	db BUBBLEBEAM      ; NIDORINA
 	db BRICK_BREAK      ; NIDOQUEEN
@@ -89,7 +89,7 @@ EvolutionMoves::
 	db NO_MOVE      ; GRIMER
 	db BODY_SLAM      ; MUK
 	db NO_MOVE      ; SHELLDER
-	db TWINEEDLE      ; CLOYSTER 
+	db SPIKE_CANNON      ; CLOYSTER 
 	db NO_MOVE      ; GASTLY
 	db MEGA_DRAIN      ; HAUNTER
 	db BRICK_BREAK      ; GENGAR
@@ -137,9 +137,9 @@ EvolutionMoves::
 	db EMBER        ; FLAREON
 	db NO_MOVE      ; PORYGON
 	db NO_MOVE      ; OMANYTE
-	db ROCK_SLIDE      ; OMASTAR
+	db CRUNCH      ; OMASTAR
 	db NO_MOVE      ; KABUTO
-	db ROCK_SLIDE        ; KABUTOPS
+	db SLASH        ; KABUTOPS
 	db NO_MOVE      ; AERODACTYL
 	db NO_MOVE      ; SNORLAX
 	db NO_MOVE      ; ARTICUNO

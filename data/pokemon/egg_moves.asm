@@ -520,8 +520,6 @@ OmanyteEggMoves:
 	db SLAM
 	db SUPERSONIC
 	db HAZE
-	; Egg Moves from later generations
-	db ROCK_SLIDE
 	db -1 ; end
 
 KabutoEggMoves:
@@ -760,7 +758,6 @@ MurkrowEggMoves:
 	db QUICK_ATTACK
 	db MIRROR_MOVE
 	db WING_ATTACK
-	db BRAVE_BIRD
 	db -1 ; end
 
 MisdreavusEggMoves:
@@ -927,6 +924,7 @@ SkarmoryEggMoves:
 	db DRILL_PECK
 	db PURSUIT
 	db WHIRLWIND
+	; Egg Moves from later generations
 	db BRAVE_BIRD
 	db -1 ; end
 
